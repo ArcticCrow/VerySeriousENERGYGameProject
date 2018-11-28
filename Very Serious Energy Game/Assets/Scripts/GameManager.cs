@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour {
 	// The players transform made available for other scripts
 	public GameObject player;
 
+	public GameObject spawnPoint;
+
 	[Header("States")]
 	// What the player is using to play the game
 	[SerializeField]
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		CheckInstance();
+		CheckSingeltonInstance();
 
 		if (player == null)
 		{
@@ -82,10 +84,15 @@ public class GameManager : MonoBehaviour {
 
 		InitializeTeleportation();
 
+		if (spawnPoint != null && spawnPoint.GetComponent<RoomInformation>() != null)
+		{
+			TeleportPlayer(spawnPoint);
+		}
+
 		gameState = GameState.Load;
 	}
 
-	private void CheckInstance()
+	private void CheckSingeltonInstance()
 	{
 		if (Instance != null)
 			Destroy(gameObject);
@@ -109,7 +116,6 @@ public class GameManager : MonoBehaviour {
 		{
 			computerCanvas.gameObject.SetActive(true);
 		}
-
 	}
 
 	public void RefreshComputerUI()
@@ -120,7 +126,6 @@ public class GameManager : MonoBehaviour {
 		}
 		RemoveUIElements();
 		AddTeleportButtons();
-		
 	}
 
 	private void RemoveUIElements()
@@ -143,9 +148,12 @@ public class GameManager : MonoBehaviour {
 			TeleportButton tpButton = newButton.GetComponent<TeleportButton>();
 			tpButton.Setup(tpp);
 		}
-		RoomInformation activeInfo = activeTeleportPoint.GetComponent<RoomInformation>();
-		currentRoomDisplay.text = activeInfo.roomName;
-		currentRoomDisplay.color = activeInfo.colorCode;
+		if (activeTeleportPoint != null)
+		{
+			RoomInformation activeInfo = activeTeleportPoint.GetComponent<RoomInformation>();
+			currentRoomDisplay.text = activeInfo.roomName;
+			currentRoomDisplay.color = activeInfo.colorCode;
+		}
 	}
 
 	public void TeleportPlayer(GameObject teleportPoint)
