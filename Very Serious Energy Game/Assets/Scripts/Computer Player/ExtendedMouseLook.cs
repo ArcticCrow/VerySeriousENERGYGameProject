@@ -5,12 +5,17 @@ using UnityEngine;
 public class ExtendedMouseLook : MouseLook {
 
 	[Header("Custom Settings")]
-	public bool useHotkey = false;
+	public bool useHotkeyToUnlockCursor = false;
 	public KeyCode hotkey = KeyCode.LeftControl;
 
 	// Update is called once per frame
 	protected override void Update () {
-		if (useHotkey == false || Input.GetKey(hotkey))
+		if (useHotkeyToUnlockCursor == true && Input.GetKey(hotkey))
+		{
+			// enable UI interaction
+			
+		}
+		else
 		{
 			base.Update();
 		}
