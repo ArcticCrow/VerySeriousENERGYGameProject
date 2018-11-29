@@ -92,6 +92,11 @@ public class GameManager : MonoBehaviour {
 		gameState = GameState.Load;
 	}
 
+	void Update()
+	{
+
+	}
+
 	private void CheckSingeltonInstance()
 	{
 		if (Instance != null)
@@ -110,15 +115,29 @@ public class GameManager : MonoBehaviour {
 		if (playMode == PlayMode.Computer)
 		{
 			computerCanvas.gameObject.SetActive(true);
+		}
+		else if (playMode == PlayMode.VR)
+		{
+			if (computerCanvas != null)
+			computerCanvas.gameObject.SetActive(false);
+		}
+
+		RefreshDisplays();
+	}
+
+	public void RefreshDisplays ()
+	{
+		if (playMode == PlayMode.Computer)
+		{
 			RefreshComputerUI();
 		}
 		else if (playMode == PlayMode.VR)
 		{
-			computerCanvas.gameObject.SetActive(true);
+			// TODO Update onboard ui if necessarry
 		}
 	}
 
-	public void RefreshComputerUI()
+	private void RefreshComputerUI()
 	{
 		if (computerCanvas == null)
 		{
@@ -172,11 +191,6 @@ public class GameManager : MonoBehaviour {
 		Vector3 newPos = teleportPoint.transform.position;
 		player.transform.position = newPos;
 
-		RefreshComputerUI();
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
+		RefreshDisplays();
 	}
 }
