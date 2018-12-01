@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Teleportation.unity
-    guid: 466fc6e995c7e74449b0a3925a1118bf
+    path: Assets/Scenes/VRTeleportationPlayground.unity
+    guid: 8b2f63a929bb6344a9aa13e796262f21
   m_configObjects: {}

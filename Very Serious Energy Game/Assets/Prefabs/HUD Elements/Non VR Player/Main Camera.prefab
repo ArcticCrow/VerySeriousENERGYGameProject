@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 20825408212376362}
   - component: {fileID: 81753967142306864}
   - component: {fileID: 114055853983565182}
+  - component: {fileID: 114176058218825450}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -100,12 +101,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef38fb3ace34564d90d56ac5b3c81b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 0
+  axes: 1
   sensitivityX: 10
   sensitivityY: 10
   minimumX: -360
   maximumX: 360
   minimumY: -60
   maximumY: 60
-  useHotkey: 1
+  useHotkeyToUnlockCursor: 0
   hotkey: 306
+--- !u!114 &114176058218825450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182234238169918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 2
+  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
+  fadeOnStart: 1
+  renderQueue: 5000

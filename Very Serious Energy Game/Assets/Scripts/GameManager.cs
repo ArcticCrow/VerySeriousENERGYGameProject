@@ -26,13 +26,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private const string TP_POINT_TAG = "Teleport Point";
-	private const string PLAYER_TAG = "MainCamera";
+	private const string PLAYER_TAG = "Player";
 
-	#region Inspector visible variables
+	
+    #region Inspector visible variables
 	// The players transform made available for other scripts
 	public GameObject player;
-
-	public GameObject spawnPoint;
 
 	[Header("States")]
 	// What the player is using to play the game
@@ -44,13 +43,10 @@ public class GameManager : MonoBehaviour {
 	GameState gameState = GameState.Boot;
 
 	[Header("Teleportation")]
-	// List of all game objects (points) the player may teleport too
-	[SerializeField]
+    public GameObject spawnPoint;
+    // List of all game objects (points) the player may teleport too
+    [SerializeField]
 	List<GameObject> teleportPoints;
-
-	// Currently active Teleport Point
-	[SerializeField]
-	GameObject activeTeleportPoint;
 
 	[Header("User Interface (Computer)")]
 	// The ui the player sees, when using a computer
@@ -65,13 +61,18 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	Text currentRoomDisplay;
 
-	public SimpleObjectPool UIObjectPool;
-	#endregion
+	public SimpleObjectPool buttonObjectPool;
+    #endregion
 
+    // Currently active Teleport Point
+    GameObject activeTeleportPoint;
 
+    // The active scene camera
+    Camera mainCamera;
+    OVRScreenFade sF;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		CheckSingeltonInstance();
 
 		if (player == null)
@@ -82,7 +83,13 @@ public class GameManager : MonoBehaviour {
 				throw new Exception("No player has been set in the Game Manager or could be found!");
 		}
 
-		InitializeTeleportation();
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+            sF = mainCamera.transform.GetComponent<OVRScreenFade>();
+        }
+
+        InitializeTeleportation();
 
 		if (spawnPoint != null && spawnPoint.GetComponent<RoomInformation>() != null)
 		{
@@ -152,7 +159,7 @@ public class GameManager : MonoBehaviour {
 		while (teleportButtonPanel.childCount > 0)
 		{
 			GameObject toRemove = teleportButtonPanel.GetChild(0).gameObject;
-			UIObjectPool.ReturnObject(toRemove);
+			buttonObjectPool.ReturnObject(toRemove);
 		}
 	}
 
@@ -161,7 +168,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < teleportPoints.Count; i++)
 		{
 			GameObject tpp = teleportPoints[i];
-			GameObject newButton = UIObjectPool.GetObject();
+			GameObject newButton = buttonObjectPool.GetObject();
 			newButton.transform.SetParent(teleportButtonPanel);
 
 			TeleportButton tpButton = newButton.GetComponent<TeleportButton>();
@@ -187,10 +194,34 @@ public class GameManager : MonoBehaviour {
 		activeTeleportPoint = teleportPoint;
 		teleportPoints.Remove(teleportPoint);
 
-		// Move the player transform to the desired location
-		Vector3 newPos = teleportPoint.transform.position;
-		player.transform.position = newPos;
 
-		RefreshDisplays();
-	}
+        // Move the player transform to the desired location
+        Vector3 newPosition = teleportPoint.transform.position;
+        if (gameState == GameState.Boot)
+        {
+            sF.SetFadeLevel(1);
+            player.transform.position = newPosition;
+            sF.FadeIn();
+        }
+        else
+        {
+            StartCoroutine(PlayerTransition(newPosition));
+        }
+
+        RefreshDisplays();
+    }
+
+    public IEnumerator PlayerTransition(Vector3 newPosition)
+    {
+        // Fade out screen only if screen is not faded
+        sF.FadeOut();
+        yield return new WaitForSeconds(sF.fadeTime + 0.1f);
+
+        // Move the player transform to the desired location
+        player.transform.position = newPosition;
+
+        // Fade in screen
+        sF.FadeIn();
+        yield return new WaitForSeconds(sF.fadeTime);
+    }
 }
