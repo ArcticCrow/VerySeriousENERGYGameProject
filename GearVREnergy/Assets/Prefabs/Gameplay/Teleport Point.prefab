@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33831808957719340}
   - component: {fileID: 23364524635967758}
   - component: {fileID: 114656366682499442}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Teleport Point
   m_TagString: Teleport Point
   m_Icon: {fileID: 0}
@@ -35,9 +35,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1511943997480654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 54b6338021cd60044a2f08f35c93e4f3, type: 2}
+  - {fileID: 2100000, guid: 65f3bd6a755dde4478a4750c97cd9ac6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,4 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e84bbcb30ac50d48b36132025285d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: Zone
+  id: 6
+  roomName: Zone Green
+  colorCode: {r: 0.10457456, g: 0.8867924, b: 0.106314376, a: 0.49019608}

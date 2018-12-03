@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour {
     Camera mainCamera;
     OVRScreenFade sF;
 
+	bool isTeleporting = false;
+
+
     // Use this for initialization
     void Start () {
 		CheckSingeltonInstance();
@@ -97,11 +100,6 @@ public class GameManager : MonoBehaviour {
 		}
 
 		gameState = GameState.Load;
-	}
-
-	void Update()
-	{
-
 	}
 
 	private void CheckSingeltonInstance()
@@ -220,7 +218,8 @@ public class GameManager : MonoBehaviour {
         // Move the player transform to the desired location
         player.transform.position = newPosition;
 
-        // Fade in screen
+		// Fade in screen
+		isTeleporting = false;
         sF.FadeIn();
         yield return new WaitForSeconds(sF.fadeTime);
     }
