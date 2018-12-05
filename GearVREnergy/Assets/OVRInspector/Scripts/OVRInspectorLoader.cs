@@ -46,6 +46,8 @@ public class OVRInspectorLoader : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        OVRManager.loadedXRDevice = OVRManager.XRDevice.Oculus;
+        print(OVRManager.loadedXRDevice.ToString());
 		if (OVRManager.loadedXRDevice == OVRManager.XRDevice.Oculus)
 		{
 			var inspectorLoaders = GameObject.FindObjectsOfType(typeof(OVRInspectorLoader));

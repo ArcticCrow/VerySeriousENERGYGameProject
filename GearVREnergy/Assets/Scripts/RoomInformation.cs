@@ -12,4 +12,9 @@ public class RoomInformation : MonoBehaviour {
 
 	public string roomName = "Unnamed";
 	public Color colorCode = Color.white;
+
+    private void Start()
+    {
+        GetComponent<MeshRenderer>().material.color = colorCode;
+    }
 }

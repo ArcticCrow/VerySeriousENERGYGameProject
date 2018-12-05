@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class OldGameManager : MonoBehaviour {
 
 	// Singelton object instance for other scripts to access
 	[HideInInspector]
-	public static GameManager Instance;
+	public static OldGameManager Instance;
 
 
 	enum PlayMode

@@ -24,7 +24,7 @@ public class TeleportButton : MonoBehaviour {
 
 	private void Teleport()
 	{
-		GameManager.Instance.TeleportPlayer(tpPoint);
+		OldGameManager.Instance.TeleportPlayer(tpPoint);
 	}
 
 	public void Setup(GameObject teleportPoint)
