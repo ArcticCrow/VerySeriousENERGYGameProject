@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4792115530088008}
+  - component: {fileID: 114815091261496878}
   m_Layer: 0
   m_Name: Energy Manager
   m_TagString: Untagged
@@ -39,3 +40,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114815091261496878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786476387549722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecca20dc2e91813488b2f85d27becc71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEnergy: 10000
+  startingEnergy: 1000
+  currentEnergy: 0
+  baseEnergyGenerationPerSecond: 500
+  energyTicksPerSecond: 25
+  energyInfluencingObjectTags:
+  - Interactable
+  energyInfluencingObjects: []
+  energyConsumptionPerTick: 0
+  energyGenerationPerTick: 0
+  fluctuationPerTick: 0
+  fluctuationPerSecond: 0
+  startEnergyRoutine: 1
+  stopEnergyRoutine: 0
+  isEnergyRoutineRunning: 0

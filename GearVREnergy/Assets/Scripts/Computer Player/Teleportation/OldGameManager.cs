@@ -71,7 +71,7 @@ public class OldGameManager : MonoBehaviour {
     Camera mainCamera;
     OVRScreenFade sF;
 
-	bool isTeleporting = false;
+	//bool isTeleporting = false;
 
 
     // Use this for initialization
@@ -219,7 +219,7 @@ public class OldGameManager : MonoBehaviour {
         player.transform.position = newPosition;
 
 		// Fade in screen
-		isTeleporting = false;
+		//isTeleporting = false;
         sF.FadeIn();
         yield return new WaitForSeconds(sF.fadeTime);
     }

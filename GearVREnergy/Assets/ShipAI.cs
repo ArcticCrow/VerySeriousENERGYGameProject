@@ -7,13 +7,13 @@ using Random = UnityEngine.Random;
 
 public class ShipAI : MonoBehaviour {
 
-	[Header("Initial Properties")]
+	[Header("General")]
 	[SerializeField, Tooltip("A list of all objects that the AI should look to manipulate.")]
 	private List<string> interactableObjectTags = new List<string>()
 	{
 		"Interactable"
 	};
-	[SerializeField, Tooltip("Listing of all found interactable objects in scene. Will be generated on scene start.")]
+	[SerializeField, Tooltip("Listing of all found interactable objects in the scene. Will be generated on scene start.")]
 	List<GameObject> interactables;
 	[Tooltip("Create a random seed base on system time.")]
 	public bool generateRandomSeed = false;
@@ -34,7 +34,7 @@ public class ShipAI : MonoBehaviour {
 	[SerializeField]
 	bool stopAIRoutine = false;
 	[SerializeField]
-	bool isAIRunning = false;
+	bool isAIRoutineRunning = false;
 
 
 	// Use this for initialization
@@ -45,10 +45,10 @@ public class ShipAI : MonoBehaviour {
 			generateRandomSeed = false;
 		}
 		InitializeRandom();
-		CreateInteractablesListing();
+		CreateObjectListing();
 	}
 
-	private void CreateInteractablesListing()
+	private void CreateObjectListing()
 	{
 		interactables = new List<GameObject>();
 		for (int i = 0; i < interactableObjectTags.Count; i++)
@@ -85,7 +85,7 @@ public class ShipAI : MonoBehaviour {
 		// Start coroutine upon request, if not already running
 		if (startAIRoutine)
 		{
-			if (!isAIRunning)
+			if (!isAIRoutineRunning)
 			{
 				print("AI Coroutine is starting ...");
 				// Start AI coroutine
@@ -101,9 +101,9 @@ public class ShipAI : MonoBehaviour {
 
 	private IEnumerator PerformShenanigans()
 	{
-		isAIRunning = true;
+		isAIRoutineRunning = true;
 
-		while (isAIRunning)
+		while (isAIRoutineRunning)
 		{
 			float timeDiff = Random.Range(minTimeDifference, maxTimeDifference);
 			print("Waiting " + timeDiff + " seconds until shenanigans are performed ...");
@@ -114,7 +114,7 @@ public class ShipAI : MonoBehaviour {
 			if (stopAIRoutine)
 			{
 				print("AI Coroutine is stopping ...");
-				isAIRunning = false;
+				isAIRoutineRunning = false;
 				stopAIRoutine = false;
 			}
 			else
@@ -141,7 +141,7 @@ public class ShipAI : MonoBehaviour {
 				objToggleSuccess = true;
 				MeshRenderer mr = obj.GetComponent<MeshRenderer>();
 				Color currentColor = mr.material.color;
-				Color onColor = Color.white, offColor = Color.black;
+				Color onColor = Color.black, offColor = Color.white;
 
 				if (currentColor == onColor)
 				{
