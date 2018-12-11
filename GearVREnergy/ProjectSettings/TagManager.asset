@@ -11,6 +11,8 @@ TagManager:
   - Fader
   - dontmove
   - listlast
+  - Teleport Point
+  - Interactable
   layers:
   - Default
   - TransparentFX

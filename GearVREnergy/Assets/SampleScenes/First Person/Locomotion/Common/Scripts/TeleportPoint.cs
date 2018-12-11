@@ -56,6 +56,7 @@ public class TeleportPoint : MonoBehaviour {
 
     public void OnLookAt()
     {
+		OVRGazePointer.instance.RequestShow();
         lastLookAtTime = Time.time;
     }
 }
