@@ -74,6 +74,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  startAIRoutine: 1
+  startAIRoutine: 0
   stopAIRoutine: 0
   isAIRoutineRunning: 0

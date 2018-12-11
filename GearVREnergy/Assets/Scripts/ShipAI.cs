@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 public class ShipAI : MonoBehaviour {
 
+	[HideInInspector]
+	public static ShipAI instance;
+
 	[Header("General")]
 	[SerializeField, Tooltip("A list of all objects that the AI should look to manipulate.")]
 	private List<string> interactableObjectTags = new List<string>()
@@ -29,16 +32,16 @@ public class ShipAI : MonoBehaviour {
 	public UnityEvent shenanigans;
 
 	[Header("Routine Control")]
-	[SerializeField]
-	bool startAIRoutine = true;
-	[SerializeField]
-	bool stopAIRoutine = false;
+	public bool startAIRoutine = true;
+	public bool stopAIRoutine = false;
 	[SerializeField]
 	bool isAIRoutineRunning = false;
 
 
 	// Use this for initialization
 	void Start () {
+		CheckSingeltonInstance();
+
 		if (generateRandomSeed)
 		{
 			GenerateRandomSeed();
@@ -46,6 +49,15 @@ public class ShipAI : MonoBehaviour {
 		}
 		InitializeRandom();
 		CreateObjectListing();
+	}
+
+	private void CheckSingeltonInstance()
+	{
+		if (instance != null)
+			Destroy(gameObject);
+
+		instance = this;
+		DontDestroyOnLoad(gameObject);
 	}
 
 	private void CreateObjectListing()

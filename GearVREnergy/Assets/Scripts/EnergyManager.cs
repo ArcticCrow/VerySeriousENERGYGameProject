@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnergyManager : MonoBehaviour {
 
+	[HideInInspector]
 	public static EnergyManager instance;
 
 	[Header("General")]
@@ -37,10 +38,8 @@ public class EnergyManager : MonoBehaviour {
 	private float fluctuationPerSecond = 0;
 
 	[Header("Routine Control")]
-	[SerializeField]
-	bool startEnergyRoutine = true;
-	[SerializeField]
-	bool stopEnergyRoutine = false;
+	public bool startEnergyRoutine = true;
+	public bool stopEnergyRoutine = false;
 	[SerializeField]
 	bool isEnergyRoutineRunning = false;
 
