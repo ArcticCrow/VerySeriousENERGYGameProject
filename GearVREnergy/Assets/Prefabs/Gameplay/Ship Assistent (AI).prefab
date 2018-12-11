@@ -76,4 +76,4 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   startAIRoutine: 1
   stopAIRoutine: 0
-  isAIRunning: 0
+  isAIRoutineRunning: 0

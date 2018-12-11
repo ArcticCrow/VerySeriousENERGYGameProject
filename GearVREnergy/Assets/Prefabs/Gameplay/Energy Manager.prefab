@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4792115530088008}
   - component: {fileID: 114815091261496878}
+  - component: {fileID: 114681183245233032}
   m_Layer: 0
   m_Name: Energy Manager
   m_TagString: Untagged
@@ -40,6 +41,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114681183245233032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786476387549722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2d2cb29d8834849b04ab3f88a291ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalEnergyDisplays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  positiveFluctuationDisplays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  negativeFluctuationDisplays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  energyPercent: 0
+  positivePercent: 0
+  negativePercent: 0
 --- !u!114 &114815091261496878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -48,14 +81,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1786476387549722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecca20dc2e91813488b2f85d27becc71, type: 3}
+  m_Script: {fileID: 11500000, guid: b846266e18861cb4189b2a65ce97e982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnergy: 10000
   startingEnergy: 1000
   currentEnergy: 0
   baseEnergyGenerationPerSecond: 500
-  energyTicksPerSecond: 25
+  energyTicksPerSecond: 50
   energyInfluencingObjectTags:
   - Interactable
   energyInfluencingObjects: []
@@ -63,6 +96,6 @@ MonoBehaviour:
   energyGenerationPerTick: 0
   fluctuationPerTick: 0
   fluctuationPerSecond: 0
-  startEnergyRoutine: 1
+  startEnergyRoutine: 0
   stopEnergyRoutine: 0
   isEnergyRoutineRunning: 0

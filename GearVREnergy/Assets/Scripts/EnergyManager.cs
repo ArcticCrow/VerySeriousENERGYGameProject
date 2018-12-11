@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnergyManager : MonoBehaviour {
 
+	public static EnergyManager instance;
+
 	[Header("General")]
 	public float maxEnergy = 10000f; //perhaps we should you real life values?
 	public float startingEnergy = 1000f;
@@ -25,10 +27,10 @@ public class EnergyManager : MonoBehaviour {
 	private List<GameObject> energyInfluencingObjects;
 
 	[Header("Energy Statistics")]
-	[SerializeField, Tooltip("")]
-	private float energyConsumptionPerTick = 0;
-	[SerializeField, Tooltip("")]
-	private float energyGenerationPerTick = 0;
+	[Tooltip("")]
+	public float energyConsumptionPerTick = 0;
+	[Tooltip("")]
+	public float energyGenerationPerTick = 0;
 	[SerializeField, Tooltip("")]
 	private float fluctuationPerTick = 0;
 	[SerializeField, Tooltip("")]
@@ -45,10 +47,21 @@ public class EnergyManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		CheckSingeltonInstance();
+
 		currentEnergy = startingEnergy;
 
 		CreateObjectListing();
 		CalculateEnergyFluctuation();
+	}
+
+	private void CheckSingeltonInstance()
+	{
+		if (instance != null)
+			Destroy(gameObject);
+
+		instance = this;
+		DontDestroyOnLoad(gameObject);
 	}
 
 	private IEnumerator ControlEnergyLevel()

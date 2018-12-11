@@ -146,12 +146,12 @@ public class ShipAI : MonoBehaviour {
 				if (currentColor == onColor)
 				{
 					mr.material.color = offColor;
-					print("Turned " + obj.name + "->" + obj.transform.parent.parent.name + "off!");
+					print("Turned " + obj.name + "->" + obj.transform.parent.parent.name + " off!");
 				}
 				else
 				{
 					mr.material.color = onColor;
-					print("Turned " + obj.name + "->" + obj.transform.parent.parent.name + "on!");
+					print("Turned " + obj.name + "->" + obj.transform.parent.parent.name + " on!");
 				}
 			}
 		}
