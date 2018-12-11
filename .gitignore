@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+# Sample Data (Big File Size)
+GearVREnergy/Assets/SampleScenes*

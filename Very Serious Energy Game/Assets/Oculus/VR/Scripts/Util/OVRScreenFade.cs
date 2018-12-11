@@ -26,7 +26,7 @@ public class OVRScreenFade : MonoBehaviour
 	public float fadeTime = 2.0f;
 
     [Tooltip("Screen color at maximum fade")]
-	public Color fadeColor = new Color(0.01f, 0.01f, 0.01f, 1.0f);
+    public Color fadeColor = new Color(0.01f, 0.01f, 0.01f, 1.0f);
 
     public bool fadeOnStart = true;
 
@@ -105,16 +105,23 @@ public class OVRScreenFade : MonoBehaviour
     /// </summary>
     public void FadeOut()
     {
-        StartCoroutine(Fade(0,1));
+        StartCoroutine(FadeOut(0,1));
     }
 
+    /// <summary>
+	/// Starts a fade in when a new level is loaded
+	/// </summary>
+    public void FadeIn()
+    {
+        StartCoroutine(FadeOut(1,0));
+    }
 
 	/// <summary>
 	/// Starts a fade in when a new level is loaded
 	/// </summary>
 	void OnLevelFinishedLoading(int level)
 	{
-		StartCoroutine(Fade(1,0));
+		StartCoroutine(FadeOut(1,0));
 	}
 
     /// <summary>
@@ -124,7 +131,7 @@ public class OVRScreenFade : MonoBehaviour
     {
         if (fadeOnStart)
         {
-            StartCoroutine(Fade(1,0));
+            StartCoroutine(FadeOut(0, 1));
         }
     }
 
@@ -172,7 +179,7 @@ public class OVRScreenFade : MonoBehaviour
 	/// <summary>
 	/// Fades alpha from 1.0 to 0.0
 	/// </summary>
-	IEnumerator Fade(float startAlpha, float endAlpha)
+	public IEnumerator FadeOut(float startAlpha, float endAlpha)
 	{
 		float elapsedTime = 0.0f;
 		while (elapsedTime < fadeTime)
@@ -193,7 +200,7 @@ public class OVRScreenFade : MonoBehaviour
 		Color color = fadeColor;
         color.a = Mathf.Max(currentAlpha, uiFadeAlpha);
 		isFading = color.a > 0;
-        if (fadeMaterial != null)
+        if (fadeMaterial != null)   
         {
             fadeMaterial.color = color;
 			fadeMaterial.renderQueue = renderQueue;
