@@ -9,20 +9,24 @@ public class MaterialChange : MonoBehaviour {
 	//public bool isPowered;
 	MeshRenderer meshRenderer;
 	// Use this for initialization
-	void Start () {
-		meshRenderer = GetComponent<MeshRenderer>();
+	void CheckRenderer () {
+        if (meshRenderer == null)
+        {
+            meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.material = new Material(meshRenderer.material);
+        }
 	}
 	
 	// Update is called once per frame
-	public void PowerOn () {
-		
+	public void PowerOn ()
+    {
+       CheckRenderer();
        meshRenderer.material.color = on;
-		
 	}
 
 	public void PowerOff()
 	{
-		
-       meshRenderer.material.color = off;
+        CheckRenderer();
+        meshRenderer.material.color = off;
 	}
 }

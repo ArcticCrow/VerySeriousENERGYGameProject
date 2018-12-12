@@ -8,8 +8,17 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector]
 	public static GameManager instance;
 
-	[Header("Game Controls")]
-	public bool startGamePlay;
+    [Header("General")]
+    public Transform pointerTransform;
+
+    [Header("Interaction")]
+    public KeyCode interactionKey = KeyCode.E;
+    public OVRInput.Button interactionButton = OVRInput.Button.One;
+    public float maxInteractionRange = 20f;
+    public LayerMask interactionMask;
+
+    [Header("Game Controls")]
+    public bool startGamePlay;
 	public Button startButton;
 	public bool pauseGamePlay;
 	public Button pauseButton;

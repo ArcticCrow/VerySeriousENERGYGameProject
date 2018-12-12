@@ -11,7 +11,7 @@ public class ShipAI : MonoBehaviour {
 	public static ShipAI instance;
 
 	[Header("General")]
-	[SerializeField, Tooltip("A list of all objects that the AI should look to manipulate.")]
+	[SerializeField, Tooltip("A list of all objects that the AI should look to man  ipulate.")]
 	private List<string> interactableObjectTags = new List<string>()
 	{
 		"Interactable"
@@ -163,7 +163,7 @@ public class ShipAI : MonoBehaviour {
 				else
 				{
 					mr.material.color = onColor;
-					print("Turned " + obj.name + "->" + obj.transform.parent.parent.name + " on!");
+					print("Turned " + obj.name + " on!");
 				}
 			}
 		}
