@@ -1,35 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class Interactable : MonoBehaviour {
 
-	public Material material;
-	public Color newColor;
-	public bool isPowered;
+	[SerializeField] private UnityEvent powerOnEvents;
+	[SerializeField] private UnityEvent powerOffEvents;
+	public bool isPowered = false;
+	public bool badPowerState;
+
+
+	public float energyConsumption = 50f;
 	//public KeyCode changecol;
 
 	void Start()
 	{
-		material.color = Color.white;
+	    CallPowerEvents();
+		
 	}	
+	void CallPowerEvents()
+	{
+		if(isPowered)
+		{
+			powerOnEvents.Invoke();
+		}
+		else
+		{
+			powerOffEvents.Invoke();
+		}
+	}
 
 	void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			if (material.color == Color.red)
-			{
-				material.color = newColor;
-				Debug.Log("Lights are On");
-				isPowered = true;
-			}
-			else if(material.color != Color.red) {
-				material.color = Color.red;
-				Debug.Log("Lights are Off");
-				isPowered = false;
-			}
+			isPowered = !isPowered;
+			CallPowerEvents();
 		}
+		
 	}
 /*
 public Material[]materials;
