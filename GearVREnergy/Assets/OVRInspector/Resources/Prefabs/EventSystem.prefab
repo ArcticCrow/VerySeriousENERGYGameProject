@@ -3,13 +3,13 @@
 --- !u!1 &101264
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 6
   m_Component:
-  - 4: {fileID: 401264}
-  - 114: {fileID: 11401264}
-  - 114: {fileID: 11401262}
+  - component: {fileID: 401264}
+  - component: {fileID: 11401264}
+  - component: {fileID: 11401262}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -20,7 +20,7 @@ GameObject:
 --- !u!4 &401264
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -29,10 +29,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11401262
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101264}
   m_Enabled: 1
@@ -42,11 +43,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayTransform: {fileID: 0}
   joyPadClickButton: 1
-  gazeClickKey: 32
+  gazeClickKey: 101
   performSphereCastForGazepointer: 1
   matchNormalOnPhysicsColliders: 0
   useRightStickScroll: 1
-  rightStickDeadZone: .150000006
+  rightStickDeadZone: 0.15
   useSwipeScroll: 1
   swipeDragThreshold: 1
   swipeDragScale: 1
@@ -61,7 +62,7 @@ MonoBehaviour:
 --- !u!114 &11401264
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101264}
   m_Enabled: 1
@@ -80,6 +81,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 101264}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1

@@ -740,11 +740,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4555037522936930, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1667944863142016, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
       propertyPath: m_Name
-      value: EnergyConsumingInteractable (3)
+      value: EnergyConsumingInteractable Purple (Generator Type)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269436114703892, guid: 554dfe10bf264e24d98550dc5efb145c,
+        type: 2}
+      propertyPath: energyInfluencePerSecond
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575065932523160, guid: 554dfe10bf264e24d98550dc5efb145c,
+        type: 2}
+      propertyPath: on.g
+      value: 0.5764543
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575065932523160, guid: 554dfe10bf264e24d98550dc5efb145c,
+        type: 2}
+      propertyPath: on.b
+      value: 0.8745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575065932523160, guid: 554dfe10bf264e24d98550dc5efb145c,
+        type: 2}
+      propertyPath: off.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575065932523160, guid: 554dfe10bf264e24d98550dc5efb145c,
+        type: 2}
+      propertyPath: off.g
+      value: 0.539861
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575065932523160, guid: 554dfe10bf264e24d98550dc5efb145c,
+        type: 2}
+      propertyPath: off.r
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269436114703892, guid: 554dfe10bf264e24d98550dc5efb145c,
+        type: 2}
+      propertyPath: badPowerState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269436114703892, guid: 554dfe10bf264e24d98550dc5efb145c,
+        type: 2}
+      propertyPath: isPowered
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
@@ -979,7 +1019,7 @@ GameObject:
   - component: {fileID: 411222724}
   - component: {fileID: 411222723}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -998,8 +1038,8 @@ RectTransform:
   - {fileID: 1672151658}
   - {fileID: 963548225}
   - {fileID: 40963831}
-  m_Father: {fileID: 940827457}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1104,6 +1144,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1667944863142016, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
+      propertyPath: m_Name
+      value: EnergyConsumingInteractable Blue
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
   m_IsPrefabAsset: 0
@@ -1144,11 +1188,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4555037522936930, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1667944863142016, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
       propertyPath: m_Name
-      value: EnergyConsumingInteractable (4)
+      value: EnergyConsumingInteractable Green
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
@@ -1744,35 +1788,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 22422190, guid: c8db57f0abb7a254f8642a837e197691,
     type: 2}
   m_PrefabInternal: {fileID: 1160052573}
---- !u!1 &940827456
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 940827457}
-  m_Layer: 0
-  m_Name: Menu
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &940827457
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 940827456}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 411222722}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &942233147
 Prefab:
   m_ObjectHideFlags: 0
@@ -2499,10 +2514,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 233355534}
-  - {fileID: 1556698565}
-  - {fileID: 1490925459}
-  - {fileID: 220897100}
   - {fileID: 444297811}
+  - {fileID: 1490925459}
+  - {fileID: 1556698565}
+  - {fileID: 220897100}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2702,7 +2717,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11422196, guid: c8db57f0abb7a254f8642a837e197691, type: 2}
       propertyPath: summonMenuDelay
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8db57f0abb7a254f8642a837e197691, type: 2}
@@ -3327,7 +3342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTeleportRange: 200
   teleportButton: 1
-  teleportKey: 32
+  teleportKey: 101
   pointerTransform: {fileID: 1313513846}
   allowRotation: 1
   allowForRealHeadRotation: 1
@@ -4055,7 +4070,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1667944863142016, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
       propertyPath: m_Name
-      value: EnergyConsumingInteractable (2)
+      value: EnergyConsumingInteractable Red
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
@@ -4102,11 +4117,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4555037522936930, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1667944863142016, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
       propertyPath: m_Name
-      value: EnergyConsumingInteractable (1)
+      value: EnergyConsumingInteractable Yellow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 554dfe10bf264e24d98550dc5efb145c, type: 2}
@@ -4581,6 +4596,11 @@ Prefab:
     - target: {fileID: 4475931927583608, guid: d6b86de9d9cdc2e478ce1323de8c60e7, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114788877385876484, guid: d6b86de9d9cdc2e478ce1323de8c60e7,
+        type: 2}
+      propertyPath: shenanigans.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleRandomViableInteractable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6b86de9d9cdc2e478ce1323de8c60e7, type: 2}

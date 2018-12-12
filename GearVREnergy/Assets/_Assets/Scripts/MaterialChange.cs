@@ -13,19 +13,21 @@ public class MaterialChange : MonoBehaviour {
         if (meshRenderer == null)
         {
             meshRenderer = GetComponent<MeshRenderer>();
-            meshRenderer.material = new Material(meshRenderer.material);
+            //meshRenderer.material = new Material(meshRenderer.material);
         }
 	}
 	
 	// Update is called once per frame
 	public void PowerOn ()
     {
-       CheckRenderer();
-       meshRenderer.material.color = on;
+		//print(gameObject.name + ": MaterialChange: Powering on");
+		CheckRenderer();
+		meshRenderer.material.color = on;
 	}
 
 	public void PowerOff()
 	{
+		//print(gameObject.name + ": MaterialChange: Powering off");
         CheckRenderer();
         meshRenderer.material.color = off;
 	}

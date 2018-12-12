@@ -70,7 +70,7 @@ public class ShipAI : MonoBehaviour {
 		}
 		if (interactables.Count == 0)
 		{
-			throw new Exception("No interactables could be found in the scene!");
+			throw new Exception(gameObject.name + ": No interactables could be found in the scene!");
 		}
 	}
 
@@ -99,13 +99,13 @@ public class ShipAI : MonoBehaviour {
 		{
 			if (!isAIRoutineRunning)
 			{
-				print("AI Coroutine is starting ...");
+				print(gameObject.name + ": AI Coroutine is starting ...");
 				// Start AI coroutine
 				StartCoroutine(PerformShenanigans());
 			}
 			else
 			{
-				Debug.LogWarning("AI Coroutine is still running!");
+				Debug.LogWarning(gameObject.name + ": AI Coroutine is still running!");
 			}
 			startAIRoutine = false;
 		}
@@ -118,24 +118,48 @@ public class ShipAI : MonoBehaviour {
 		while (isAIRoutineRunning)
 		{
 			float timeDiff = Random.Range(minTimeDifference, maxTimeDifference);
-			print("Waiting " + timeDiff + " seconds until shenanigans are performed ...");
+			print(gameObject.name + ": Waiting " + timeDiff + " seconds until shenanigans are performed ...");
 			yield return new WaitForSeconds(timeDiff);
-
-			print("Carrying out shenanigns ... :)");
-
 			if (stopAIRoutine)
 			{
-				print("AI Coroutine is stopping ...");
+				print(gameObject.name + ": AI Coroutine is stopping ...");
 				isAIRoutineRunning = false;
 				stopAIRoutine = false;
 			}
 			else
 			{
+				print(gameObject.name + ": Carrying out shenanigns ... :)");
 				shenanigans.Invoke();
 
 				// Wait for end of frame
 				yield return null;
 			}
+		}
+	}
+
+	public void ToggleRandomViableInteractable()
+	{
+		// Gather a list of all interactables that could be turned on or off
+		List<Interactable> viableInteractables = new List<Interactable>();
+		for (int i = 0; i < interactables.Count; i++)
+		{
+			Interactable ia = interactables[i].GetComponent<Interactable>();
+			// Interactable script is present, it's gameobject is in the scene and the bad power state is not already active
+			if (ia != null && ia.isActiveAndEnabled && ia.gameObject.activeInHierarchy && ia.isPowered != ia.badPowerState)
+			{
+				viableInteractables.Add(ia);
+			}
+		}
+		
+		// Pick random viable interactable and turn it into it's bad power state
+		if (viableInteractables.Count > 0)
+		{
+			Interactable selectedInteractable = viableInteractables[Random.Range(0, viableInteractables.Count)];
+			selectedInteractable.ActivateBadPowerState(true);
+		}
+		else
+		{
+			Debug.LogWarning(gameObject.name + ": All viable interactables are already in their bad power state!");
 		}
 	}
 

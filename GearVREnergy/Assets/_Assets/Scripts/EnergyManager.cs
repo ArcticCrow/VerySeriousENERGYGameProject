@@ -14,10 +14,10 @@ public class EnergyManager : MonoBehaviour {
 	public float currentEnergy;
 
 	[Header("Energy Influences")]
-	[Tooltip("The amount of energy that is regenerated over each interval.")]
-	public float baseEnergyGenerationPerSecond = 500f;
+	[Tooltip("The base amount of energy change that happens over each interval.")]
+	public float baseEnergyFluctuationPerSecond = 0;
 	[Range(1f, 100f), Tooltip("How often the current energy level changes. (Ticks per Second)")]
-	public float energyTicksPerSecond = 10f;
+	public float ticksPerSecond = 10f;
 
 	[SerializeField, Tooltip("A list of all objects that the manager should consider for controlling the energy levels.")]
 	private List<string> energyInfluencingObjectTags = new List<string>()
@@ -29,9 +29,9 @@ public class EnergyManager : MonoBehaviour {
 
 	[Header("Energy Statistics")]
 	[Tooltip("")]
-	public float energyConsumptionPerTick = 0;
+	public float negativeInfluencePerTick = 0;
 	[Tooltip("")]
-	public float energyGenerationPerTick = 0;
+	public float positiveInfluencePerTick = 0;
 	[SerializeField, Tooltip("")]
 	private float fluctuationPerTick = 0;
 	[SerializeField, Tooltip("")]
@@ -69,7 +69,7 @@ public class EnergyManager : MonoBehaviour {
 
 		while (isEnergyRoutineRunning)
 		{
-			yield return new WaitForSeconds(1f/energyTicksPerSecond);
+			yield return new WaitForSeconds(1f/ticksPerSecond);
 
 			//print("Energy level:" + currentEnergy);
 
@@ -89,35 +89,46 @@ public class EnergyManager : MonoBehaviour {
 
 	private void CalculateEnergyFluctuation()
 	{
-		energyConsumptionPerTick = 0;
-		energyGenerationPerTick = 0;
+		negativeInfluencePerTick = 0;
+		positiveInfluencePerTick = 0;
 
 		CheckEnergyInfluencingObjects();
 
-		energyGenerationPerTick += baseEnergyGenerationPerSecond / energyTicksPerSecond;
+		if (baseEnergyFluctuationPerSecond > 0)
+		{
+			positiveInfluencePerTick += baseEnergyFluctuationPerSecond;
+		}
+		else
+		{
+			negativeInfluencePerTick += baseEnergyFluctuationPerSecond;
+		}
 
-		fluctuationPerTick = energyGenerationPerTick - energyConsumptionPerTick;
-		fluctuationPerSecond = fluctuationPerTick * energyTicksPerSecond;
+		// Apply tick scale
+		positiveInfluencePerTick /= ticksPerSecond;
+		negativeInfluencePerTick /= ticksPerSecond;
+
+		// Calculate totals
+		fluctuationPerTick = positiveInfluencePerTick - negativeInfluencePerTick;
+		fluctuationPerSecond = fluctuationPerTick * ticksPerSecond;
 	}
 
 	private void CheckEnergyInfluencingObjects()
 	{
+		// Iterate over a list of all energy influencing objects that need to be considered
 		for (int i = 0; i < energyInfluencingObjects.Count; i++)
 		{
-			GameObject obj = energyInfluencingObjects[i];
-			// Here I would get the energy component and check if the device is on or off
-			// Placeholder wise I just assume that every object with a certain color is on or off
-			MeshRenderer mr = obj.GetComponent<MeshRenderer>();
-
-			Color currentColor = mr.material.color;
-			Color onColor = Color.black;
-
-			// I'm assuming that the object is on and thus consuming power
-			// Really I should be checking if a device is powered on or off and if it is 
-			// consuming or generating power
-			if (currentColor == onColor)
+			Interactable energyInfluence = energyInfluencingObjects[i].GetComponent<Interactable>();
+			// Interactable script is present, it's gameobject is in the scene and it's powered on
+			if (energyInfluence != null && energyInfluence.isActiveAndEnabled && energyInfluence.gameObject.activeInHierarchy && energyInfluence.isPowered)
 			{
-				energyConsumptionPerTick += 100f / energyTicksPerSecond;
+				if (energyInfluence.energyInfluencePerSecond > 0)
+				{
+					positiveInfluencePerTick += energyInfluence.energyInfluencePerSecond;
+				} 
+				else
+				{
+					negativeInfluencePerTick -= energyInfluence.energyInfluencePerSecond;
+				}
 			}
 		}
 	}

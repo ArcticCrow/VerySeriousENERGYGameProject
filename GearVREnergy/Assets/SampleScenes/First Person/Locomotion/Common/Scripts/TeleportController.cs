@@ -85,7 +85,7 @@ public class TeleportController : MonoBehaviour {
             TeleportPoint tp = hit.collider.gameObject.GetComponent<TeleportPoint>();
             tp.OnLookAt();
 
-            if (teleportEnabled && !teleporting && (OVRInput.GetDown(teleportButton) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
+            if (teleportEnabled && !teleporting && (OVRInput.GetDown(teleportButton) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(teleportKey)))
             {
                 StartTeleport(tp);
             }

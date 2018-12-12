@@ -31,7 +31,7 @@ namespace UnityEngine.EventSystems
         public OVRInput.Button joyPadClickButton = OVRInput.Button.One;
 
         [Tooltip("Keyboard button to act as gaze click")]
-        public KeyCode gazeClickKey = KeyCode.Space;
+        public KeyCode gazeClickKey = KeyCode.E;
 
         [Header("Physics")]
         [Tooltip("Perform an sphere cast to determine correct depth for gaze pointer")]
