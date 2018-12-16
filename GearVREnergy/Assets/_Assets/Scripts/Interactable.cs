@@ -35,17 +35,14 @@ public class Interactable : MonoBehaviour {
     void Update()
     {
         RaycastHit hit; 
-        if (Physics.Raycast(GameManager.instance.pointerTransform.position, GameManager.instance.pointerTransform.forward, out hit, GameManager.instance.maxInteractionRange, GameManager.instance.interactionMask))
+        if (Physics.Raycast(GameManager.instance.pointerTransform.position, GameManager.instance.pointerTransform.forward, out hit) && hit.transform == transform)
         {
             OVRGazePointer.instance.RequestShow();
 
-			if (hit.transform == transform)
+			if (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey))
 			{
-				if (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey) || Input.GetMouseButtonUp(0))
-				{
-					isPowered = !isPowered;
-					needsStateUpdate = true;
-				}
+				isPowered = !isPowered;
+				needsStateUpdate = true;
 			}
         }
 		

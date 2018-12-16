@@ -64,6 +64,7 @@ public class OVRInspectorLoader : MonoBehaviour
 			// Register event handlers
 			OVRInspector.instance.onInspectorShow = onInspectorShow;
 			OVRInspector.instance.onInspectorHide = onInspectorHide;
+
 			// Add our context to the main UI
 			OVRInspector.instance.LoadSceneSpecificContextsFromPanel(donorPanel);
 

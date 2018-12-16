@@ -13,6 +13,7 @@ TagManager:
   - listlast
   - Teleport Point
   - Interactable
+  - Door
   layers:
   - Default
   - TransparentFX

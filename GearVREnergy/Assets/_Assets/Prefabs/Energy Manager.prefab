@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1786476387549722}
+  m_IsPrefabAsset: 1
+--- !u!1 &1786476387549722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4792115530088008}
+  - component: {fileID: 114815091261496878}
+  - component: {fileID: 114681183245233032}
+  m_Layer: 0
+  m_Name: Energy Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4792115530088008
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786476387549722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114681183245233032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786476387549722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2d2cb29d8834849b04ab3f88a291ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalEnergyDisplays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  positiveFluctuationDisplays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  negativeFluctuationDisplays:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  energyPercent: 0
+  positivePercent: 0
+  negativePercent: 0
+--- !u!114 &114815091261496878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786476387549722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b846266e18861cb4189b2a65ce97e982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEnergy: 10000
+  startingEnergy: 1000
+  currentEnergy: 0
+  baseEnergyFluctuationPerSecond: 0
+  ticksPerSecond: 10
+  energyInfluencingObjectTags:
+  - Interactable
+  energyInfluencingObjects: []
+  negativeInfluencePerTick: 0
+  positiveInfluencePerTick: 0
+  fluctuationPerTick: 0
+  fluctuationPerSecond: 0
+  startEnergyRoutine: 0
+  stopEnergyRoutine: 0
+  isEnergyRoutineRunning: 0
