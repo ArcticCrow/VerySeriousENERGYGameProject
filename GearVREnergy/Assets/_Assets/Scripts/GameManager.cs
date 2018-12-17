@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 
     [Header("General")]
     public Transform pointerTransform;
+	public GameObject player;
 
     [Header("Interaction")]
     public KeyCode interactionKey = KeyCode.E;
@@ -34,15 +35,17 @@ public class GameManager : MonoBehaviour {
 		{
 			pauseButton.onClick.AddListener(new UnityEngine.Events.UnityAction(this.StopGame));
 		}
+		if (player == null)
+		{
+			player = GameObject.FindGameObjectWithTag("Player");
+		}
 	}
 
 	private void CheckSingeltonInstance()
 	{
-		if (instance != null)
-			Destroy(gameObject);
+		//if (instance != null) Destroy(gameObject);
 
 		instance = this;
-		DontDestroyOnLoad(gameObject);
 	}
 
 	// Update is called once per frame

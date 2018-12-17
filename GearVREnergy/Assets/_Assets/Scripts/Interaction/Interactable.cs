@@ -9,10 +9,15 @@ public class Interactable : MonoBehaviour {
 
 	public bool needsStateUpdate = false;
 
-    public float energyInfluencePerSecond = 50f;
+	public EnergyLabel classLabel;
+
+	public bool overrideInfluence = false;
+	public float overriddenInfluence = 0;
 
     [SerializeField] private UnityEvent powerOnEvents;
 	[SerializeField] private UnityEvent powerOffEvents;
+
+	public RoomInformation roomLocation;
 
 	void Start ()
 	{
@@ -38,6 +43,7 @@ public class Interactable : MonoBehaviour {
         if (Physics.Raycast(GameManager.instance.pointerTransform.position, GameManager.instance.pointerTransform.forward, out hit) && hit.transform == transform)
         {
             OVRGazePointer.instance.RequestShow();
+			OVRGazePointer.instance.SetPosition(hit.point);
 
 			if (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey))
 			{
@@ -49,6 +55,11 @@ public class Interactable : MonoBehaviour {
 		if (needsStateUpdate)
 		{
 			CallPowerEvents();
+			EnergyManager.instance.needsUpdate = true;
+			if (roomLocation != null)
+			{
+				roomLocation.UpdateEnergyLevel();
+			}
 			needsStateUpdate = false;
 		}
 	}

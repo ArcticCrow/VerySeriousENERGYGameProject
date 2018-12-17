@@ -3,13 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum EnergyLabel
+{
+	None,
+	Low,
+	Moderate,
+	High,
+}
+
+[Serializable]
+public struct EnergyClass
+{
+	public EnergyLabel label;
+	public Color color;
+	public float energyInfluence;
+
+	public EnergyClass(EnergyLabel label, Color color, float energyInfluence)
+	{
+		this.label = label;
+		this.color = color;
+		this.energyInfluence = energyInfluence;
+	}
+}
+
 public class EnergyManager : MonoBehaviour {
 
 	[HideInInspector]
 	public static EnergyManager instance;
 
 	[Header("General")]
-	public float maxEnergy = 10000f; //perhaps we should you real life values?
+	public float energyCapacity = 10000f; //perhaps we should you real life values?
 	public float startingEnergy = 1000f;
 	public float currentEnergy;
 
@@ -18,6 +42,14 @@ public class EnergyManager : MonoBehaviour {
 	public float baseEnergyFluctuationPerSecond = 0;
 	[Range(1f, 100f), Tooltip("How often the current energy level changes. (Ticks per Second)")]
 	public float ticksPerSecond = 10f;
+
+	public List<EnergyClass> energyClasses = new List<EnergyClass>()
+	{
+		new EnergyClass(EnergyLabel.None, Color.blue, 0),
+		new EnergyClass(EnergyLabel.Low, Color.green, 10),
+		new EnergyClass(EnergyLabel.Moderate, Color.yellow, 25),
+		new EnergyClass(EnergyLabel.High, Color.red, 100)
+	};
 
 	[SerializeField, Tooltip("A list of all objects that the manager should consider for controlling the energy levels.")]
 	private List<string> energyInfluencingObjectTags = new List<string>()
@@ -44,6 +76,8 @@ public class EnergyManager : MonoBehaviour {
 	bool isEnergyRoutineRunning = false;
 
 
+	public bool needsUpdate = false;
+
 	// Use this for initialization
 	void Start () {
 		CheckSingeltonInstance();
@@ -56,11 +90,8 @@ public class EnergyManager : MonoBehaviour {
 
 	private void CheckSingeltonInstance()
 	{
-		if (instance != null)
-			Destroy(gameObject);
-
+		//if (instance != null) Destroy(gameObject);
 		instance = this;
-		DontDestroyOnLoad(gameObject);
 	}
 
 	private IEnumerator ControlEnergyLevel()
@@ -82,55 +113,75 @@ public class EnergyManager : MonoBehaviour {
 			else
 			{
 				CalculateEnergyFluctuation();
-				currentEnergy = Mathf.Clamp(currentEnergy + fluctuationPerTick, 0, maxEnergy);
+				currentEnergy = Mathf.Clamp(currentEnergy + fluctuationPerTick, 0, energyCapacity);
 			}
 		}
 	}
 
 	private void CalculateEnergyFluctuation()
 	{
-		negativeInfluencePerTick = 0;
-		positiveInfluencePerTick = 0;
-
-		CheckEnergyInfluencingObjects();
-
-		if (baseEnergyFluctuationPerSecond > 0)
-		{
-			positiveInfluencePerTick += baseEnergyFluctuationPerSecond;
-		}
-		else
-		{
-			negativeInfluencePerTick += baseEnergyFluctuationPerSecond;
-		}
-
-		// Apply tick scale
-		positiveInfluencePerTick /= ticksPerSecond;
-		negativeInfluencePerTick /= ticksPerSecond;
+		CheckEnergyInfluencesObjects();
 
 		// Calculate totals
 		fluctuationPerTick = positiveInfluencePerTick - negativeInfluencePerTick;
 		fluctuationPerSecond = fluctuationPerTick * ticksPerSecond;
 	}
 
-	private void CheckEnergyInfluencingObjects()
+	private void CheckEnergyInfluencesObjects()
 	{
-		// Iterate over a list of all energy influencing objects that need to be considered
-		for (int i = 0; i < energyInfluencingObjects.Count; i++)
+		if (needsUpdate)
 		{
-			Interactable energyInfluence = energyInfluencingObjects[i].GetComponent<Interactable>();
-			// Interactable script is present, it's gameobject is in the scene and it's powered on
-			if (energyInfluence != null && energyInfluence.isActiveAndEnabled && energyInfluence.gameObject.activeInHierarchy && energyInfluence.isPowered)
+			needsUpdate = false;
+
+			negativeInfluencePerTick = 0;
+			positiveInfluencePerTick = 0;
+
+			// Iterate over a list of all energy influencing objects that need to be considered
+			for (int i = 0; i < energyInfluencingObjects.Count; i++)
 			{
-				if (energyInfluence.energyInfluencePerSecond > 0)
+				Interactable energyInfluence = energyInfluencingObjects[i].GetComponent<Interactable>();
+				// Interactable script is present, it's gameobject is in the scene and it's powered on
+				if (energyInfluence != null && energyInfluence.isActiveAndEnabled && energyInfluence.gameObject.activeInHierarchy && energyInfluence.isPowered)
 				{
-					positiveInfluencePerTick += energyInfluence.energyInfluencePerSecond;
-				} 
-				else
-				{
-					negativeInfluencePerTick -= energyInfluence.energyInfluencePerSecond;
+					float influenceAmount = 0;
+					if (energyInfluence.overrideInfluence)
+					{
+						influenceAmount = energyInfluence.overriddenInfluence;
+					}
+					else
+					{
+						influenceAmount = GetEnergyClass(energyInfluence.classLabel).energyInfluence;
+					}
+
+					if (influenceAmount < 0)
+					{
+						positiveInfluencePerTick -= influenceAmount;
+					}
+					else
+					{
+						negativeInfluencePerTick += influenceAmount;
+					}
 				}
 			}
+
+			if (baseEnergyFluctuationPerSecond > 0)
+			{
+				positiveInfluencePerTick += baseEnergyFluctuationPerSecond;
+			}
+			else
+			{
+				negativeInfluencePerTick += baseEnergyFluctuationPerSecond;
+			}
+
+			// Apply tick scale
+			positiveInfluencePerTick /= ticksPerSecond;
+			negativeInfluencePerTick /= ticksPerSecond;
 		}
+	}
+
+	public EnergyClass GetEnergyClass(EnergyLabel label)
+	{
+		return energyClasses.Find(x => x.label == label);
 	}
 
 	private void CreateObjectListing()

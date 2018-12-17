@@ -136,7 +136,7 @@ public class TeleportController : MonoBehaviour {
 
 
         transform.position = destPosition;
-        GameObject.DestroyObject(positionIndicator);
+        GameObject.Destroy(positionIndicator);
         positionIndicator = null;
 
        
