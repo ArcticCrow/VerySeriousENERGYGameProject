@@ -37,7 +37,7 @@ public class ChangeRoom : MonoBehaviour {
 				OVRGazePointer.instance.RequestShow();
 				door.GetComponent<Animator>().SetBool("LookAt", true);
 
-				if (OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(KeyCode.A))
+				if (OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey))
 				{
 					print("change room");
 				}

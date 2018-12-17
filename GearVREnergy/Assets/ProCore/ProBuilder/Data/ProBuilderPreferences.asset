@@ -17,6 +17,7 @@ MonoBehaviour:
   - pbFillHoleSelectsEntirePath
   - pbExtrudeAsGroup
   - pbManifoldEdgeExtrusion
+  - pbCollapseVertexToFirst
   m_Int_keys:
   - pbHandleAlignment
   - pbDefaultEditLevel
@@ -30,11 +31,11 @@ MonoBehaviour:
   m_String_keys: []
   m_Color_keys: []
   m_Material_keys: []
-  m_Bool_values: 0101010100
+  m_Bool_values: 000101010001
   m_Int_values: 0000000000000000020000000100000004000000
   m_Float_values:
   - 0
-  - 0
+  - 229
   - 0
   m_String_values: []
   m_Color_values: []
