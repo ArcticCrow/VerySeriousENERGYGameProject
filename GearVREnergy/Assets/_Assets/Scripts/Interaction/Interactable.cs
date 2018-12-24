@@ -40,9 +40,9 @@ public class Interactable : MonoBehaviour {
     void Update()
     {
         RaycastHit hit; 
-        if (Physics.Raycast(GameManager.instance.pointerTransform.position, GameManager.instance.pointerTransform.forward, out hit) && hit.transform == transform)
+        if (Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform == transform)
         {
-            OVRGazePointer.instance.RequestShow();
+            GameManager.instance.RequestPointerEmphasis();
 			OVRGazePointer.instance.SetPosition(hit.point);
 
 			if (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey))

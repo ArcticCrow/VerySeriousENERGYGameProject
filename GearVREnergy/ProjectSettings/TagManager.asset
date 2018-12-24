@@ -4,16 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - pickupAble
-  - bullet
-  - floor
-  - wall
-  - Fader
   - dontmove
-  - listlast
   - Teleport Point
   - Interactable
   - Door
+  - Room
   layers:
   - Default
   - TransparentFX
