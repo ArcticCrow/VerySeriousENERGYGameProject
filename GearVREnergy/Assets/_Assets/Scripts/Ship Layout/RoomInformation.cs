@@ -10,25 +10,31 @@ public class RoomInformation : MonoBehaviour {
 	[HideInInspector]
 	public int id = nextID++;
 
+    [Header("General")]
 	public string roomName = "Unnamed";
 	public Color colorCode = Color.white;
 	public Transform playerTeleportTransform;
 
-	public float energyConsumption;
-	public List<Interactable> interactables;
+    public bool isActived = true;
 
+    [Header("Energy")]
+    public float energyConsumptionPerSecond;
+    public float energyGenerationPerSecond;
+
+    public RoomEnergyLevel influenceLevel;
+
+    public List<Interactable> interactables;
+
+    [Header("Connections")]
 	public List<Doorway> doorways;
 
-	public RoomEnergyConsumptionLevel consumptionLevel;
-
-	public bool energyLevelUpdate = false;
 
 	private void OnValidate()
 	{
 		roomName = name;
 	}
 
-	private void Start()
+	public void UpdateInfluence()
     {
 		interactables = new List<Interactable>(gameObject.GetComponentsInChildren<Interactable>()) {};
 		for (int i = 0; i < interactables.Count; i++ )
@@ -39,19 +45,36 @@ public class RoomInformation : MonoBehaviour {
 		UpdateEnergyLevel();
     }
 
-	internal void UpdateEnergyLevel()
+	public void UpdateEnergyLevel()
 	{
-		energyConsumption = 0;
+        energyGenerationPerSecond = 0;
+		energyConsumptionPerSecond = 0;
 		for (int i = 0; i < interactables.Count; i++)
 		{
 			if (interactables[i] != null && interactables[i].isActiveAndEnabled && interactables[i].gameObject.activeInHierarchy && interactables[i].isPowered)
 			{
-				EnergyClass ec = EnergyManager.instance.GetEnergyClass(interactables[i].classLabel);
-				energyConsumption += ec.energyInfluence;
+                float influenceAmount = 0;
+                if (interactables[i].overrideInfluence)
+                {
+                    influenceAmount = interactables[i].overriddenInfluence;
+                }
+                else
+                {
+                    EnergyClass ec = EnergyManager.instance.GetEnergyClass(interactables[i].classLabel);
+                    influenceAmount = ec.energyInfluencePerSecond;
+                }
+
+                if (influenceAmount > 0)
+                {
+                    energyGenerationPerSecond += influenceAmount;
+                }
+                else
+                {
+                    energyConsumptionPerSecond -= influenceAmount;
+                }
 			}
 		}
 
-		consumptionLevel = ShipManager.instance.GetConsumptionLevel(energyConsumption);
-		energyLevelUpdate = true;
+		influenceLevel = EnergyManager.instance.GetInfluenceLevel(energyGenerationPerSecond + energyConsumptionPerSecond);
 	}
 }

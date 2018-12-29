@@ -20,23 +20,5 @@ public class HeatMap : MonoBehaviour {
 
 	public List<RoomMapping> roomMappings = new List<RoomMapping>();
 
-	bool needsRedraw = false;
-
-	private void Update()
-	{
-		for (int i = 0; i < roomMappings.Count; i++)
-		{
-			if (roomMappings[i].room.energyLevelUpdate)
-			{
-				needsRedraw = true;
-			}
-			roomMappings[i].room.energyLevelUpdate = false;
-		}
-		if (needsRedraw)
-		{
-			RedrawMap();
-		}
-	}
-
-	internal virtual void RedrawMap() { needsRedraw = false; }
+    public virtual void RedrawMap() { }
 }

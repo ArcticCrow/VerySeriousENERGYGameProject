@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public enum EnergyLabel
 {
@@ -17,14 +17,57 @@ public struct EnergyClass
 {
 	public EnergyLabel label;
 	public Color color;
-	public float energyInfluence;
+	public float energyInfluencePerSecond;
 
-	public EnergyClass(EnergyLabel label, Color color, float energyInfluence)
+	public EnergyClass(EnergyLabel label, Color color, float energyInfluencePerSecond)
 	{
 		this.label = label;
 		this.color = color;
-		this.energyInfluence = energyInfluence;
+		this.energyInfluencePerSecond = energyInfluencePerSecond;
 	}
+}
+
+public enum RoomEnergyLabel
+{
+    None,
+    Low,
+    Moderate,
+    High,
+    Extreme,
+}
+
+[Serializable]
+public struct RoomEnergyLevel
+{
+    public RoomEnergyLabel label;
+    public Color warningColor;
+    public int minConsumption;
+    public int maxConsumption;
+
+    public RoomEnergyLevel(RoomEnergyLabel label, Color warningColor, int minConsumption, int maxConsumption)
+    {
+        this.label = label;
+        this.warningColor = warningColor;
+        this.minConsumption = minConsumption;
+        this.maxConsumption = maxConsumption;
+    }
+
+    public bool CheckEnergyConsumption(float currentConsumption)
+    {
+        currentConsumption = Mathf.Round(currentConsumption);
+        if (minConsumption == -1)
+        {
+            return currentConsumption <= maxConsumption;
+        }
+        else if (maxConsumption == -1)
+        {
+            return currentConsumption >= minConsumption;
+        }
+        else
+        {
+            return currentConsumption <= maxConsumption && currentConsumption >= minConsumption;
+        }
+    }
 }
 
 public class EnergyManager : MonoBehaviour {
@@ -33,9 +76,11 @@ public class EnergyManager : MonoBehaviour {
 	public static EnergyManager instance;
 
 	[Header("General")]
-	public float energyCapacity = 10000f; //perhaps we should you real life values?
+	public float energyCapacity = 10000f; //perhaps we should use real life values?
 	public float startingEnergy = 1000f;
 	public float currentEnergy;
+
+    public UnityEvent energyDependances;
 
 	[Header("Energy Influences")]
 	[Tooltip("The base amount of energy change that happens over each interval.")]
@@ -51,21 +96,33 @@ public class EnergyManager : MonoBehaviour {
 		new EnergyClass(EnergyLabel.High, Color.red, 100)
 	};
 
-	[SerializeField, Tooltip("A list of all objects that the manager should consider for controlling the energy levels.")]
-	private List<string> energyInfluencingObjectTags = new List<string>()
+	[Tooltip("A list of all objects that the manager should consider for controlling the energy levels.")]
+	public List<string> energyInfluencingObjectTags = new List<string>()
 	{
 		"Interactable"
 	};
-	[SerializeField, Tooltip("Listing of all found consumer objects in the scene. Will be generated on scene start.")]
-	private List<GameObject> energyInfluencingObjects;
 
-	[Header("Energy Statistics")]
-	[Tooltip("")]
-	public float negativeInfluencePerTick = 0;
-	[Tooltip("")]
-	public float positiveInfluencePerTick = 0;
+    public List<RoomEnergyLevel> consumptionLevels = new List<RoomEnergyLevel>()
+    {
+        new RoomEnergyLevel(RoomEnergyLabel.None, Color.blue, -1, 0),
+        new RoomEnergyLevel(RoomEnergyLabel.Low, Color.green, 1, 10),
+        new RoomEnergyLevel(RoomEnergyLabel.Moderate, Color.yellow, 11, 35),
+        new RoomEnergyLevel(RoomEnergyLabel.High, Color.yellow + Color.red, 36, 100),
+        new RoomEnergyLevel(RoomEnergyLabel.Extreme, Color.red, 101, -1),
+    };
+
+    [Header("Energy Statistics")]
 	[SerializeField, Tooltip("")]
-	private float fluctuationPerTick = 0;
+    private float negativeInfluencePerTick = 0;
+	[SerializeField, Tooltip("")]
+    private float positiveInfluencePerTick = 0;
+    [SerializeField, Tooltip("")]
+    private float fluctuationPerTick = 0;
+
+	[SerializeField, Tooltip("")]
+    private float positiveInfluencePerSecond = 0;
+    [SerializeField, Tooltip("")]
+    private float negativeInfluencePerSecond = 0;
 	[SerializeField, Tooltip("")]
 	private float fluctuationPerSecond = 0;
 
@@ -75,20 +132,30 @@ public class EnergyManager : MonoBehaviour {
 	[SerializeField]
 	bool isEnergyRoutineRunning = false;
 
-
 	public bool needsUpdate = false;
 
-	// Use this for initialization
-	void Start () {
-		CheckSingeltonInstance();
+    bool isInitialized = false;
 
+    private void Start()
+    {
+        CheckSingeltonInstance();
+    }
+
+    public void Initialize () {
 		currentEnergy = startingEnergy;
+        needsUpdate = true;
 
-		CreateObjectListing();
-		CalculateEnergyFluctuation();
-	}
+        CalculateEnergyFluctuation();
+        isInitialized = true;
 
-	private void CheckSingeltonInstance()
+    }
+
+    private void InvokeEnergyDependances()
+    {
+        energyDependances.Invoke();
+    }
+
+    private void CheckSingeltonInstance()
 	{
 		//if (instance != null) Destroy(gameObject);
 		instance = this;
@@ -100,9 +167,7 @@ public class EnergyManager : MonoBehaviour {
 
 		while (isEnergyRoutineRunning)
 		{
-			yield return new WaitForSeconds(1f/ticksPerSecond);
-
-			//print("Energy level:" + currentEnergy);
+            yield return new WaitForSeconds(1f / ticksPerSecond);
 
 			if (stopEnergyRoutine)
 			{
@@ -120,100 +185,91 @@ public class EnergyManager : MonoBehaviour {
 
 	private void CalculateEnergyFluctuation()
 	{
-		CheckEnergyInfluencesObjects();
+		CheckEnergyInfluences();
 
 		// Calculate totals
 		fluctuationPerTick = positiveInfluencePerTick - negativeInfluencePerTick;
-		fluctuationPerSecond = fluctuationPerTick * ticksPerSecond;
+		fluctuationPerSecond = positiveInfluencePerSecond - negativeInfluencePerSecond;
 	}
 
-	private void CheckEnergyInfluencesObjects()
+	private void CheckEnergyInfluences()
 	{
-		if (needsUpdate)
+        if (needsUpdate)
 		{
-			needsUpdate = false;
+            if (GameManager.instance.rooms.Count == 0)
+            {
+                throw new Exception("No rooms (with information) were given! Energy influence cannot be caluclated.");
+            }
 
-			negativeInfluencePerTick = 0;
-			positiveInfluencePerTick = 0;
+            needsUpdate = false;
 
-			// Iterate over a list of all energy influencing objects that need to be considered
-			for (int i = 0; i < energyInfluencingObjects.Count; i++)
+			float positiveInfluencePerSecond = 0;
+            float negativeInfluencePerSecond = 0;
+
+			// Iterate over a list of all GameManager.instance.rooms with possible energy fluctuatuions, update them and add their influences to the statistics
+			for (int i = 0; i < GameManager.instance.rooms.Count; i++)
 			{
-				Interactable energyInfluence = energyInfluencingObjects[i].GetComponent<Interactable>();
-				// Interactable script is present, it's gameobject is in the scene and it's powered on
-				if (energyInfluence != null && energyInfluence.isActiveAndEnabled && energyInfluence.gameObject.activeInHierarchy && energyInfluence.isPowered)
-				{
-					float influenceAmount = 0;
-					if (energyInfluence.overrideInfluence)
-					{
-						influenceAmount = energyInfluence.overriddenInfluence;
-					}
-					else
-					{
-						influenceAmount = GetEnergyClass(energyInfluence.classLabel).energyInfluence;
-					}
-
-					if (influenceAmount < 0)
-					{
-						positiveInfluencePerTick -= influenceAmount;
-					}
-					else
-					{
-						negativeInfluencePerTick += influenceAmount;
-					}
-				}
-			}
+                GameManager.instance.rooms[i].UpdateInfluence();
+                positiveInfluencePerSecond += GameManager.instance.rooms[i].energyGenerationPerSecond;
+                negativeInfluencePerSecond += GameManager.instance.rooms[i].energyConsumptionPerSecond;
+            }
 
 			if (baseEnergyFluctuationPerSecond > 0)
 			{
-				positiveInfluencePerTick += baseEnergyFluctuationPerSecond;
+                positiveInfluencePerSecond += baseEnergyFluctuationPerSecond;
 			}
 			else
 			{
-				negativeInfluencePerTick += baseEnergyFluctuationPerSecond;
+                negativeInfluencePerSecond += baseEnergyFluctuationPerSecond;
 			}
 
 			// Apply tick scale
-			positiveInfluencePerTick /= ticksPerSecond;
-			negativeInfluencePerTick /= ticksPerSecond;
-		}
-	}
+			positiveInfluencePerTick = positiveInfluencePerSecond / ticksPerSecond;
+			negativeInfluencePerTick = negativeInfluencePerSecond / ticksPerSecond;
+
+            InvokeEnergyDependances();
+        }
+    }
 
 	public EnergyClass GetEnergyClass(EnergyLabel label)
 	{
 		return energyClasses.Find(x => x.label == label);
 	}
 
-	private void CreateObjectListing()
-	{
-		energyInfluencingObjects = new List<GameObject>();
-		for (int i = 0; i < energyInfluencingObjectTags.Count; i++)
-		{
-			string tag = energyInfluencingObjectTags[i];
-			energyInfluencingObjects.AddRange(GameObject.FindGameObjectsWithTag(tag));
-		}
-		if (energyInfluencingObjects.Count == 0)
-		{
-			throw new Exception("No energy influencers could be found in the scene!");
-		}
-	}
+    public RoomEnergyLevel GetInfluenceLevel(float consumption)
+    {
+        for (int i = 0; i < consumptionLevels.Count; i++)
+        {
+            RoomEnergyLevel level = consumptionLevels[i];
+            if (level.CheckEnergyConsumption(consumption))
+            {
+                return level;
+            }
+        }
+        throw new Exception("Consupmtion Level for " + consumption + " not found!");
+    }
 
 	void Update()
 	{
-		if (startEnergyRoutine)
-		{
-			if (!isEnergyRoutineRunning)
-			{
-				print("Energy Coroutine is starting ...");
-				// Start AI coroutine
-				StartCoroutine(ControlEnergyLevel());
-			}
-			else
-			{
-				Debug.LogWarning("Energy Coroutine is still running!");
-			}
-			startEnergyRoutine = false;
-		}
+        if (startEnergyRoutine)
+        {
+            if (!isInitialized) Initialize();
+            if (!isEnergyRoutineRunning)
+            {
+                print("Energy Coroutine is starting ...");
+                // Start AI coroutine
+                StartCoroutine(ControlEnergyLevel());
+            }
+            else
+            {
+                Debug.LogWarning("Energy Coroutine is still running!");
+            }
+            startEnergyRoutine = false;
+        }
+        if (!isEnergyRoutineRunning)
+        {
+            CalculateEnergyFluctuation();
+        }
 	}
 
 }
