@@ -183,6 +183,8 @@ MonoBehaviour:
   rooms: []
   fadeSpeed: 1
   fadeLength: 0.5
+  headRotationCompensation: 0.5
+  pointerIsRemote: 0
 --- !u!114 &114065140905949478
 MonoBehaviour:
   m_ObjectHideFlags: 1
