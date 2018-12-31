@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SFXClip
+{
+    Door,
+    Teleportation
+}
+
 public class SoundControl : MonoBehaviour
 {
     public static AudioClip Door, Teleportation;
     static AudioSource audioSrc;
+
+    
 
     void Start()
     {
@@ -16,17 +24,15 @@ public class SoundControl : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
     }
 
-    public static void PlaySound(string clip)
+    public static void PlaySound(SFXClip clip)
     {
         switch (clip)
         {
-            case "Door":
+            case SFXClip.Door:
                 audioSrc.PlayOneShot(Door);
                 break;
-        }
-        switch (clip)
-        {
-            case "Teleportation":
+
+            case SFXClip.Teleportation:
                 audioSrc.PlayOneShot(Teleportation);
                 break;
         }

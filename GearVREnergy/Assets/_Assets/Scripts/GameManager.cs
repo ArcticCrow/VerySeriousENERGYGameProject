@@ -259,6 +259,7 @@ public class GameManager : MonoBehaviour {
             OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
         }
 
+        SoundControl.PlaySound(SFXClip.Teleportation);
         player.transform.position = destPosition;
 
         Quaternion headRotation = Quaternion.Euler(OVRManager.instance.headPoseRelativeOffsetRotation);
@@ -267,13 +268,14 @@ public class GameManager : MonoBehaviour {
         euler.z = 0;
         headRotation = Quaternion.Euler(euler);
         player.transform.rotation = Quaternion.Slerp(Quaternion.identity, Quaternion.Inverse(headRotation), headRotationCompensation) * destRotation;
-        print("Identiy: " + Quaternion.identity.eulerAngles + " (" + Quaternion.identity + ")"
+        /*print("Identiy: " + Quaternion.identity.eulerAngles + " (" + Quaternion.identity + ")"
             + "\nHead: " + headRotation.eulerAngles + " (" + headRotation + ")"
             + "\nHead Inverse: " + Quaternion.Inverse(headRotation).eulerAngles + "(" + Quaternion.Inverse(headRotation) + ")"
             + "\nDestination: " + destRotation.eulerAngles + " (" + destRotation + ")"
             + "\nSlerp Result: " + Quaternion.Slerp(Quaternion.identity, Quaternion.Inverse(headRotation), headRotationCompensation).eulerAngles + " (" + Quaternion.Slerp(Quaternion.identity, Quaternion.Inverse(headRotation), headRotationCompensation) + ")"
             + "\nMultiplied:" + player.transform.rotation.eulerAngles + " (" + player.transform.rotation + ")");
-        yield return new WaitForSeconds(fadeLength);
+    */    
+    yield return new WaitForSeconds(fadeLength);
 
         teleporting = false;
 
