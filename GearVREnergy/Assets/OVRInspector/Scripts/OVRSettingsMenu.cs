@@ -64,11 +64,11 @@ public class OVRSettingsMenu : MonoBehaviour {
 
         fpsLabel = transform.Find("FPS").GetComponent<Text>();
         virtualTextureSlider = transform.Find("VirtualTextureSizeSlider/Slider").GetComponent<Slider>();
-        msaaSlider = transform.Find("MSAASlider/Slider").GetComponent<Slider>();
-        msaaSliderLabel = transform.Find("MSAASlider/ValueText").GetComponent<Text>();
+        //msaaSlider = transform.Find("MSAASlider/Slider").GetComponent<Slider>();
+        //msaaSliderLabel = transform.Find("MSAASlider/ValueText").GetComponent<Text>();
 
 
-        var msaaSetting = QualitySettings.antiAliasing;
+        /*var msaaSetting = QualitySettings.antiAliasing;
         for (int i = 0; i < MSAALookupTable.Length; i++)
         {
             if (MSAALookupTable[i] == msaaSetting)
@@ -77,7 +77,7 @@ public class OVRSettingsMenu : MonoBehaviour {
                 msaaSliderLabel.text = string.Format("{0}", (int)msaaSetting);
                 break;
             }
-        }
+        }*/
 
 #if UNITY_2017_2_OR_NEWER
         virtualTextureSlider.value = UnityEngine.XR.XRSettings.eyeTextureResolutionScale;

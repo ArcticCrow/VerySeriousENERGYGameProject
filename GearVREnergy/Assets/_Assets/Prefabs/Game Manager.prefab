@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 114001308440568654}
   - component: {fileID: 114142801938398568}
   - component: {fileID: 114874642822875134}
-  - component: {fileID: 114556480884014170}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -163,9 +162,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c34f967d648424ca8b16771d69efc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerTransform: {fileID: 0}
+  leftHandAnchor: {fileID: 0}
+  rightHandAnchor: {fileID: 0}
+  centerEyeAnchor: {fileID: 0}
+  player: {fileID: 0}
+  generateRandomSeed: 0
+  seed: 58008
   interactionKey: 32
-  interactionButton: 1
+  interactionButton: 8192
   maxInteractionRange: 20
   interactionMask:
     serializedVersion: 2
@@ -174,6 +178,13 @@ MonoBehaviour:
   startButton: {fileID: 0}
   pauseGamePlay: 0
   pauseButton: {fileID: 0}
+  findRooms: 1
+  currentRoom: {fileID: 0}
+  rooms: []
+  fadeSpeed: 1
+  fadeLength: 0.5
+  headRotationCompensation: 0.5
+  pointerIsRemote: 0
 --- !u!114 &114065140905949478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,21 +267,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b846266e18861cb4189b2a65ce97e982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnergy: 10000
-  startingEnergy: 0
+  energyCapacity: 10000
+  startingEnergy: 1000
   currentEnergy: 0
+  energyDependances:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: RedrawMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   baseEnergyFluctuationPerSecond: 0
   ticksPerSecond: 10
+  energyClasses:
+  - label: 0
+    color: {r: 0, g: 0, b: 1, a: 1}
+    energyInfluencePerSecond: 0
+  - label: 1
+    color: {r: 0, g: 1, b: 0, a: 1}
+    energyInfluencePerSecond: 10
+  - label: 2
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    energyInfluencePerSecond: 25
+  - label: 3
+    color: {r: 1, g: 0, b: 0, a: 1}
+    energyInfluencePerSecond: 100
   energyInfluencingObjectTags:
   - Interactable
-  energyInfluencingObjects: []
+  consumptionLevels:
+  - label: 0
+    warningColor: {r: 0, g: 0, b: 1, a: 1}
+    minConsumption: -1
+    maxConsumption: 0
+  - label: 1
+    warningColor: {r: 0, g: 1, b: 0, a: 1}
+    minConsumption: 1
+    maxConsumption: 10
+  - label: 2
+    warningColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    minConsumption: 11
+    maxConsumption: 35
+  - label: 3
+    warningColor: {r: 2, g: 0.92156863, b: 0.015686275, a: 2}
+    minConsumption: 36
+    maxConsumption: 100
+  - label: 4
+    warningColor: {r: 1, g: 0, b: 0, a: 1}
+    minConsumption: 101
+    maxConsumption: -1
   negativeInfluencePerTick: 0
   positiveInfluencePerTick: 0
   fluctuationPerTick: 0
+  positiveInfluencePerSecond: 0
+  negativeInfluencePerSecond: 0
   fluctuationPerSecond: 0
   startEnergyRoutine: 0
   stopEnergyRoutine: 0
   isEnergyRoutineRunning: 0
+  needsUpdate: 0
 --- !u!114 &114259844239486194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,38 +388,6 @@ MonoBehaviour:
     sollicitudin magna consequat vel. Integer congue urna sed mattis aliquam. Vestibulum
     tempor, massa in lacinia euismod, ligula ex facilisis nisi, quis blandit lorem
     odio in nisl. Nullam egestas sapien a metus fringilla consectetur. '
---- !u!114 &114556480884014170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1025573553176244}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2d2cb29d8834849b04ab3f88a291ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalEnergyDisplays:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  positiveFluctuationDisplays:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  negativeFluctuationDisplays:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  energyPercent: 0
-  positivePercent: 0
-  negativePercent: 0
 --- !u!114 &114722119402694346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -486,15 +517,13 @@ MonoBehaviour:
   interactableObjectTags:
   - Interactable
   interactables: []
-  generateRandomSeed: 1
-  seed: 58008
-  minTimeDifference: 2
-  maxTimeDifference: 4
+  minTimeDifference: 5
+  maxTimeDifference: 10
   shenanigans:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114874642822875134}
-        m_MethodName: TogglePlaceholderDevice
+        m_MethodName: ToggleRandomViableInteractable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

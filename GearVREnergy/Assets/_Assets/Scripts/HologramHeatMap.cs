@@ -9,7 +9,7 @@ public class HologramHeatMap : HeatMap {
 		"_MainColor"
 	};
 
-	internal override void RedrawMap()
+	public override void RedrawMap()
 	{
 		base.RedrawMap();
 		
@@ -21,7 +21,7 @@ public class HologramHeatMap : HeatMap {
 
 			for (int j = 0; j < colorChannels.Count; j++)
 			{
-				mat.SetColor(colorChannels[j], map.room.consumptionLevel.warningColor);
+				mat.SetColor(colorChannels[j], map.room.influenceLevel.warningColor);
 			}
 			
 		}

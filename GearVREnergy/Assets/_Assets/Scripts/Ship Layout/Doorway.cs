@@ -14,11 +14,6 @@ public class Doorway : MonoBehaviour {
 	public GameObject highlightA;
 	public GameObject highlightB;
 
-	public float fadeSpeed = 1f;
-	public float fadeLength = 0.5f;
-
-	private bool teleporting;
-
 	public GameObject door;
 
 	private Material hlMatA, hlMatB;
@@ -63,7 +58,7 @@ public class Doorway : MonoBehaviour {
 	void Update () {
 		RaycastHit hit;
 		
-		if (Physics.Raycast(GameManager.instance.pointerTransform.position, GameManager.instance.pointerTransform.forward, out hit) && hit.transform == transform)
+		if (Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform == transform)
 		{
 			if (!openable)
 			{
@@ -71,22 +66,23 @@ public class Doorway : MonoBehaviour {
 			}
 			else
 			{
-				OVRGazePointer.instance.RequestShow();
+                GameManager.instance.RequestPointerEmphasis();
 				OVRGazePointer.instance.SetPosition(hit.point);
 				if (!open)
 				{
 					open = true;
 					if (door != null)
 					{
-						door.GetComponent<Animator>().SetBool("LookAt", true);
+                        SoundControl.PlaySound(SFXClip.Door);
+                        door.GetComponent<Animator>().SetBool("LookAt", true);
 					}
 					ToggleHighlightColor(true);
 				}
 				
 				
-				if (!teleporting && (OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey)))
+				if ((OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey)))
 				{
-					StartChangingRoom();
+                    GameManager.instance.TeleportToOtherRoom(roomA, roomB);
 				}
 			}
 		}
@@ -100,66 +96,5 @@ public class Doorway : MonoBehaviour {
 			}
 			ToggleHighlightColor(false);
 		}
-	}
-
-	private void StartChangingRoom()
-	{
-		teleporting = true;
-
-		if (ShipManager.instance.currentRoom == roomA)
-		{
-			ShipManager.instance.SwitchCurrentRoom(roomB);
-		}
-		else if(ShipManager.instance.currentRoom == roomB)
-		{
-			ShipManager.instance.SwitchCurrentRoom(roomA);
-		}
-		else
-		{
-			throw new Exception("Player is trying to teleport out of a room, he is not in!");
-		}
-
-		Transform destTransform = ShipManager.instance.currentRoom.playerTeleportTransform;
-		StartCoroutine(TeleportCoroutine(destTransform));
-	}
-
-
-	IEnumerator TeleportCoroutine(Transform destTransform)
-	{
-		Vector3 destPosition = destTransform.position;
-		Quaternion destRotation = destTransform.rotation;
-
-		float fadeLevel = 0;
-
-		while (fadeLevel < 1)
-		{
-			yield return null;
-			fadeLevel += fadeSpeed * Time.deltaTime;
-			fadeLevel = Mathf.Clamp01(fadeLevel);
-			OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
-		}
-
-		GameManager.instance.player.transform.position = destPosition;
-
-		Quaternion headRotation = UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.Head);
-		Vector3 euler = headRotation.eulerAngles;
-		euler.x = 0;
-		euler.z = 0;
-		headRotation = Quaternion.Euler(euler);
-		GameManager.instance.player.transform.rotation = Quaternion.Slerp(Quaternion.identity, Quaternion.Inverse(headRotation), 1) * destRotation;
-
-		yield return new WaitForSeconds(fadeLength);
-
-		teleporting = false;
-
-		while (fadeLevel > 0)
-		{
-			yield return null;
-			fadeLevel -= fadeSpeed * Time.deltaTime;
-			fadeLevel = Mathf.Clamp01(fadeLevel);
-			OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
-		}
-
-		yield return null;
 	}
 }
