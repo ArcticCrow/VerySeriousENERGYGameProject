@@ -13,6 +13,7 @@ public class HologramHeatMap : HeatMap {
 	{
 		base.RedrawMap();
 		
+        
 		for (int i = 0; i < roomMappings.Count; i++)
 		{
 			RoomMapping map = roomMappings[i];
