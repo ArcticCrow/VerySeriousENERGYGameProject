@@ -60,7 +60,7 @@ public class RoomInformation : MonoBehaviour {
                 }
                 else
                 {
-                    EnergyClass ec = EnergyManager.instance.GetEnergyClass(interactables[i].classLabel);
+                    EnergyClass ec = EnergyManager.Instance.GetEnergyClass(interactables[i].classLabel);
                     influenceAmount = ec.energyInfluencePerSecond;
                 }
 
@@ -75,6 +75,6 @@ public class RoomInformation : MonoBehaviour {
 			}
 		}
 
-		influenceLevel = EnergyManager.instance.GetInfluenceLevel(energyGenerationPerSecond + energyConsumptionPerSecond);
+		influenceLevel = EnergyManager.Instance.GetInfluenceLevel(energyGenerationPerSecond + energyConsumptionPerSecond);
 	}
 }

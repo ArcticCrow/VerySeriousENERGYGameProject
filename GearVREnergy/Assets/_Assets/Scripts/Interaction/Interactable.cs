@@ -27,12 +27,12 @@ public class Interactable : MonoBehaviour {
 	{
 		if(isPowered)
 		{
-			print(gameObject.name + ": Interactable: Powering on");
+			//print(gameObject.name + ": Interactable: Powering on");
 			powerOnEvents.Invoke();
 		}
 		else
 		{
-			print(gameObject.name + ": Interactable: Powering off");
+			//print(gameObject.name + ": Interactable: Powering off");
 			powerOffEvents.Invoke();
 		}
 	}
@@ -55,7 +55,7 @@ public class Interactable : MonoBehaviour {
 		if (needsStateUpdate)
 		{
 			CallPowerEvents();
-			EnergyManager.instance.needsUpdate = true;
+			EnergyManager.Instance.needsUpdate = true;
 			if (roomLocation != null)
 			{
 				roomLocation.UpdateEnergyLevel();
