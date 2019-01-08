@@ -46,11 +46,11 @@ public class GameManager : MonoBehaviour {
 	[Header("Game State Controls")]
 	public State state = State.Boot;
 
-	public bool startTutorial;
-	public Button startTutButton;
+	public bool launchTutorial;
+	public Button launchTutButton;
 
-	public bool startGame;
-	public Button startButton;
+	public bool playGame;
+	public Button playButton;
 
 	public bool pause;
 	public Button pauseButton;
@@ -69,7 +69,13 @@ public class GameManager : MonoBehaviour {
     [Range(0, 1)]
     public float headRotationCompensation = 0.5f;
 
-    [HideInInspector]
+	[Header("Tutorial Flow")]
+	public Sequence tutorialSequence;
+
+	[Header("Gameplay Flow")]
+	public List<Sequence> gameplaySequences = new List<Sequence>();
+
+	[HideInInspector]
     public bool pointerIsRemote;
     public Transform Pointer
     {
@@ -110,13 +116,17 @@ public class GameManager : MonoBehaviour {
 
     private void Initialize()
     {
-        if (startButton != null)
+        if (playButton != null)
         {
-            startButton.onClick.AddListener(new UnityEngine.Events.UnityAction(this.StartGame));
+            playButton.onClick.AddListener(StartGame);
         }
-        if (pauseButton != null)
+		if (launchTutButton != null)
+		{
+			launchTutButton.onClick.AddListener(StartTutorial);
+		}
+		if (pauseButton != null)
         {
-            pauseButton.onClick.AddListener(new UnityEngine.Events.UnityAction(this.StopGame));
+            pauseButton.onClick.AddListener(PauseGame);
         }
         if (player == null)
         {
@@ -160,7 +170,8 @@ public class GameManager : MonoBehaviour {
         InitializeRandom();
     }
 
-    private void InitializeRandom()
+	
+	private void InitializeRandom()
     {
         if (generateRandomSeed)
         {
@@ -186,12 +197,19 @@ public class GameManager : MonoBehaviour {
             generateRandomSeed = false;
         }
 
-        if (startGame)
+        if (playGame)
 		{
 			EnergyManager.Instance.startEnergyRoutine = true;
 			ShipAI.Instance.startAIRoutine = true;
 
-			startGame = false;
+			playGame = false;
+		}
+
+		if (launchTutorial)
+		{
+			StartTutorial();
+
+			launchTutorial = false;
 		}
 
 		if (pause)
@@ -208,14 +226,24 @@ public class GameManager : MonoBehaviour {
         seed = System.DateTime.Now.Ticks.ToString();
     }
 
-    public void StartGame()
+	private void StartTutorial()
 	{
-		startGame = true;
+		if (tutorialSequence == null)
+		{
+			throw new Exception("No tutorial sequence has been setup");
+		}
+		tutorialSequence.IsSequenceComplete();
 	}
 
-	public void StopGame()
+
+	private void StartGame()
 	{
-		pause = true;
+		// Start Game - Load if necessary
+	}
+
+	private void PauseGame()
+	{
+		// Pause Game
 	}
 
     public void CreateRoomListing()

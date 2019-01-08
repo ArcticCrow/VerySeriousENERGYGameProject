@@ -10,9 +10,8 @@ public struct Condition
 {
 	public GameObject gameObject;
 	public Component component;
-	public string parameterName;
+	public string propertyName;
 	public string targetValue;
-	public PropertyInfo property;
 
 	public bool IsConditionMet()
 	{
@@ -25,17 +24,47 @@ public struct Condition
 			gameObject = component.gameObject;
 		}
 
-		Type type = component.GetType();
-		
+		Type componentType = component.GetType();
+		PropertyInfo property = componentType.GetProperty(propertyName);
+		Debug.Log(propertyName + "\n" + property);
+
+		//Type propertyType = property.GetType();
+		var propertyValue = property.GetValue(component, null);
+		var desiredValue = Convert.ChangeType(targetValue, property.PropertyType);
+
+		Debug.Log("Property Value: " + propertyValue.ToString()
+			+ "\nDesired Value: " + desiredValue.ToString()
+			+ "\nAre the same? " + propertyValue.Equals(desiredValue));
 
 		return false;
 	}
 }
 
 [Serializable]
-[CreateAssetMenu(fileName = "Player Objective", menuName = "Gameplay")]
-public class Objective : ScriptableObject {
+//[CreateAssetMenu(fileName = "Player Objective", menuName = "Gameplay/Objective")]
+public class Objective {
 	// Things The player has to do before the objective is 'completed'
 	public List<Condition> conditions = new List<Condition>();
-	
+
+
+	private void Awake()
+	{
+		for (int i = 0; i < conditions.Count; i++)
+		{
+			conditions[i].IsConditionMet();
+		}
+	}
+
+	public bool IsObjectiveCleared()
+	{
+		for (int i = 0; i < conditions.Count; i++)
+		{
+			if (!conditions[i].IsConditionMet())
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
