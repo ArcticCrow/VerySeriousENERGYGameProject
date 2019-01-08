@@ -7,6 +7,18 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
 
+	public enum State
+	{
+		Boot,
+		Menu,
+		Setup,
+		Tutorial,
+		MainGame,
+		Pause,
+		Finish,
+		EndScreen,
+	}
+
 	[HideInInspector]
 	public static GameManager instance;
 
@@ -31,10 +43,16 @@ public class GameManager : MonoBehaviour {
     public float maxInteractionRange = 20f;
     public LayerMask interactionMask;
 
-    [Header("Game State Controls")]
-    public bool startGamePlay;
+	[Header("Game State Controls")]
+	public State state = State.Boot;
+
+	public bool startTutorial;
+	public Button startTutButton;
+
+	public bool startGame;
 	public Button startButton;
-	public bool pauseGamePlay;
+
+	public bool pause;
 	public Button pauseButton;
 
     [Header("Ship")]
@@ -83,8 +101,11 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
 	{
-        EnergyManager.instance.Initialize();
-        ShipAI.instance.Initialize();
+        EnergyManager.Instance.Initialize();
+        ShipAI.Instance.Initialize();
+
+		// After everything has been initialized, start the game
+
     }
 
     private void Initialize()
@@ -151,8 +172,7 @@ public class GameManager : MonoBehaviour {
 
     private void CheckSingeltonInstance()
 	{
-		//if (instance != null) Destroy(gameObject);
-
+		if (instance != null) ;
 		instance = this;
 	}
 
@@ -166,20 +186,20 @@ public class GameManager : MonoBehaviour {
             generateRandomSeed = false;
         }
 
-        if (startGamePlay)
+        if (startGame)
 		{
-			EnergyManager.instance.startEnergyRoutine = true;
-			ShipAI.instance.startAIRoutine = true;
+			EnergyManager.Instance.startEnergyRoutine = true;
+			ShipAI.Instance.startAIRoutine = true;
 
-			startGamePlay = false;
+			startGame = false;
 		}
 
-		if (pauseGamePlay)
+		if (pause)
 		{
-			EnergyManager.instance.stopEnergyRoutine = true;
-			ShipAI.instance.stopAIRoutine = true;
+			EnergyManager.Instance.stopEnergyRoutine = true;
+			ShipAI.Instance.stopAIRoutine = true;
 
-			pauseGamePlay = false;
+			pause = false;
 		}
 	}
 
@@ -190,12 +210,12 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame()
 	{
-		startGamePlay = true;
+		startGame = true;
 	}
 
 	public void StopGame()
 	{
-		pauseGamePlay = true;
+		pause = true;
 	}
 
     public void CreateRoomListing()

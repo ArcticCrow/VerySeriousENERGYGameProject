@@ -13,18 +13,21 @@ public class HologramHeatMap : HeatMap {
 	{
 		base.RedrawMap();
 		
-        
 		for (int i = 0; i < roomMappings.Count; i++)
 		{
 			RoomMapping map = roomMappings[i];
-
-			Material mat = map.heatmapRoom.GetComponentInChildren<MeshRenderer>().material;
-
-			for (int j = 0; j < colorChannels.Count; j++)
+			if (map.heatmapRoom.activeInHierarchy)
 			{
-				mat.SetColor(colorChannels[j], map.room.influenceLevel.warningColor);
+				Material mat = map.heatmapRoom.GetComponentInChildren<MeshRenderer>().material;
+
+				for (int j = 0; j < colorChannels.Count; j++)
+				{
+					mat.SetColor(
+						colorChannels[j], 
+						map.room.influenceLevel.warningColor
+						);
+				}
 			}
-			
 		}
 	}
 }

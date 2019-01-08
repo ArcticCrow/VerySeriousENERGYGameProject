@@ -8,7 +8,23 @@ using Random = UnityEngine.Random;
 public class ShipAI : MonoBehaviour {
 
 	[HideInInspector]
-	public static ShipAI instance;
+	private static ShipAI instance;
+	public static ShipAI Instance
+	{
+		get
+		{
+			if (instance == null)
+			{
+				instance = GameManager.instance.gameObject.GetComponent<ShipAI>();
+				if (instance == null)
+				{
+					instance = GameManager.instance.gameObject.AddComponent<ShipAI>();
+				}
+			}
+
+			return instance;
+		}
+	}
 
 	[Header("General")]
 	[SerializeField, Tooltip("A list of all objects that the AI should look to man  ipulate.")]
