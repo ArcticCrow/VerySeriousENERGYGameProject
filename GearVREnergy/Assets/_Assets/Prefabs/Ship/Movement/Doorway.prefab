@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 33832995679590456}
   - component: {fileID: 114294246662505830}
   m_Layer: 0
-  m_Name: Control Room Highlight
+  m_Name: Room B Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 33515884666682108}
   - component: {fileID: 114450848461525544}
   m_Layer: 0
-  m_Name: Living Room Highlight
+  m_Name: Room A Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2008,8 +2008,6 @@ MonoBehaviour:
   highlightAlpha: 0.5
   highlightA: {fileID: 1792754197947940}
   highlightB: {fileID: 1376822426508540}
-  fadeSpeed: 1
-  fadeLength: 0.5
   door: {fileID: 0}
 --- !u!114 &114553966160958450
 MonoBehaviour:

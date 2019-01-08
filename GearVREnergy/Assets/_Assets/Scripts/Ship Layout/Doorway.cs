@@ -73,7 +73,8 @@ public class Doorway : MonoBehaviour {
 					open = true;
 					if (door != null)
 					{
-						door.GetComponent<Animator>().SetBool("LookAt", true);
+                        SoundControl.PlaySound(SFXClip.Door);
+                        door.GetComponent<Animator>().SetBool("LookAt", true);
 					}
 					ToggleHighlightColor(true);
 				}
