@@ -70,10 +70,13 @@ public class GameManager : MonoBehaviour {
     public float headRotationCompensation = 0.5f;
 
 	[Header("Tutorial Flow")]
-	public Sequence tutorialSequence;
+	public Sequence tutorialSequence = new Sequence();
 
 	[Header("Gameplay Flow")]
-	public List<Sequence> gameplaySequences = new List<Sequence>();
+	public List<Sequence> gameplaySequences = new List<Sequence>()
+	{
+		new Sequence()
+	};
 
 	[HideInInspector]
     public bool pointerIsRemote;
@@ -103,15 +106,6 @@ public class GameManager : MonoBehaviour {
         CheckSingeltonInstance();
 
         Initialize();
-    }
-
-    private void Start()
-	{
-        EnergyManager.Instance.Initialize();
-        ShipAI.Instance.Initialize();
-
-		// After everything has been initialized, start the game
-
     }
 
     private void Initialize()
@@ -168,7 +162,10 @@ public class GameManager : MonoBehaviour {
 
         CreateRoomListing();
         InitializeRandom();
-    }
+
+		EnergyManager.Instance.Initialize();
+		ShipAI.Instance.Initialize();
+	}
 
 	
 	private void InitializeRandom()
@@ -183,7 +180,7 @@ public class GameManager : MonoBehaviour {
 
     private void CheckSingeltonInstance()
 	{
-		if (instance != null) ;
+		if (instance != null) DestroyImmediate(gameObject);
 		instance = this;
 	}
 
@@ -228,11 +225,11 @@ public class GameManager : MonoBehaviour {
 
 	private void StartTutorial()
 	{
-		if (tutorialSequence == null)
+		/*if (tutorialSequence == null)
 		{
 			throw new Exception("No tutorial sequence has been setup");
 		}
-		tutorialSequence.IsSequenceComplete();
+		tutorialSequence.IsSequenceComplete();*/
 	}
 
 
