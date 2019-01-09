@@ -7,6 +7,18 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
 
+	public enum State
+	{
+		Boot,
+		Menu,
+		Setup,
+		Tutorial,
+		MainGame,
+		Pause,
+		Finish,
+		EndScreen,
+	}
+
 	[HideInInspector]
 	public static GameManager instance;
 
@@ -31,10 +43,16 @@ public class GameManager : MonoBehaviour {
     public float maxInteractionRange = 20f;
     public LayerMask interactionMask;
 
-    [Header("Game State Controls")]
-    public bool startGamePlay;
-	public Button startButton;
-	public bool pauseGamePlay;
+	[Header("Game State Controls")]
+	public State state = State.Boot;
+
+	public bool launchTutorial;
+	public Button launchTutButton;
+
+	public bool playGame;
+	public Button playButton;
+
+	public bool pause;
 	public Button pauseButton;
 
     [Header("Ship")]
@@ -51,7 +69,16 @@ public class GameManager : MonoBehaviour {
     [Range(0, 1)]
     public float headRotationCompensation = 0.5f;
 
-    [HideInInspector]
+	[Header("Tutorial Flow")]
+	public Sequence tutorialSequence = new Sequence();
+
+	[Header("Gameplay Flow")]
+	public List<Sequence> gameplaySequences = new List<Sequence>()
+	{
+		new Sequence()
+	};
+
+	[HideInInspector]
     public bool pointerIsRemote;
     public Transform Pointer
     {
@@ -81,21 +108,19 @@ public class GameManager : MonoBehaviour {
         Initialize();
     }
 
-    private void Start()
-	{
-        EnergyManager.instance.Initialize();
-        ShipAI.instance.Initialize();
-    }
-
     private void Initialize()
     {
-        if (startButton != null)
+        if (playButton != null)
         {
-            startButton.onClick.AddListener(new UnityEngine.Events.UnityAction(this.StartGame));
+            playButton.onClick.AddListener(StartGame);
         }
-        if (pauseButton != null)
+		if (launchTutButton != null)
+		{
+			launchTutButton.onClick.AddListener(StartTutorial);
+		}
+		if (pauseButton != null)
         {
-            pauseButton.onClick.AddListener(new UnityEngine.Events.UnityAction(this.StopGame));
+            pauseButton.onClick.AddListener(PauseGame);
         }
         if (player == null)
         {
@@ -137,9 +162,13 @@ public class GameManager : MonoBehaviour {
 
         CreateRoomListing();
         InitializeRandom();
-    }
 
-    private void InitializeRandom()
+		EnergyManager.Instance.Initialize();
+		ShipAI.Instance.Initialize();
+	}
+
+	
+	private void InitializeRandom()
     {
         if (generateRandomSeed)
         {
@@ -151,8 +180,7 @@ public class GameManager : MonoBehaviour {
 
     private void CheckSingeltonInstance()
 	{
-		//if (instance != null) Destroy(gameObject);
-
+		if (instance != null) DestroyImmediate(gameObject);
 		instance = this;
 	}
 
@@ -166,20 +194,27 @@ public class GameManager : MonoBehaviour {
             generateRandomSeed = false;
         }
 
-        if (startGamePlay)
+        if (playGame)
 		{
-			EnergyManager.instance.startEnergyRoutine = true;
-			ShipAI.instance.startAIRoutine = true;
+			EnergyManager.Instance.startEnergyRoutine = true;
+			ShipAI.Instance.startAIRoutine = true;
 
-			startGamePlay = false;
+			playGame = false;
 		}
 
-		if (pauseGamePlay)
+		if (launchTutorial)
 		{
-			EnergyManager.instance.stopEnergyRoutine = true;
-			ShipAI.instance.stopAIRoutine = true;
+			StartTutorial();
 
-			pauseGamePlay = false;
+			launchTutorial = false;
+		}
+
+		if (pause)
+		{
+			EnergyManager.Instance.stopEnergyRoutine = true;
+			ShipAI.Instance.stopAIRoutine = true;
+
+			pause = false;
 		}
 	}
 
@@ -188,14 +223,24 @@ public class GameManager : MonoBehaviour {
         seed = System.DateTime.Now.Ticks.ToString();
     }
 
-    public void StartGame()
+	private void StartTutorial()
 	{
-		startGamePlay = true;
+		/*if (tutorialSequence == null)
+		{
+			throw new Exception("No tutorial sequence has been setup");
+		}
+		tutorialSequence.IsSequenceComplete();*/
 	}
 
-	public void StopGame()
+
+	private void StartGame()
 	{
-		pauseGamePlay = true;
+		// Start Game - Load if necessary
+	}
+
+	private void PauseGame()
+	{
+		// Pause Game
 	}
 
     public void CreateRoomListing()

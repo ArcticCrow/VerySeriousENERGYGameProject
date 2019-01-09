@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 33832995679590456}
   - component: {fileID: 114294246662505830}
   m_Layer: 0
-  m_Name: Control Room Highlight
+  m_Name: Room B Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 33515884666682108}
   - component: {fileID: 114450848461525544}
   m_Layer: 0
-  m_Name: Living Room Highlight
+  m_Name: Room A Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,8 +192,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792754197947940}
   m_LocalRotation: {x: -0, y: -0.000000029802322, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000027656555, y: 1.4994885, z: -0.37874296}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1.0000001}
+  m_LocalPosition: {x: 0, y: 1.5, z: -0.38}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 4962444576162140}
   m_RootOrder: 2
@@ -222,8 +222,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1376822426508540}
   m_LocalRotation: {x: -0, y: -0.000000029802322, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000027239323, y: 1.4994885, z: -0.43951178}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1.0000001}
+  m_LocalPosition: {x: 0, y: 1.5, z: -0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 4962444576162140}
   m_RootOrder: 3
@@ -2008,8 +2008,6 @@ MonoBehaviour:
   highlightAlpha: 0.5
   highlightA: {fileID: 1792754197947940}
   highlightB: {fileID: 1376822426508540}
-  fadeSpeed: 1
-  fadeLength: 0.5
   door: {fileID: 0}
 --- !u!114 &114553966160958450
 MonoBehaviour:
