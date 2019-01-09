@@ -11,40 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 146836576, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: ProBuilderPreferences
   m_EditorClassIdentifier: 
-  m_Bool_keys:
-  - pbIconGUI
-  - pbDefaultOpenInDockableWindow
-  - pbFillHoleSelectsEntirePath
-  - pbExtrudeAsGroup
-  - pbManifoldEdgeExtrusion
-  - pbCollapseVertexToFirst
-  - pbDetachToNewObject
-  - pbMaterialEditorFloating
-  m_Int_keys:
-  - pbHandleAlignment
-  - pbDefaultEditLevel
-  - pbDefaultSelectionMode
-  - pb_GIWorkflowMode
-  - pbEdgeSubdivisions
-  m_Float_keys:
-  - pbEditorScroll.x
-  - pbEditorScroll.y
-  - pbExtrudeDistance
-  m_String_keys:
-  - pbCurrentMaterialPalette
+  m_Bool_keys: []
+  m_Int_keys: []
+  m_Float_keys: []
+  m_String_keys: []
   m_Color_keys: []
   m_Material_keys: []
-  m_Bool_values: 0001000100010100
-  m_Int_values: 0100000000000000010000000100000004000000
-  m_Float_values:
-  - 0
-<<<<<<< HEAD
-  - 0
-=======
-  - 60
->>>>>>> parent of 3ca0e00... Merge branch 'Development' of https://github.com/ArcticCrow/VerySeriousENERGYGameProject into Development
-  - 0
-  m_String_values:
-  - Assets/ProCore/ProBuilder/Data/Default Material Palette.asset
+  m_Bool_values: 
+  m_Int_values: 
+  m_Float_values: []
+  m_String_values: []
   m_Color_values: []
   m_Material_values: []
