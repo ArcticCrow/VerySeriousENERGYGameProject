@@ -92,9 +92,8 @@ public class EnergyManager : MonoBehaviour {
 	}
 
 	[Header("General")]
-	public float energyCapacity = 10000f; //perhaps we should use real life values?
-	public float startingEnergy = 1000f;
-	public float currentEnergy;
+	public float energyUsedThisRun = 0;
+	public float totalEnergyUsedThisFlight = 0;
 
     public UnityEvent energyDependances;
 
@@ -158,7 +157,6 @@ public class EnergyManager : MonoBehaviour {
     }
 
     public void Initialize () {
-		currentEnergy = startingEnergy;
         needsUpdate = true;
 
         CalculateEnergyFluctuation();
@@ -195,7 +193,7 @@ public class EnergyManager : MonoBehaviour {
 			else
 			{
 				CalculateEnergyFluctuation();
-				currentEnergy = Mathf.Clamp(currentEnergy + fluctuationPerTick, 0, energyCapacity);
+				energyUsedThisRun += fluctuationPerTick;
 			}
 		}
 	}

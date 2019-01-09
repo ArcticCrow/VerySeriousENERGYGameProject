@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour {
 	[Header("Gameplay Flow")]
 	public List<Sequence> gameplaySequences;
 
+	Sequence activeSequence;
+
 	[HideInInspector]
     public bool pointerIsRemote;
     public Transform Pointer
@@ -220,13 +222,19 @@ public class GameManager : MonoBehaviour {
         seed = System.DateTime.Now.Ticks.ToString();
     }
 
+	private void StartMenu()
+	{
+
+	}
+
 	private void StartTutorial()
 	{
-		/*if (tutorialSequence == null)
+		if (tutorialSequence == null)
 		{
 			throw new Exception("No tutorial sequence has been setup");
 		}
-		tutorialSequence.IsSequenceComplete();*/
+		activeSequence = tutorialSequence;
+		tutorialSequence.LaunchSequence();
 	}
 
 
@@ -238,6 +246,11 @@ public class GameManager : MonoBehaviour {
 	private void PauseGame()
 	{
 		// Pause Game
+	}
+
+	private void ReturnToMenu()
+	{
+
 	}
 
     public void CreateRoomListing()
