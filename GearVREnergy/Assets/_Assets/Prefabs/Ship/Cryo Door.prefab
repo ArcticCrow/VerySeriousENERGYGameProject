@@ -41,9 +41,9 @@ GameObject:
   - component: {fileID: 4520838193121052}
   - component: {fileID: 65493605493795488}
   - component: {fileID: 114648793041536732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cryo Door
-  m_TagString: Untagged
+  m_TagString: Cryo Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0a9ac8644b074e5419fb4798ed889db1, type: 2}
+  - {fileID: 2100000, guid: 88740d460381ed646bc3631022314779, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1520,6 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116e95bd1ef40844a8de57adc62955e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableInteraction: 1
   isPowered: 0
   badPowerState: 0
   needsStateUpdate: 0

@@ -24,7 +24,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1080637268887732
 GameObject:
@@ -35,11 +35,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4221275988440644}
   m_Layer: 0
-  m_Name: Control Room
+  m_Name: Kitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1141200299989284
 GameObject:
@@ -59,7 +59,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1147631458550722
 GameObject:
@@ -74,7 +74,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1181654949221696
 GameObject:
@@ -89,7 +89,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1193950697097200
 GameObject:
@@ -100,11 +100,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4587872652299830}
   m_Layer: 0
-  m_Name: Kitchen
+  m_Name: Maintenance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1346385082109846
 GameObject:
@@ -115,11 +115,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4841098154623338}
   m_Layer: 0
-  m_Name: Bathroom
+  m_Name: Control
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1397559894972558
 GameObject:
@@ -139,7 +139,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1479748415900070
 GameObject:
@@ -161,7 +161,7 @@ GameObject:
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1500160968734088
 GameObject:
@@ -181,7 +181,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1553219173668140
 GameObject:
@@ -201,7 +201,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1690648609639038
 GameObject:
@@ -212,11 +212,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4715314122602904}
   m_Layer: 0
-  m_Name: Maintenance Room
+  m_Name: Bathroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1827245050271000
 GameObject:
@@ -232,7 +232,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1891695902227076
 GameObject:
@@ -252,7 +252,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1932144304509010
 GameObject:
@@ -272,7 +272,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1934411137565638
 GameObject:
@@ -292,7 +292,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4005055338272496
 Transform:
@@ -342,7 +342,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479748415900070}
-  m_LocalRotation: {x: -0, y: 0.50000024, z: -0, w: 0.86602527}
+  m_LocalRotation: {x: -0, y: 0.0000011920928, z: -0, w: 1}
   m_LocalPosition: {x: -2.1, y: 0, z: -1.21}
   m_LocalScale: {x: 5.341126, y: 3.36, z: 5.341126}
   m_Children:
@@ -3611,6 +3611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116e95bd1ef40844a8de57adc62955e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableInteraction: 0
   isPowered: 0
   badPowerState: 1
   needsStateUpdate: 0
@@ -3662,17 +3663,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomMappings:
-  - heatmapRoom: {fileID: 1080637268887732}
+  - heatmapRoom: {fileID: 1346385082109846}
     room: {fileID: 0}
   - heatmapRoom: {fileID: 1181654949221696}
     room: {fileID: 0}
   - heatmapRoom: {fileID: 1063274234291142}
     room: {fileID: 0}
-  - heatmapRoom: {fileID: 1346385082109846}
+  - heatmapRoom: {fileID: 1690648609639038}
+    room: {fileID: 0}
+  - heatmapRoom: {fileID: 1080637268887732}
     room: {fileID: 0}
   - heatmapRoom: {fileID: 1193950697097200}
-    room: {fileID: 0}
-  - heatmapRoom: {fileID: 1690648609639038}
     room: {fileID: 0}
   colorChannels:
   - _RimColor

@@ -29,7 +29,7 @@ GameObject:
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4700421527092328
 Transform:
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116e95bd1ef40844a8de57adc62955e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableInteraction: 0
   isPowered: 0
   badPowerState: 1
   needsStateUpdate: 0
