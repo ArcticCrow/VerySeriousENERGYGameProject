@@ -24,7 +24,7 @@ public class HologramHeatMap : HeatMap {
 				{
 					mat.SetColor(
 						colorChannels[j], 
-						map.room.influenceLevel.warningColor
+						map.room.energyLevel.warningColor
 						);
 				}
 			}

@@ -21,12 +21,12 @@ public class RoomInformation : MonoBehaviour {
     public float energyConsumptionPerSecond;
     public float energyGenerationPerSecond;
 
-    public RoomEnergyLevel influenceLevel;
+    public RoomEnergyLevel energyLevel;
 
     public List<Interactable> interactables;
 
     [Header("Connections")]
-	public List<Doorway> doorways;
+	public List<Doorway> doorways = new List<Doorway>();
 
 
 	private void OnValidate()
@@ -75,6 +75,6 @@ public class RoomInformation : MonoBehaviour {
 			}
 		}
 
-		influenceLevel = EnergyManager.Instance.GetInfluenceLevel(energyGenerationPerSecond + energyConsumptionPerSecond);
+		energyLevel = EnergyManager.Instance.GetInfluenceLevel(energyGenerationPerSecond + energyConsumptionPerSecond);
 	}
 }

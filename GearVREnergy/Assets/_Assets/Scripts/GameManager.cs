@@ -70,13 +70,10 @@ public class GameManager : MonoBehaviour {
     public float headRotationCompensation = 0.5f;
 
 	[Header("Tutorial Flow")]
-	public Sequence tutorialSequence = new Sequence();
+	public Sequence tutorialSequence;
 
 	[Header("Gameplay Flow")]
-	public List<Sequence> gameplaySequences = new List<Sequence>()
-	{
-		new Sequence()
-	};
+	public List<Sequence> gameplaySequences;
 
 	[HideInInspector]
     public bool pointerIsRemote;

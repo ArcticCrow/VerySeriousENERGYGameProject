@@ -9,7 +9,7 @@ TagManager:
   - Teleport Point
   - Door
   - dontmove
-  - listlast
+  - Cryo Door
   layers:
   - Default
   - TransparentFX

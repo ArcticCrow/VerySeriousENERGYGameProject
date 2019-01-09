@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Interactable : MonoBehaviour {
 
+    public bool disableInteraction = false;
+
     public bool isPowered = false;
     public bool badPowerState;
 
@@ -27,12 +29,10 @@ public class Interactable : MonoBehaviour {
 	{
 		if(isPowered)
 		{
-			//print(gameObject.name + ": Interactable: Powering on");
 			powerOnEvents.Invoke();
 		}
 		else
 		{
-			//print(gameObject.name + ": Interactable: Powering off");
 			powerOffEvents.Invoke();
 		}
 	}
@@ -45,7 +45,7 @@ public class Interactable : MonoBehaviour {
             GameManager.instance.RequestPointerEmphasis();
 			OVRGazePointer.instance.SetPosition(hit.point);
 
-			if (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey))
+			if (!disableInteraction && (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey)))
 			{
 				isPowered = !isPowered;
 				needsStateUpdate = true;
