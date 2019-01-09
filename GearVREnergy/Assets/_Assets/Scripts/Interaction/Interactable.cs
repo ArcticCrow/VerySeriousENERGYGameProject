@@ -29,10 +29,18 @@ public class Interactable : MonoBehaviour {
 	{
 		if(isPowered)
 		{
+<<<<<<< HEAD
+=======
+			print(gameObject.name + ": Interactable: Powering on");
+>>>>>>> parent of 3ca0e00... Merge branch 'Development' of https://github.com/ArcticCrow/VerySeriousENERGYGameProject into Development
 			powerOnEvents.Invoke();
 		}
 		else
 		{
+<<<<<<< HEAD
+=======
+			print(gameObject.name + ": Interactable: Powering off");
+>>>>>>> parent of 3ca0e00... Merge branch 'Development' of https://github.com/ArcticCrow/VerySeriousENERGYGameProject into Development
 			powerOffEvents.Invoke();
 		}
 	}
@@ -55,7 +63,7 @@ public class Interactable : MonoBehaviour {
 		if (needsStateUpdate)
 		{
 			CallPowerEvents();
-			EnergyManager.Instance.needsUpdate = true;
+			EnergyManager.instance.needsUpdate = true;
 			if (roomLocation != null)
 			{
 				roomLocation.UpdateEnergyLevel();

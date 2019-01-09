@@ -5,8 +5,7 @@ using UnityEngine;
 public enum SFXClip
 {
     Door,
-    Teleportation,
-	Voice_Intro
+    Teleportation
 }
 
 public class SoundControl : MonoBehaviour
@@ -33,14 +32,10 @@ public class SoundControl : MonoBehaviour
                 audioSrc.PlayOneShot(Door);
                 break;
 
-			case SFXClip.Teleportation:
-				audioSrc.PlayOneShot(Teleportation);
-				break;
-
-			case SFXClip.Voice_Intro:
-				audioSrc.PlayOneShot(Teleportation);
-				break;
-		}
+            case SFXClip.Teleportation:
+                audioSrc.PlayOneShot(Teleportation);
+                break;
+        }
         
     }
 }

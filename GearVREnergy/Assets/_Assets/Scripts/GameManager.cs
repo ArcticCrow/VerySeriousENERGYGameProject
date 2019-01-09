@@ -7,18 +7,6 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
 
-	public enum State
-	{
-		Boot,
-		Menu,
-		Setup,
-		Tutorial,
-		MainGame,
-		Pause,
-		Finish,
-		EndScreen,
-	}
-
 	[HideInInspector]
 	public static GameManager instance;
 
@@ -43,16 +31,10 @@ public class GameManager : MonoBehaviour {
     public float maxInteractionRange = 20f;
     public LayerMask interactionMask;
 
-	[Header("Game State Controls")]
-	public State state = State.Boot;
-
-	public bool launchTutorial;
-	public Button launchTutButton;
-
-	public bool playGame;
-	public Button playButton;
-
-	public bool pause;
+    [Header("Game State Controls")]
+    public bool startGamePlay;
+	public Button startButton;
+	public bool pauseGamePlay;
 	public Button pauseButton;
 
     [Header("Ship")]
@@ -69,6 +51,7 @@ public class GameManager : MonoBehaviour {
     [Range(0, 1)]
     public float headRotationCompensation = 0.5f;
 
+<<<<<<< HEAD
 	[Header("Tutorial Flow")]
 	public Sequence tutorialSequence;
 
@@ -76,6 +59,9 @@ public class GameManager : MonoBehaviour {
 	public List<Sequence> gameplaySequences;
 
 	[HideInInspector]
+=======
+    [HideInInspector]
+>>>>>>> parent of 3ca0e00... Merge branch 'Development' of https://github.com/ArcticCrow/VerySeriousENERGYGameProject into Development
     public bool pointerIsRemote;
     public Transform Pointer
     {
@@ -105,19 +91,21 @@ public class GameManager : MonoBehaviour {
         Initialize();
     }
 
+    private void Start()
+	{
+        EnergyManager.instance.Initialize();
+        ShipAI.instance.Initialize();
+    }
+
     private void Initialize()
     {
-        if (playButton != null)
+        if (startButton != null)
         {
-            playButton.onClick.AddListener(StartGame);
+            startButton.onClick.AddListener(new UnityEngine.Events.UnityAction(this.StartGame));
         }
-		if (launchTutButton != null)
-		{
-			launchTutButton.onClick.AddListener(StartTutorial);
-		}
-		if (pauseButton != null)
+        if (pauseButton != null)
         {
-            pauseButton.onClick.AddListener(PauseGame);
+            pauseButton.onClick.AddListener(new UnityEngine.Events.UnityAction(this.StopGame));
         }
         if (player == null)
         {
@@ -159,13 +147,9 @@ public class GameManager : MonoBehaviour {
 
         CreateRoomListing();
         InitializeRandom();
+    }
 
-		EnergyManager.Instance.Initialize();
-		ShipAI.Instance.Initialize();
-	}
-
-	
-	private void InitializeRandom()
+    private void InitializeRandom()
     {
         if (generateRandomSeed)
         {
@@ -177,7 +161,8 @@ public class GameManager : MonoBehaviour {
 
     private void CheckSingeltonInstance()
 	{
-		if (instance != null) DestroyImmediate(gameObject);
+		//if (instance != null) Destroy(gameObject);
+
 		instance = this;
 	}
 
@@ -191,27 +176,20 @@ public class GameManager : MonoBehaviour {
             generateRandomSeed = false;
         }
 
-        if (playGame)
+        if (startGamePlay)
 		{
-			EnergyManager.Instance.startEnergyRoutine = true;
-			ShipAI.Instance.startAIRoutine = true;
+			EnergyManager.instance.startEnergyRoutine = true;
+			ShipAI.instance.startAIRoutine = true;
 
-			playGame = false;
+			startGamePlay = false;
 		}
 
-		if (launchTutorial)
+		if (pauseGamePlay)
 		{
-			StartTutorial();
+			EnergyManager.instance.stopEnergyRoutine = true;
+			ShipAI.instance.stopAIRoutine = true;
 
-			launchTutorial = false;
-		}
-
-		if (pause)
-		{
-			EnergyManager.Instance.stopEnergyRoutine = true;
-			ShipAI.Instance.stopAIRoutine = true;
-
-			pause = false;
+			pauseGamePlay = false;
 		}
 	}
 
@@ -220,24 +198,14 @@ public class GameManager : MonoBehaviour {
         seed = System.DateTime.Now.Ticks.ToString();
     }
 
-	private void StartTutorial()
+    public void StartGame()
 	{
-		/*if (tutorialSequence == null)
-		{
-			throw new Exception("No tutorial sequence has been setup");
-		}
-		tutorialSequence.IsSequenceComplete();*/
+		startGamePlay = true;
 	}
 
-
-	private void StartGame()
+	public void StopGame()
 	{
-		// Start Game - Load if necessary
-	}
-
-	private void PauseGame()
-	{
-		// Pause Game
+		pauseGamePlay = true;
 	}
 
     public void CreateRoomListing()

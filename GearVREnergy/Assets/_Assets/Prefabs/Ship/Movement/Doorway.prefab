@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 33832995679590456}
   - component: {fileID: 114294246662505830}
   m_Layer: 0
-  m_Name: Room B Highlight
+  m_Name: Control Room Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 33515884666682108}
   - component: {fileID: 114450848461525544}
   m_Layer: 0
-  m_Name: Room A Highlight
+  m_Name: Living Room Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,8 +139,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792754197947940}
   m_LocalRotation: {x: -0, y: -0.000000029802322, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -0.38}
-  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_LocalPosition: {x: -0.000027656555, y: 1.4994885, z: -0.37874296}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 4962444576162140}
   m_RootOrder: 1
@@ -169,8 +169,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1376822426508540}
   m_LocalRotation: {x: -0, y: -0.000000029802322, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_LocalPosition: {x: -0.000027239323, y: 1.4994885, z: -0.43951178}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 4962444576162140}
   m_RootOrder: 2
@@ -1529,8 +1529,195 @@ MonoBehaviour:
     manualUV: 1
     elementGroup: 0
     textureGroup: -1
+<<<<<<< HEAD
   - _indices: 5e0000005d0000005c000000
     _distinctIndices: 5e0000005d0000005c000000
+=======
+  _sharedIndices:
+  - array: 000000000e0000001000000024000000
+  - array: 010000000f0000001300000027000000
+  - array: 02000000040000001200000016000000
+  - array: 03000000050000001500000019000000
+  - array: 0600000008000000180000001c000000
+  - array: 07000000090000001b0000001f000000
+  - array: 0a0000000c0000001e00000022000000
+  - array: 0b0000000d0000002100000025000000
+  - array: 11000000170000001d00000023000000
+  - array: 140000001a0000002000000026000000
+  _vertices:
+  - {x: 0.1, y: 0, z: 0}
+  - {x: 0.1, y: 0.15, z: 0}
+  - {x: -0.000000004371139, y: 0, z: 0.1}
+  - {x: -0.000000004371139, y: 0.15, z: 0.1}
+  - {x: -0.000000004371139, y: 0, z: 0.1}
+  - {x: -0.000000004371139, y: 0.15, z: 0.1}
+  - {x: -0.1, y: 0, z: -0.000000008742278}
+  - {x: -0.1, y: 0.15, z: -0.000000008742278}
+  - {x: -0.1, y: 0, z: -0.000000008742278}
+  - {x: -0.1, y: 0.15, z: -0.000000008742278}
+  - {x: 0.0000000011924881, y: 0, z: -0.1}
+  - {x: 0.0000000011924881, y: 0.15, z: -0.1}
+  - {x: 0.0000000011924881, y: 0, z: -0.1}
+  - {x: 0.0000000011924881, y: 0.15, z: -0.1}
+  - {x: 0.1, y: 0, z: 0}
+  - {x: 0.1, y: 0.15, z: 0}
+  - {x: 0.1, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: -0.000000004371139, y: 0, z: 0.1}
+  - {x: 0.1, y: 0.15, z: 0}
+  - {x: 0, y: 0.15, z: 0}
+  - {x: -0.000000004371139, y: 0.15, z: 0.1}
+  - {x: -0.000000004371139, y: 0, z: 0.1}
+  - {x: 0, y: 0, z: 0}
+  - {x: -0.1, y: 0, z: -0.000000008742278}
+  - {x: -0.000000004371139, y: 0.15, z: 0.1}
+  - {x: 0, y: 0.15, z: 0}
+  - {x: -0.1, y: 0.15, z: -0.000000008742278}
+  - {x: -0.1, y: 0, z: -0.000000008742278}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.0000000011924881, y: 0, z: -0.1}
+  - {x: -0.1, y: 0.15, z: -0.000000008742278}
+  - {x: 0, y: 0.15, z: 0}
+  - {x: 0.0000000011924881, y: 0.15, z: -0.1}
+  - {x: 0.0000000011924881, y: 0, z: -0.1}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.1, y: 0, z: 0}
+  - {x: 0.0000000011924881, y: 0.15, z: -0.1}
+  - {x: 0, y: 0.15, z: 0}
+  - {x: 0.1, y: 0.15, z: 0}
+  _uv:
+  - {x: -0.07071068, y: 0}
+  - {x: -0.07071068, y: 0.15}
+  - {x: 0.07071069, y: 0}
+  - {x: 0.07071069, y: 0.15}
+  - {x: -0.07071068, y: 0}
+  - {x: -0.07071068, y: 0.15}
+  - {x: 0.07071068, y: 0}
+  - {x: 0.07071068, y: 0.15}
+  - {x: -0.07071068, y: 0}
+  - {x: -0.07071068, y: 0.15}
+  - {x: 0.07071068, y: 0}
+  - {x: 0.07071068, y: 0.15}
+  - {x: -0.07071068, y: 0}
+  - {x: -0.07071068, y: 0.15}
+  - {x: 0.07071068, y: 0}
+  - {x: 0.07071068, y: 0.15}
+  - {x: -0.1, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0.000000004371139, y: 0.1}
+  - {x: 0.1, y: 0}
+  - {x: 0, y: 0}
+  - {x: -0.000000004371139, y: 0.1}
+  - {x: 0.000000004371139, y: 0.1}
+  - {x: 0, y: 0}
+  - {x: 0.1, y: -0.000000008742278}
+  - {x: -0.000000004371139, y: 0.1}
+  - {x: 0, y: 0}
+  - {x: -0.1, y: -0.000000008742278}
+  - {x: 0.1, y: -0.000000008742278}
+  - {x: 0, y: 0}
+  - {x: -0.0000000011924881, y: -0.1}
+  - {x: -0.1, y: -0.000000008742278}
+  - {x: 0, y: 0}
+  - {x: 0.0000000011924881, y: -0.1}
+  - {x: -0.0000000011924881, y: -0.1}
+  - {x: 0, y: 0}
+  - {x: -0.1, y: 0}
+  - {x: 0.0000000011924881, y: -0.1}
+  - {x: 0, y: 0}
+  - {x: 0.1, y: 0}
+  _uv3: []
+  _uv4: []
+  _tangents: []
+  _sharedIndicesUV: []
+  _colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  userCollisions: 0
+  isSelectable: 1
+  unwrapParameters:
+    hardAngle: 88
+    packMargin: 4
+    angleError: 8
+    areaError: 15
+  asset_guid: 
+  dontDestroyMeshOnDelete: 0
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
+--- !u!114 &114522884289261958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1415644115519524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edce3c70257a1734c8dd6f9610755e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openable: 1
+  roomA: {fileID: 0}
+  roomB: {fileID: 0}
+  highlightAlpha: 0.5
+  highlightA: {fileID: 1792754197947940}
+  highlightB: {fileID: 1376822426508540}
+  fadeSpeed: 1
+  fadeLength: 0.5
+  door: {fileID: 0}
+--- !u!114 &114553966160958450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1420199367210098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _quads:
+  - _indices: 000000000100000002000000010000000300000002000000
+    _distinctIndices: 00000000010000000200000003000000
+>>>>>>> parent of 3ca0e00... Merge branch 'Development' of https://github.com/ArcticCrow/VerySeriousENERGYGameProject into Development
     _edges:
     - x: 94
       y: 93

@@ -73,23 +73,7 @@ public struct RoomEnergyLevel
 public class EnergyManager : MonoBehaviour {
 
 	[HideInInspector]
-	private static EnergyManager instance;
-	public static EnergyManager Instance
-	{
-		get
-		{
-			if (instance == null)
-			{
-				instance = GameManager.instance.gameObject.GetComponent<EnergyManager>();
-				if (instance == null)
-				{
-					instance = GameManager.instance.gameObject.AddComponent<EnergyManager>();
-				}
-			}
-
-			return instance;
-		}
-	}
+	public static EnergyManager instance;
 
 	[Header("General")]
 	public float energyCapacity = 10000f; //perhaps we should use real life values?
@@ -168,8 +152,7 @@ public class EnergyManager : MonoBehaviour {
 
     private void InvokeEnergyDependances()
     {
-		if (energyDependances != null)
-			energyDependances.Invoke();
+        energyDependances.Invoke();
     }
 
     private void CheckSingeltonInstance()

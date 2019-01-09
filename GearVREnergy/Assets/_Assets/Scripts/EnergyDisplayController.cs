@@ -17,9 +17,9 @@ public class EnergyDisplayController : MonoBehaviour {
 
 	private void Update()
 	{
-		float newEnergyPercent = CalculatePercentWithDecimalPlaces(EnergyManager.Instance.currentEnergy, EnergyManager.Instance.energyCapacity, 2);
-		float newPositivePercent = CalculatePercentWithDecimalPlaces(0, 1000f/EnergyManager.Instance.ticksPerSecond, 2);
-		float newNegativePercent = CalculatePercentWithDecimalPlaces(0, 1000f/EnergyManager.Instance.ticksPerSecond, 2);
+		float newEnergyPercent = CalculatePercentWithDecimalPlaces(EnergyManager.instance.currentEnergy, EnergyManager.instance.energyCapacity, 2);
+		float newPositivePercent = CalculatePercentWithDecimalPlaces(0, 1000f/EnergyManager.instance.ticksPerSecond, 2);
+		float newNegativePercent = CalculatePercentWithDecimalPlaces(0, 1000f/EnergyManager.instance.ticksPerSecond, 2);
 
 		if (newEnergyPercent != energyPercent)
 		{
