@@ -64,8 +64,6 @@ public class ShipAI : MonoBehaviour {
 
     private void CheckSingeltonInstance()
 	{
-		//if (instance != null) Destroy(gameObject);
-
 		instance = this;
 	}
 
