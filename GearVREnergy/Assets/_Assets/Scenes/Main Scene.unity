@@ -39043,7 +39043,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22452284, guid: b7f1d07c5759373458300dab24028737, type: 2}
       propertyPath: m_AnchoredPosition.y
+<<<<<<< HEAD
       value: 0.003668696
+=======
+      value: 0.0018295385
+>>>>>>> parent of 7e9435a... Table added
       objectReference: {fileID: 0}
     - target: {fileID: 22452284, guid: b7f1d07c5759373458300dab24028737, type: 2}
       propertyPath: m_SizeDelta.y
