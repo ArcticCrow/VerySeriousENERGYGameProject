@@ -60,7 +60,7 @@ public class RoomInformation : MonoBehaviour {
                 }
                 else
                 {
-                    EnergyClass ec = EnergyManager.instance.GetEnergyClass(interactables[i].classLabel);
+                    EnergyClass ec = EnergyManager.Instance.GetEnergyClass(interactables[i].classLabel);
                     influenceAmount = ec.energyInfluencePerSecond;
                 }
 
@@ -75,10 +75,6 @@ public class RoomInformation : MonoBehaviour {
 			}
 		}
 
-<<<<<<< HEAD
 		energyLevel = EnergyManager.Instance.GetInfluenceLevel(energyGenerationPerSecond + energyConsumptionPerSecond);
-=======
-		influenceLevel = EnergyManager.instance.GetInfluenceLevel(energyGenerationPerSecond + energyConsumptionPerSecond);
->>>>>>> parent of 3ca0e00... Merge branch 'Development' of https://github.com/ArcticCrow/VerySeriousENERGYGameProject into Development
 	}
 }
