@@ -1,55 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent (typeof(Rigidbody))]
 public class Throw : MonoBehaviour {
 
-	float throwForce = 600;
+	float throwForce = 800f;
 	Vector3 objectPos;
 	float distance;
-
 	public bool canHold = true;
 	public GameObject item;
 	public GameObject tempParent;
 	public bool isHolding = false;
+    private Rigidbody rb;
+    public Vector3 offset;
+   
+    private void Start()
+    {
+        if(item == null)
+        {
+            item = gameObject;
+        }
+        rb = item.GetComponent<Rigidbody>();
+    }
+    void Update()
+    {
+        RaycastHit hit;
+        if (isHolding == true && (OVRInput.GetDown(OVRInput.Button.One) || Input.GetMouseButtonDown(0)))
+        {
+            ReleaseObject();
+        }
+        else if (isHolding == false && Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform == transform)
+        {
+            if ((OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey)))
+            {
+                PickUpObject();
+            }
+        }
 
-
-	void Update()
-	{
- 
-
-        if(isHolding == true)
-		{
-			item.GetComponent<Rigidbody>().velocity = Vector3.zero;
-			item.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-			item.transform.SetParent(tempParent.transform);
-
-			if(Input.GetMouseButtonDown(1))
-			{
-				item.GetComponent<Rigidbody>().AddForce(tempParent.transform.forward * throwForce);
-			}
-		}
-		else
-		{
-			objectPos = item.transform.position;
-			item.transform.SetParent(null);
-			item.GetComponent<Rigidbody>().useGravity = true;
-			item.transform.position = objectPos;
-
-		}
-	}
-
-	void OnMouseDown()
+        
+    }
+	void PickUpObject()
 	{
 		isHolding = true;
-		item.GetComponent<Rigidbody>().useGravity = false;
-		item.GetComponent<Rigidbody>().detectCollisions = false;
-		
-	}
+        rb.isKinematic = true;
+        item.transform.SetParent(GameManager.instance.Pointer);
+        item.transform.position = offset;
 
-	void OnMouseUp()
+
+    }
+    void ReleaseObject()
 	{
 		isHolding = false;
-	}
+        rb.isKinematic = false;
+        item.transform.SetParent(null);
+        rb.AddForce(tempParent.transform.forward * throwForce);
+    }
 
 }
