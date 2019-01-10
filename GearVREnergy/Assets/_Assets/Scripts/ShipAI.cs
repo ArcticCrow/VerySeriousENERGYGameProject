@@ -35,6 +35,8 @@ public class ShipAI : MonoBehaviour {
 	[SerializeField, Tooltip("Listing of all found interactable objects in the scene. Will be generated on scene start.")]
 	List<GameObject> interactables;
 
+	List<GameObject> ignoredInteractables;
+
 	[Header("Interval Control")]
 	[Tooltip("The minimum time difference, before the AI makes its next move.")]
 	public float minTimeDifference = 5f;
@@ -79,6 +81,24 @@ public class ShipAI : MonoBehaviour {
 		{
 			Debug.LogWarning(gameObject.name + ": No interactables could be found in the scene!");
 		}
+	}
+
+	public void IgnoreInteractableInteraction(GameObject _gameObject)
+	{
+		if (ignoredInteractables == null)
+		{
+			ignoredInteractables = new List<GameObject>();
+		}
+		ignoredInteractables.Add(_gameObject);
+	}
+
+	public void UnignoreInteractableInteraction(GameObject _gameObject)
+	{
+		if (ignoredInteractables == null)
+		{
+			return;
+		}
+		ignoredInteractables.RemoveAll(x => x == _gameObject);
 	}
 
 	// Update is called once per frame
@@ -136,7 +156,7 @@ public class ShipAI : MonoBehaviour {
 		{
 			Interactable ia = interactables[i].GetComponent<Interactable>();
 			// Interactable script is present, it's gameobject is in the scene and the bad power state is not already active
-			if (ia != null && ia.isActiveAndEnabled && ia.gameObject.activeInHierarchy && ia.isPowered != ia.badPowerState)
+			if (ia != null && ia.isActiveAndEnabled && ia.gameObject.activeInHierarchy && ia.isPowered != ia.badPowerState && ignoredInteractables.Find(x=>x == ia.gameObject) == null)
 			{
 				viableInteractables.Add(ia);
 			}

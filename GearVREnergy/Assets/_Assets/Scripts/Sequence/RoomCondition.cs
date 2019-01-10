@@ -18,9 +18,9 @@ public class RoomCondition : Condition
     
     public override bool IsConditionMet()
     {
+		if (!isInitialized) return false;
         if (room == null)
             throw new Exception("Room condition needs room information component to check condition!");
-
         switch (check)
         {
             case CheckType.isActiveRoom:
@@ -34,5 +34,13 @@ public class RoomCondition : Condition
         return false;
     }
 
+	public override void Initialize()
+	{
+		isInitialized = true;
+	}
 
+	public override void Finish()
+	{
+		
+	}
 }

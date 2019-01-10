@@ -18,7 +18,14 @@ public abstract class SequenceStep : MonoBehaviour
     public bool waitAfterCompletion = false;
     public float waitTime = 0;
 
+	[HideInInspector]
+	public bool hasLaunched = false;
+	[HideInInspector]
+	public bool hasCompleted = false;
+
+	public abstract void Launch();
 	public abstract bool StepIsFinished();
+	public abstract void Complete();
 }
 
 [Serializable]
@@ -62,21 +69,29 @@ public class Sequence : MonoBehaviour{
         while (currentStep < steps.Count)
         {
             SequenceStep step = steps[currentStep];
+			step.Launch();
             do
             {
                 yield return null;
             }
             while (!step.StepIsFinished());
 
+			step.Complete();
+
             if (step.waitAfterCompletion)
             {
                 yield return new WaitForSeconds(step.waitTime);
             }
+
+			while (!step.hasCompleted) yield return null;
+
             currentStep++;
-            Debug.Log("Step completed");
+            Debug.Log(currentStep + ". Step completed");
         }
 
         isSequenceFinished = false;
         Debug.Log("Sequence completed");
+		isPlaying = false;
+		yield return null;
 	}
 }

@@ -629,7 +629,10 @@ MonoBehaviour:
   type: 1
   waitAfterCompletion: 0
   waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
   voiceClip: 2
+  useVoiceClipLength: 0
 --- !u!1 &133970749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,9 +2591,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86858151e9501db4cb997690603d2850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInitialized: 0
   interactable: {fileID: 1254983170}
   check: 0
   targetValue: 1
+  disableAIInteraction: 0
+  overrideStartValue: 0
+  startValue: 0
 --- !u!1 &382341529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,6 +2643,8 @@ MonoBehaviour:
   type: 0
   waitAfterCompletion: 0
   waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
   comparisonOperator: 1
   conditions:
   - {fileID: 369840779}
@@ -2683,6 +2692,8 @@ MonoBehaviour:
   type: 0
   waitAfterCompletion: 0
   waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
   comparisonOperator: 0
   conditions: []
 --- !u!114 &427311934 stripped
@@ -4096,9 +4107,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  waitAfterCompletion: 0
+  waitAfterCompletion: 1
   waitTime: 0
-  voiceClip: 2
+  hasLaunched: 0
+  hasCompleted: 0
+  voiceClip: 3
+  useVoiceClipLength: 0
 --- !u!4 &602376441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 126d619cf4daa52469682f85c1378b4a,
@@ -4147,7 +4161,10 @@ MonoBehaviour:
   type: 1
   waitAfterCompletion: 0
   waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
   voiceClip: 2
+  useVoiceClipLength: 0
 --- !u!43 &621628340
 Mesh:
   m_ObjectHideFlags: 0
@@ -10654,7 +10671,7 @@ Prefab:
     - target: {fileID: 114001308440568654, guid: 97c6c4c5a87199b40a164800612cde91,
         type: 2}
       propertyPath: launchTutorial
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114001308440568654, guid: 97c6c4c5a87199b40a164800612cde91,
         type: 2}
@@ -10725,7 +10742,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22452284, guid: b7f1d07c5759373458300dab24028737, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0032660044
+      value: 0.0039411774
       objectReference: {fileID: 0}
     - target: {fileID: 22452284, guid: b7f1d07c5759373458300dab24028737, type: 2}
       propertyPath: m_SizeDelta.y
@@ -11321,6 +11338,8 @@ MonoBehaviour:
   type: 0
   waitAfterCompletion: 0
   waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
   comparisonOperator: 0
   conditions:
   - {fileID: 1706666852}
@@ -11335,9 +11354,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86858151e9501db4cb997690603d2850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInitialized: 0
   interactable: {fileID: 1366094650}
   check: 0
   targetValue: 1
+  disableAIInteraction: 0
+  overrideStartValue: 0
+  startValue: 0
 --- !u!43 &1742807037
 Mesh:
   m_ObjectHideFlags: 0
@@ -11689,9 +11712,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  waitAfterCompletion: 0
+  waitAfterCompletion: 1
   waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
   voiceClip: 2
+  useVoiceClipLength: 1
 --- !u!43 &1791965392
 Mesh:
   m_ObjectHideFlags: 0
@@ -11891,6 +11917,8 @@ MonoBehaviour:
   type: 0
   waitAfterCompletion: 0
   waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
   comparisonOperator: 0
   conditions:
   - {fileID: 1811309735}
@@ -11905,6 +11933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25e1e93aef17d047aee3f25ceff4ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInitialized: 0
   check: 0
   room: {fileID: 788344573}
   energyLabel: 0
@@ -11953,6 +11982,8 @@ MonoBehaviour:
   type: 0
   waitAfterCompletion: 0
   waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
   comparisonOperator: 0
   conditions:
   - {fileID: 1823776856}
@@ -11967,6 +11998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25e1e93aef17d047aee3f25ceff4ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInitialized: 0
   check: 0
   room: {fileID: 1542420817}
   energyLabel: 0
@@ -12563,9 +12595,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86858151e9501db4cb997690603d2850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInitialized: 0
   interactable: {fileID: 912249696}
   check: 0
   targetValue: 1
+  disableAIInteraction: 0
+  overrideStartValue: 0
+  startValue: 0
 --- !u!43 &2067565805
 Mesh:
   m_ObjectHideFlags: 0

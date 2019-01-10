@@ -27,6 +27,7 @@ public class SequenceObjective : SequenceStep {
 
 	public bool IsObjectiveCleared()
 	{
+		if (!hasLaunched) return false;
         switch (comparisonOperator)
         {
             case Comparison.AND:
@@ -53,4 +54,22 @@ public class SequenceObjective : SequenceStep {
         Debug.LogAssertion("Something went wrong when checking an objective.");
         return false;
     }
+
+	public override void Launch()
+	{
+		for (int i = 0; i < conditions.Count; i++)
+		{
+			conditions[i].Initialize();
+		}
+		hasLaunched = true;
+	}
+
+	public override void Complete()
+	{
+		for (int i = 0; i < conditions.Count; i++)
+		{
+			conditions[i].Finish();
+		}
+		hasCompleted = true;
+	}
 }
