@@ -14,31 +14,44 @@ public class Throw : MonoBehaviour {
 	public bool isHolding = false;
 
 
-	void Update()
-	{
- 
+    void Update()
+    {
+        //RaycastHit hit;
+        //if (Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform == transform)
+        //{
 
-        if(isHolding == true)
-		{
-			item.GetComponent<Rigidbody>().velocity = Vector3.zero;
-			item.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-			item.transform.SetParent(tempParent.transform);
+            if (isHolding == true)
+            {
+                item.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                item.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                item.transform.SetParent(tempParent.transform);
 
-			if(Input.GetMouseButtonDown(1))
-			{
-				item.GetComponent<Rigidbody>().AddForce(tempParent.transform.forward * throwForce);
-			}
-		}
-		else
-		{
-			objectPos = item.transform.position;
-			item.transform.SetParent(null);
-			item.GetComponent<Rigidbody>().useGravity = true;
-			item.transform.position = objectPos;
+                if (Input.GetMouseButtonDown(1))
+               // if ((OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey)))
+                {
+                    item.GetComponent<Rigidbody>().AddForce(tempParent.transform.forward * throwForce);
+                }
+            }
+            else
+            {
+                objectPos = item.transform.position;
+                item.transform.SetParent(null);
+                item.GetComponent<Rigidbody>().useGravity = true;
+                item.transform.position = objectPos;
 
-		}
-	}
+            }
+            /*
+           if(Input.GetMouseButtonDown(0))
+            {
+                isHolding = true;
+                item.GetComponent<Rigidbody>().useGravity = false;
+                item.GetComponent<Rigidbody>().detectCollisions = false;
+            }
+            */
 
+        //}
+    }
+    
 	void OnMouseDown()
 	{
 		isHolding = true;
@@ -46,6 +59,9 @@ public class Throw : MonoBehaviour {
 		item.GetComponent<Rigidbody>().detectCollisions = false;
 		
 	}
+    
+    
+    
 
 	void OnMouseUp()
 	{
