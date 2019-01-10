@@ -73,7 +73,9 @@ public class GameManager : MonoBehaviour {
 	public Sequence tutorialSequence;
 
 	[Header("Gameplay Flow")]
+	public Sequence startSequence;
 	public List<Sequence> gameplaySequences;
+	public Sequence endSequence;
 
 	Sequence activeSequence;
 
@@ -111,7 +113,7 @@ public class GameManager : MonoBehaviour {
     {
         if (playButton != null)
         {
-            playButton.onClick.AddListener(StartGame);
+            playButton.onClick.AddListener(PlayGame);
         }
 		if (launchTutButton != null)
 		{
@@ -119,7 +121,7 @@ public class GameManager : MonoBehaviour {
 		}
 		if (pauseButton != null)
         {
-            pauseButton.onClick.AddListener(PauseGame);
+            pauseButton.onClick.AddListener(Pause);
         }
         if (player == null)
         {
@@ -195,24 +197,19 @@ public class GameManager : MonoBehaviour {
 
         if (playGame)
 		{
-			EnergyManager.Instance.startEnergyRoutine = true;
-			ShipAI.Instance.startAIRoutine = true;
-
+			PlayGame();
 			playGame = false;
 		}
 
 		if (launchTutorial)
 		{
 			StartTutorial();
-
 			launchTutorial = false;
 		}
 
 		if (pause)
 		{
-			EnergyManager.Instance.stopEnergyRoutine = true;
-			ShipAI.Instance.stopAIRoutine = true;
-
+			Pause();
 			pause = false;
 		}
 	}
@@ -227,6 +224,11 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	private void ReturnToMenu()
+	{
+		// Save Progress if necessary
+	}
+
 	private void StartTutorial()
 	{
 		if (tutorialSequence == null)
@@ -238,19 +240,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 
-	private void StartGame()
+	private void PlayGame()
 	{
 		// Start Game - Load if necessary
+		EnergyManager.Instance.startEnergyRoutine = true;
+		ShipAI.Instance.startAIRoutine = true;
 	}
 
-	private void PauseGame()
+	private void Pause()
 	{
-		// Pause Game
-	}
-
-	private void ReturnToMenu()
-	{
-
+		// Pause
+		EnergyManager.Instance.stopEnergyRoutine = true;
+		ShipAI.Instance.stopAIRoutine = true;
 	}
 
     public void CreateRoomListing()
