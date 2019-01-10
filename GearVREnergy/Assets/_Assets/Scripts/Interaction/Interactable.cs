@@ -25,6 +25,7 @@ public class Interactable : MonoBehaviour {
 	{
 	    CallPowerEvents();
 	}	
+
 	private void CallPowerEvents()
 	{
 		if(isPowered)
@@ -37,7 +38,22 @@ public class Interactable : MonoBehaviour {
 		}
 	}
 
-    void Update()
+	public void SetPowerState(bool activate)
+	{
+		isPowered = activate;
+	}
+	public void EnableInteraction(bool enableInteraction)
+	{
+		disableInteraction = !enableInteraction;
+	}
+
+	public void ActivateBadPowerState(bool activate)
+	{
+		isPowered = (activate) ? badPowerState : !badPowerState;
+		needsStateUpdate = true;
+	}
+
+	void Update()
     {
         RaycastHit hit; 
         if (Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform == transform)
@@ -63,11 +79,4 @@ public class Interactable : MonoBehaviour {
 			needsStateUpdate = false;
 		}
 	}
-
-	public void ActivateBadPowerState(bool activate)
-	{
-		isPowered = (activate)? badPowerState : !badPowerState;
-		needsStateUpdate = true;
-	}
-
 }

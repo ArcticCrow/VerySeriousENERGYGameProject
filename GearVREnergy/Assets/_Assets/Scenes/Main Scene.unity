@@ -121,7 +121,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-61232
+  m_Name: pb_Mesh-1758
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 99825669}
   - component: {fileID: 99825670}
   m_Layer: 0
-  m_Name: Step 7 - Good Job (AI Voice)
+  m_Name: Step 10 - Good Job (AI Voice)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,7 +613,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 154257355}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &99825670
 MonoBehaviour:
@@ -627,12 +627,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  waitAfterCompletion: 0
+  waitAfterCompletion: 1
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 2
-  useVoiceClipLength: 0
+  voiceClip: 7
+  useVoiceClipLength: 1
 --- !u!1 &133970749
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +833,72 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &153653700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153653701}
+  - component: {fileID: 153653702}
+  m_Layer: 0
+  m_Name: Step 17 - Temp End (Action)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &153653701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 153653700}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154257355}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &153653702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 153653700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486abad2bbc8b524a89661bbf0a33f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  waitAfterCompletion: 0
+  waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1592516394}
+        m_MethodName: SwitchCurrentRoom
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2096460392}
+          m_ObjectArgumentAssemblyTypeName: RoomInformation, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  actionsUponCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &154257354
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,12 +928,20 @@ Transform:
   - {fileID: 1791394493}
   - {fileID: 599337111}
   - {fileID: 1706666850}
+  - {fileID: 1453633542}
   - {fileID: 1811309733}
+  - {fileID: 740490812}
   - {fileID: 1823776854}
+  - {fileID: 460131667}
   - {fileID: 382341530}
   - {fileID: 99825669}
+  - {fileID: 1680552718}
+  - {fileID: 2094958807}
   - {fileID: 398219175}
+  - {fileID: 597348593}
+  - {fileID: 1154674156}
   - {fileID: 614448191}
+  - {fileID: 153653701}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -886,12 +960,20 @@ MonoBehaviour:
   - {fileID: 1791394494}
   - {fileID: 599337112}
   - {fileID: 1706666851}
+  - {fileID: 1453633543}
   - {fileID: 1811309734}
+  - {fileID: 740490813}
   - {fileID: 1823776855}
+  - {fileID: 460131668}
   - {fileID: 382341531}
   - {fileID: 99825670}
+  - {fileID: 1680552719}
+  - {fileID: 2094958808}
   - {fileID: 398219176}
+  - {fileID: 597348594}
+  - {fileID: 1154674157}
   - {fileID: 614448192}
+  - {fileID: 153653702}
   isSequenceFinished: 0
 --- !u!1 &154341989
 GameObject:
@@ -1189,7 +1271,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62426
+  m_Name: pb_Mesh-2794
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1751,7 +1833,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62486
+  m_Name: pb_Mesh-2926
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1906,7 +1988,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62422
+  m_Name: pb_Mesh-2782
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2056,6 +2138,12 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!114 &311977702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114416958705516572, guid: dda329ac899bddb4db2c244edc1163b4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1387814952}
+  m_Script: {fileID: 11500000, guid: 116e95bd1ef40844a8de57adc62955e5, type: 3}
 --- !u!43 &316888788
 Mesh:
   m_ObjectHideFlags: 0
@@ -2608,7 +2696,7 @@ GameObject:
   - component: {fileID: 382341530}
   - component: {fileID: 382341531}
   m_Layer: 0
-  m_Name: Step 6 - Prepare Food (Objective)
+  m_Name: Step 9 - Prepare Food (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2627,7 +2715,7 @@ Transform:
   - {fileID: 369840778}
   - {fileID: 1985879983}
   m_Father: {fileID: 154257355}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &382341531
 MonoBehaviour:
@@ -2641,7 +2729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  waitAfterCompletion: 0
+  waitAfterCompletion: 1
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
@@ -2659,7 +2747,7 @@ GameObject:
   - component: {fileID: 398219175}
   - component: {fileID: 398219176}
   m_Layer: 0
-  m_Name: Step 8 - Activate Cryo Sleep (Objective)
+  m_Name: Step 13 - Open Cryo Sleep (Action)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2676,7 +2764,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 154257355}
-  m_RootOrder: 7
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &398219176
 MonoBehaviour:
@@ -2686,7 +2774,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 398219174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a4216ca4cce164980c62773f9ebb3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 486abad2bbc8b524a89661bbf0a33f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
@@ -2694,8 +2782,38 @@ MonoBehaviour:
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  comparisonOperator: 0
-  conditions: []
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 311977702}
+        m_MethodName: EnableInteraction
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 311977702}
+        m_MethodName: SetPowerState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  actionsUponCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &427311934 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114763430576349798, guid: 40cedaf70f7721a4885ad4421b8b5627,
@@ -2707,7 +2825,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62428
+  m_Name: pb_Mesh-2796
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2857,6 +2975,53 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &460131666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 460131667}
+  - component: {fileID: 460131668}
+  m_Layer: 0
+  m_Name: Step 8 - Explanation (AI Voice)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &460131667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 460131666}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154257355}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &460131668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 460131666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08c2511e8a757442aa0e03405c0a038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  waitAfterCompletion: 1
+  waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
+  voiceClip: 6
+  useVoiceClipLength: 1
 --- !u!43 &460727390
 Mesh:
   m_ObjectHideFlags: 0
@@ -3844,7 +4009,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62494
+  m_Name: pb_Mesh-2934
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4033,39 +4198,86 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 33291970091818714, guid: 202fe75db7b3a304ebb8e98068128edb,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 1014460610}
-    - target: {fileID: 64223332309282248, guid: 202fe75db7b3a304ebb8e98068128edb,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 1014460610}
-    - target: {fileID: 33964199830367636, guid: 202fe75db7b3a304ebb8e98068128edb,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 2067565805}
-    - target: {fileID: 64115653654111602, guid: 202fe75db7b3a304ebb8e98068128edb,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 2067565805}
-    - target: {fileID: 33580726555609906, guid: 202fe75db7b3a304ebb8e98068128edb,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 25643873}
     - target: {fileID: 64744720725763864, guid: 202fe75db7b3a304ebb8e98068128edb,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 25643873}
+    - target: {fileID: 33580726555609906, guid: 202fe75db7b3a304ebb8e98068128edb,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 25643873}
+    - target: {fileID: 64115653654111602, guid: 202fe75db7b3a304ebb8e98068128edb,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2067565805}
+    - target: {fileID: 33964199830367636, guid: 202fe75db7b3a304ebb8e98068128edb,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2067565805}
+    - target: {fileID: 64223332309282248, guid: 202fe75db7b3a304ebb8e98068128edb,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1014460610}
+    - target: {fileID: 33291970091818714, guid: 202fe75db7b3a304ebb8e98068128edb,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1014460610}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 202fe75db7b3a304ebb8e98068128edb, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &597348592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597348593}
+  - component: {fileID: 597348594}
+  m_Layer: 0
+  m_Name: Step 14 - Outro Tutorial (AI Voice) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &597348593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 597348592}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154257355}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &597348594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 597348592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08c2511e8a757442aa0e03405c0a038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  waitAfterCompletion: 1
+  waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
+  voiceClip: 9
+  useVoiceClipLength: 1
 --- !u!1 &599337110
 GameObject:
   m_ObjectHideFlags: 0
@@ -4112,7 +4324,7 @@ MonoBehaviour:
   hasLaunched: 0
   hasCompleted: 0
   voiceClip: 3
-  useVoiceClipLength: 0
+  useVoiceClipLength: 1
 --- !u!4 &602376441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 126d619cf4daa52469682f85c1378b4a,
@@ -4128,7 +4340,7 @@ GameObject:
   - component: {fileID: 614448191}
   - component: {fileID: 614448192}
   m_Layer: 0
-  m_Name: Step 9 - Outro Tutorial (AI Voice)
+  m_Name: Step 16 - Outro Tutorial (AI Voice)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4145,7 +4357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 154257355}
-  m_RootOrder: 8
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &614448192
 MonoBehaviour:
@@ -4159,12 +4371,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  waitAfterCompletion: 0
+  waitAfterCompletion: 1
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 2
-  useVoiceClipLength: 0
+  voiceClip: 10
+  useVoiceClipLength: 1
 --- !u!43 &621628340
 Mesh:
   m_ObjectHideFlags: 0
@@ -4664,6 +4876,53 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &740490811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740490812}
+  - component: {fileID: 740490813}
+  m_Layer: 0
+  m_Name: Step 6 - Explanation (AI Voice)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &740490812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 740490811}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154257355}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &740490813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 740490811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08c2511e8a757442aa0e03405c0a038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  waitAfterCompletion: 1
+  waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
+  voiceClip: 5
+  useVoiceClipLength: 1
 --- !u!43 &763765800
 Mesh:
   m_ObjectHideFlags: 0
@@ -4979,7 +5238,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62496
+  m_Name: pb_Mesh-2936
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -6229,7 +6488,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-61236
+  m_Name: pb_Mesh-1760
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -6539,7 +6798,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62376
+  m_Name: pb_Mesh-2708
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -7667,6 +7926,72 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1154674155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1154674156}
+  - component: {fileID: 1154674157}
+  - component: {fileID: 1154674158}
+  m_Layer: 0
+  m_Name: Step 15 - Activate Cryo Sleep (Objective) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1154674156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154674155}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154257355}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1154674157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154674155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a4216ca4cce164980c62773f9ebb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  waitAfterCompletion: 0
+  waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
+  comparisonOperator: 0
+  conditions: []
+--- !u!114 &1154674158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1154674155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86858151e9501db4cb997690603d2850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitialized: 0
+  interactable: {fileID: 311977702}
+  check: 0
+  targetValue: 0
+  disableAIInteraction: 0
+  overrideStartValue: 0
+  startValue: 0
 --- !u!43 &1204221889
 Mesh:
   m_ObjectHideFlags: 0
@@ -8768,7 +9093,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62424
+  m_Name: pb_Mesh-2792
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -9968,6 +10293,11 @@ Prefab:
       propertyPath: roomMappings.Array.data[5].room
       value: 
       objectReference: {fileID: 427311934}
+    - target: {fileID: 114416958705516572, guid: dda329ac899bddb4db2c244edc1163b4,
+        type: 2}
+      propertyPath: badPowerState
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dda329ac899bddb4db2c244edc1163b4, type: 2}
   m_IsPrefabAsset: 0
@@ -10147,7 +10477,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62492
+  m_Name: pb_Mesh-2932
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10379,12 +10709,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4962444576162140, guid: 30ea6cb25fcb46d41875edb223b08968,
     type: 2}
   m_PrefabInternal: {fileID: 1450499691}
+--- !u!1 &1453633541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1453633542}
+  - component: {fileID: 1453633543}
+  m_Layer: 0
+  m_Name: 'Step 4 - Explanation (AI Voice) '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1453633542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1453633541}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154257355}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1453633543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1453633541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08c2511e8a757442aa0e03405c0a038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  waitAfterCompletion: 1
+  waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
+  voiceClip: 4
+  useVoiceClipLength: 1
 --- !u!43 &1458699701
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62490
+  m_Name: pb_Mesh-2930
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10742,7 +11119,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22452284, guid: b7f1d07c5759373458300dab24028737, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0039411774
+      value: 0.0048217215
       objectReference: {fileID: 0}
     - target: {fileID: 22452284, guid: b7f1d07c5759373458300dab24028737, type: 2}
       propertyPath: m_SizeDelta.y
@@ -10756,7 +11133,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62488
+  m_Name: pb_Mesh-2928
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10912,6 +11289,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 474815843}
   m_Script: {fileID: 11500000, guid: 0e84bbcb30ac50d48b36132025285d26, type: 3}
+--- !u!114 &1592516394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114001308440568654, guid: 97c6c4c5a87199b40a164800612cde91,
+    type: 2}
+  m_PrefabInternal: {fileID: 1505682070}
+  m_Script: {fileID: 11500000, guid: e9c34f967d648424ca8b16771d69efc8, type: 3}
 --- !u!43 &1612106231
 Mesh:
   m_ObjectHideFlags: 0
@@ -11294,6 +11677,57 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8246b87012873144eafb707e7fd7cf71, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1680552717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1680552718}
+  - component: {fileID: 1680552719}
+  m_Layer: 0
+  m_Name: Step 11 - Disable Food (Objective) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1680552718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1680552717}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1723630138}
+  - {fileID: 1801286983}
+  m_Father: {fileID: 154257355}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1680552719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1680552717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a4216ca4cce164980c62773f9ebb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  waitAfterCompletion: 0
+  waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
+  comparisonOperator: 0
+  conditions:
+  - {fileID: 1723630139}
+  - {fileID: 1801286984}
 --- !u!1 &1706666849
 GameObject:
   m_ObjectHideFlags: 0
@@ -11340,7 +11774,7 @@ MonoBehaviour:
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  comparisonOperator: 0
+  comparisonOperator: 1
   conditions:
   - {fileID: 1706666852}
 --- !u!114 &1706666852
@@ -11358,6 +11792,53 @@ MonoBehaviour:
   interactable: {fileID: 1366094650}
   check: 0
   targetValue: 1
+  disableAIInteraction: 0
+  overrideStartValue: 0
+  startValue: 0
+--- !u!1 &1723630137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1723630138}
+  - component: {fileID: 1723630139}
+  m_Layer: 0
+  m_Name: DeActivate Microwave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1723630138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723630137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1680552718}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1723630139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723630137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86858151e9501db4cb997690603d2850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitialized: 0
+  interactable: {fileID: 1254983170}
+  check: 0
+  targetValue: 0
   disableAIInteraction: 0
   overrideStartValue: 0
   startValue: 0
@@ -11713,7 +12194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   waitAfterCompletion: 1
-  waitTime: 0
+  waitTime: 1
   hasLaunched: 0
   hasCompleted: 0
   voiceClip: 2
@@ -11873,6 +12354,53 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &1801286982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801286983}
+  - component: {fileID: 1801286984}
+  m_Layer: 0
+  m_Name: DeActivate Oven
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1801286983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1801286982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1680552718}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1801286984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1801286982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86858151e9501db4cb997690603d2850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitialized: 0
+  interactable: {fileID: 912249696}
+  check: 0
+  targetValue: 0
+  disableAIInteraction: 0
+  overrideStartValue: 0
+  startValue: 0
 --- !u!1 &1811309732
 GameObject:
   m_ObjectHideFlags: 0
@@ -11884,7 +12412,7 @@ GameObject:
   - component: {fileID: 1811309734}
   - component: {fileID: 1811309735}
   m_Layer: 0
-  m_Name: Step 4 - Goto 'Living Room' (Objective)
+  m_Name: Step 5 - Goto 'Living Room' (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11901,7 +12429,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 154257355}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1811309734
 MonoBehaviour:
@@ -11949,7 +12477,7 @@ GameObject:
   - component: {fileID: 1823776855}
   - component: {fileID: 1823776856}
   m_Layer: 0
-  m_Name: Step 5 - Goto 'Kitchen' (Objective)
+  m_Name: Step 7 - Goto 'Kitchen' (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11966,7 +12494,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 154257355}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1823776855
 MonoBehaviour:
@@ -12607,7 +13135,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-61228
+  m_Name: pb_Mesh-1754
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -12912,6 +13440,53 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &2094958806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2094958807}
+  - component: {fileID: 2094958808}
+  m_Layer: 0
+  m_Name: Step 12 - Good Job (AI Voice) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2094958807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2094958806}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 154257355}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2094958808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2094958806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08c2511e8a757442aa0e03405c0a038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  waitAfterCompletion: 1
+  waitTime: 0
+  hasLaunched: 0
+  hasCompleted: 0
+  voiceClip: 8
+  useVoiceClipLength: 1
 --- !u!114 &2096460392 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114781393825915450, guid: 202fe75db7b3a304ebb8e98068128edb,
@@ -12923,7 +13498,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62442
+  m_Name: pb_Mesh-2844
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2

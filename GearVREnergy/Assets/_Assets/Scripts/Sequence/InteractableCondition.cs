@@ -23,7 +23,11 @@ public class InteractableCondition : Condition
 
 	public override bool IsConditionMet()
 	{
-		if (!isInitialized) return false;
+		if (!isInitialized)
+		{
+			print("not initialized");
+			return false;
+		}
 
 		if (interactable == null)
 			throw new Exception("Interactable condition needs interactable component to check condition!");
@@ -50,6 +54,7 @@ public class InteractableCondition : Condition
 		if (overrideStartValue) {
 			interactable.isPowered = false;
 		}
+		isInitialized = true;
 	}
 
 	public override void Finish()

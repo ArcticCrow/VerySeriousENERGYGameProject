@@ -27,7 +27,16 @@ public class SequenceObjective : SequenceStep {
 
 	public bool IsObjectiveCleared()
 	{
-		if (!hasLaunched) return false;
+		if (!hasLaunched)
+		{
+			print("not launched");
+			return false;
+		}
+		if (conditions.Count == 0)
+		{
+			print("no conditions attached");
+			return true;
+		}
         switch (comparisonOperator)
         {
             case Comparison.AND:
