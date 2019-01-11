@@ -65,7 +65,9 @@ public class Doorway : MonoBehaviour {
 	{
 		lastOpenTime = Time.time;
 		openTime = keepOpenTime;
+
 		ToggleHighlightColor(true);
+
 		if (!open)
 		{
 			open = true;
@@ -77,16 +79,15 @@ public class Doorway : MonoBehaviour {
 		}
 	}
 
-	public void CloseDoor()
+	public void CloseDoor(bool force = false)
 	{
 		if (lastOpenTime != Time.time)
 		{
 			ToggleHighlightColor(false);
 		}
-		if (open && (Time.time - lastOpenTime) > openTime)
+		if (force || (open && (Time.time - lastOpenTime) > openTime))
 		{
 			open = false;
-
 			if (door != null)
 			{
 				door.GetComponent<Animator>().SetBool("LookAt", false);

@@ -8,6 +8,8 @@ public class DoorController : MonoBehaviour {
 	public bool disableTeleportation = false;
 	public float keepOpenTime = 0.5f;
 
+	Doorway currentDoorway;
+
 	private void Update()
 	{
 		RaycastHit hit;
@@ -17,6 +19,16 @@ public class DoorController : MonoBehaviour {
 			if (doorway == null)
 			{
 				throw new Exception("Doorway object has no doorway component attached!\n" + hit.transform.gameObject.ToString() + "\n" + hit.ToString());
+			}
+
+			if (currentDoorway != doorway)
+			{
+				if (currentDoorway != null)
+				{
+					currentDoorway.CloseDoor(true);
+				}
+				currentDoorway = doorway;
+
 			}
 
 			OVRGazePointer.instance.SetPosition(hit.point);
