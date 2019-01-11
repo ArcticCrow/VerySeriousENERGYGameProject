@@ -18,6 +18,8 @@ public class Doorway : MonoBehaviour {
 
 	private Material hlMatA, hlMatB;
 	bool open = false;
+	float openTime;
+	float lastOpenTime;
 
 	// Use this for initialization
 	void Start () {
@@ -54,39 +56,34 @@ public class Doorway : MonoBehaviour {
 		
 	}
 
-	// Update is called once per frame
-	void Update () {
-		RaycastHit hit;
-		
-		if (Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform == transform)
+	public void ChangeRoom()
+	{
+		GameManager.instance.TeleportToOtherRoom(roomA, roomB);
+	}
+
+	public void OpenDoor(float keepOpenTime)
+	{
+		lastOpenTime = Time.time;
+		openTime = keepOpenTime;
+		ToggleHighlightColor(true);
+		if (!open)
 		{
-			if (!openable)
+			open = true;
+			if (door != null)
 			{
-				// show special gaze pointer
-			}
-			else
-			{
-                GameManager.instance.RequestPointerEmphasis();
-				OVRGazePointer.instance.SetPosition(hit.point);
-				if (!open)
-				{
-					open = true;
-					if (door != null)
-					{
-                        SoundControl.PlaySound(SFXClip.Door);
-                        door.GetComponent<Animator>().SetBool("LookAt", true);
-					}
-					ToggleHighlightColor(true);
-				}
-				
-				
-				if ((OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey)))
-				{
-                    GameManager.instance.TeleportToOtherRoom(roomA, roomB);
-				}
+				SoundController.PlaySound(SFXClip.Door);
+				door.GetComponent<Animator>().SetBool("LookAt", true);
 			}
 		}
-		else if (open)
+	}
+
+	public void CloseDoor()
+	{
+		if (lastOpenTime != Time.time)
+		{
+			ToggleHighlightColor(false);
+		}
+		if (open && (Time.time - lastOpenTime) > openTime)
 		{
 			open = false;
 
@@ -94,7 +91,12 @@ public class Doorway : MonoBehaviour {
 			{
 				door.GetComponent<Animator>().SetBool("LookAt", false);
 			}
-			ToggleHighlightColor(false);
+			
 		}
+	}
+
+	private void Update()
+	{
+		CloseDoor();
 	}
 }

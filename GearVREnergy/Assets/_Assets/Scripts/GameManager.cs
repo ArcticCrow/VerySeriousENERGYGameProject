@@ -322,7 +322,7 @@ public class GameManager : MonoBehaviour {
             OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
         }
 
-        SoundControl.PlaySound(SFXClip.Teleportation);
+        SoundController.PlaySound(SFXClip.Teleportation);
         player.transform.position = destPosition;
 
         Quaternion headRotation = Quaternion.Euler(OVRManager.instance.headPoseRelativeOffsetRotation);
@@ -347,7 +347,7 @@ public class GameManager : MonoBehaviour {
         yield return null;
     }
 
-    public void RequestPointerEmphasis(bool hide = false)
+	public void RequestPointerEmphasis(bool badEmphasis = false, bool hide = false)
     {
         if (hide)
         {
@@ -362,7 +362,20 @@ public class GameManager : MonoBehaviour {
                 OVRGazePointer.instance.RequestHide();
             }
         }
-        else
+        else if (badEmphasis)
+		{
+			if (Pointer != centerEyeAnchor)
+			{
+				// Assuming that the pointer is a remote
+				VRRaycaster.instance.RequestBadIllumination();
+			}
+			else
+			{
+				// Assuming that the user isn't using any remote
+				OVRGazePointer.instance.RequestHide();
+			}
+		}
+		else
         {
             if (Pointer != centerEyeAnchor)
             {

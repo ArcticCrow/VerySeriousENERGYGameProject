@@ -14,10 +14,10 @@ public class SequenceVoice : SequenceStep {
 
 	public override void Launch()
 	{
-		SoundControl.PlaySound(voiceClip);
+		SoundController.PlaySound(voiceClip);
 		if (useVoiceClipLength)
 		{
-			waitTime = SoundControl.GetSoundLength(voiceClip);
+			waitTime = SoundController.GetSoundLength(voiceClip);
 		}
 		hasLaunched = true;
 	}

@@ -31,7 +31,7 @@ public enum SFXClip
 	Voice_TV,
 }
 
-public class SoundControl : MonoBehaviour
+public class SoundController : MonoBehaviour
 {
     public static AudioClip Door, Teleportation;
 	public static Dictionary<SFXClip, AudioClip> tutorialClips;

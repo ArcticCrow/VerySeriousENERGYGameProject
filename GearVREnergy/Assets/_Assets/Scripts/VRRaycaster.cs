@@ -16,8 +16,10 @@ public class VRRaycaster : MonoBehaviour
 
     public Gradient normalGradient;
     public Gradient illuminationGradient;
+	public Gradient badIlluminationGradient;
 
     bool illuminated = false;
+	bool badIllumination = false;
 
 
     [Tooltip("Should the pointer be hidden when not over interactive objects.")]
@@ -136,6 +138,12 @@ public class VRRaycaster : MonoBehaviour
         lastIlluminationRequestTime = Time.time;
     }
 
+	public void RequestBadIllumination()
+	{
+		badIllumination = true;
+		RequestIllumination();
+	}
+
     public void RequestDarken()
     {
         Darken();
@@ -150,7 +158,15 @@ public class VRRaycaster : MonoBehaviour
 
     void Illuminate()
     {
-        lineRenderer.colorGradient = illuminationGradient;
-        illuminated = true;
+		if (!badIllumination)
+		{
+			lineRenderer.colorGradient = illuminationGradient;
+		}
+		else
+		{
+			lineRenderer.colorGradient = badIlluminationGradient;
+			badIllumination = false;
+		}
+		illuminated = true;
     }
 }

@@ -38,9 +38,15 @@ public class Interactable : MonoBehaviour {
 		}
 	}
 
+	public void TogglePower()
+	{
+		SetPowerState(!isPowered);
+	}
+
 	public void SetPowerState(bool activate)
 	{
 		isPowered = activate;
+		needsStateUpdate = true;
 	}
 	public void EnableInteraction(bool enableInteraction)
 	{
@@ -55,19 +61,6 @@ public class Interactable : MonoBehaviour {
 
 	void Update()
     {
-        RaycastHit hit; 
-        if (Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform == transform)
-        {
-            GameManager.instance.RequestPointerEmphasis();
-			OVRGazePointer.instance.SetPosition(hit.point);
-
-			if (!disableInteraction && (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey)))
-			{
-				isPowered = !isPowered;
-				needsStateUpdate = true;
-			}
-        }
-		
 		if (needsStateUpdate)
 		{
 			CallPowerEvents();
@@ -77,6 +70,17 @@ public class Interactable : MonoBehaviour {
 				roomLocation.UpdateEnergyLevel();
 			}
 			needsStateUpdate = false;
+		}
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("Throwable"))
+		{
+			if (!disableInteraction)
+			{
+				TogglePower();
+			}
 		}
 	}
 }

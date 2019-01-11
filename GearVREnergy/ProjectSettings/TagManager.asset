@@ -12,6 +12,7 @@ TagManager:
   - Cryo Door
   - listlast
   - Throwable
+  - Doorway
   layers:
   - Default
   - TransparentFX

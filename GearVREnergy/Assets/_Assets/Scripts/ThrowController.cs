@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ThrowController : MonoBehaviour {
 
-	float throwForce = 800f;
+	public bool disableThrowing = false;
+	public float throwForce = 800f;
 	public Vector3 handOffset;
 
 	public Transform itemInHand;
@@ -31,12 +32,18 @@ public class ThrowController : MonoBehaviour {
 		// If we are not holding anything, check if the player is pointing at a throwable object
 		else if (isHolding == false && Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform.CompareTag("Throwable"))
 		{
-			GameManager.instance.RequestPointerEmphasis();
 			OVRGazePointer.instance.SetPosition(hit.point);
-
-			if ((OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey)))
+			if (!disableThrowing)
 			{
-				PickUpObject(hit.transform);
+				GameManager.instance.RequestPointerEmphasis();
+				if ((OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey)))
+				{
+					PickUpObject(hit.transform);
+				}
+			}
+			else
+			{
+				GameManager.instance.RequestPointerEmphasis(true);
 			}
 		}
 
@@ -64,11 +71,19 @@ public class ThrowController : MonoBehaviour {
 		// We only want to move the item with the player, while it's being held
 		itemRB.isKinematic = true;
 	}
+
 	void ThrowObject()
 	{
+		// We are throwing the item, so remove the flag
 		isHolding = false;
+
+		// Remove the object parent, and thus the movement with the parent
 		itemInHand.transform.SetParent(null);
+
+		// Enable physics add force an let the rest work out on it's own
 		itemRB.isKinematic = false;
-		itemRB.AddForce(GameManager.instance.Pointer.forward * throwForce);
+
+		if (!disableThrowing)
+			itemRB.AddForce(GameManager.instance.Pointer.forward * throwForce, ForceMode.Impulse);
 	}
 }
