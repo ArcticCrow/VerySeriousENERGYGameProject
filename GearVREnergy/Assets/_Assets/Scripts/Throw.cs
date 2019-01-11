@@ -31,6 +31,7 @@ public class Throw : MonoBehaviour {
         }
         else if (isHolding == false && Physics.Raycast(GameManager.instance.Pointer.position, GameManager.instance.Pointer.forward, out hit) && hit.transform == transform)
         {
+            GameManager.instance.RequestPointerEmphasis();
             if ((OVRInput.GetDown(GameManager.instance.interactionButton) || Input.GetKeyDown(GameManager.instance.interactionKey)))
             {
                 PickUpObject();
@@ -45,8 +46,6 @@ public class Throw : MonoBehaviour {
         rb.isKinematic = true;
         item.transform.SetParent(GameManager.instance.Pointer);
         item.transform.position = offset;
-
-
     }
     void ReleaseObject()
 	{
