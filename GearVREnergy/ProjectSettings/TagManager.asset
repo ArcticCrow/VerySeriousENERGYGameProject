@@ -11,6 +11,7 @@ TagManager:
   - dontmove
   - Cryo Door
   - listlast
+  - Throwable
   layers:
   - Default
   - TransparentFX
