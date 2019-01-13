@@ -17,6 +17,7 @@ public class InteractableCondition : Condition
 
 	[Header("Interactable Control")]
 	public bool disableAIInteraction = false;
+	public bool disableOtherInteractables = false;
 	public bool overrideStartValue;
 	public bool startValue;
 
@@ -51,6 +52,11 @@ public class InteractableCondition : Condition
 		{
 			ShipAI.Instance.IgnoreInteractableInteraction(interactable.gameObject);
 		}
+		if (disableOtherInteractables)
+		{
+			GameManager.instance.interactionControl.DisableAllInteractions();
+			GameManager.instance.interactionControl.EnableInteractionWith(interactable.gameObject);
+		}
 		if (overrideStartValue) {
 			interactable.isPowered = false;
 		}
@@ -62,6 +68,11 @@ public class InteractableCondition : Condition
 		if (disableAIInteraction)
 		{
 			ShipAI.Instance.IgnoreInteractableInteraction(interactable.gameObject);
+		}
+		if (disableOtherInteractables)
+		{
+			GameManager.instance.interactionControl.EnableAllInteractions();
+			GameManager.instance.interactionControl.DisableInteractionWith(interactable.gameObject);
 		}
 	}
 }

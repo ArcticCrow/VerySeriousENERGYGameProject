@@ -5,6 +5,34 @@ using UnityEngine;
 
 public class InteractionController : MonoBehaviour {
 	public bool disableInteraction = false;
+	[SerializeField]
+	List<GameObject> allowedInteractions;
+
+	public void EnableInteractionWith(GameObject _gameObject)
+	{
+		if (allowedInteractions == null)
+		{
+			allowedInteractions = new List<GameObject>();
+		}
+		allowedInteractions.Add(_gameObject);
+	}
+
+	public void DisableInteractionWith(GameObject _gameObject)
+	{
+		if (allowedInteractions == null) return;
+		allowedInteractions.RemoveAll(x => x == _gameObject);
+	}
+
+	public void EnableAllInteractions(bool resetList = false)
+	{
+		disableInteraction = false;
+		if (resetList) allowedInteractions = null;
+	}
+
+	public void DisableAllInteractions()
+	{
+		disableInteraction = true;
+	}
 
 	private void Update()
 	{
@@ -19,7 +47,7 @@ public class InteractionController : MonoBehaviour {
 
 			OVRGazePointer.instance.SetPosition(hit.point);
 
-			if (!disableInteraction && !interactable.disableInteraction)
+			if (!interactable.disableInteraction && (!disableInteraction || allowedInteractions.Find(x => x == hit.transform.gameObject) != null))
 			{
 				GameManager.instance.RequestPointerEmphasis();
 				if (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey))
@@ -32,7 +60,6 @@ public class InteractionController : MonoBehaviour {
 				GameManager.instance.RequestPointerEmphasis(true);
 			}
         }
-
 	}
 }
 

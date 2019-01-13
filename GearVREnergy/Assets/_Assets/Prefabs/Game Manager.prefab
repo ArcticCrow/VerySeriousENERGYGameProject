@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 114001308440568654}
   - component: {fileID: 114142801938398568}
   - component: {fileID: 114874642822875134}
+  - component: {fileID: 114104880557550748}
+  - component: {fileID: 114051001153449178}
+  - component: {fileID: 114110605692541774}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -174,17 +177,38 @@ MonoBehaviour:
   interactionMask:
     serializedVersion: 2
     m_Bits: 262144
-  startGamePlay: 0
-  startButton: {fileID: 0}
-  pauseGamePlay: 0
+  state: 0
+  launchTutorial: 0
+  launchTutButton: {fileID: 0}
+  playGame: 0
+  playButton: {fileID: 0}
+  pause: 0
   pauseButton: {fileID: 0}
   findRooms: 1
   currentRoom: {fileID: 0}
   rooms: []
   fadeSpeed: 1
   fadeLength: 0.5
-  headRotationCompensation: 0.5
+  headRotationCompensation: 0.1
+  tutorialSequence: {fileID: 0}
+  startSequence: {fileID: 0}
+  gameplaySequences: []
+  endSequence: {fileID: 0}
   pointerIsRemote: 0
+--- !u!114 &114051001153449178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025573553176244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494ce61c87660f24fa1b1c3b09d7d6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableDoors: 0
+  keepOpenTime: 0.5
+  openableDoorways: []
 --- !u!114 &114065140905949478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,6 +263,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114104880557550748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025573553176244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61888d10a36e2974a9595541fead53bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableInteraction: 0
+  allowedInteractions: []
+--- !u!114 &114110605692541774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025573553176244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9e6121707357c4797e3d798536413a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableThrowing: 0
+  throwForce: 20
+  handOffset: {x: 0, y: 0, z: 1.5}
+  itemInHand: {fileID: 0}
 --- !u!114 &114130683969512180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,9 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b846266e18861cb4189b2a65ce97e982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyCapacity: 10000
-  startingEnergy: 1000
-  currentEnergy: 0
+  energyUsedThisRun: 0
+  totalEnergyUsedThisFlight: 0
   energyDependances:
     m_PersistentCalls:
       m_Calls:

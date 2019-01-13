@@ -39,29 +39,33 @@ public class GameManager : MonoBehaviour {
     
     [Header("Interaction")]
     public KeyCode interactionKey = KeyCode.E;
-    public OVRInput.Button interactionButton = OVRInput.Button.PrimaryIndexTrigger;
-    public float maxInteractionRange = 20f;
-    public LayerMask interactionMask;
+    public OVRInput.Button interactionButton = OVRInput.Button.DpadDown;
+    //public float maxInteractionRange = 20f;
+    //public LayerMask interactionMask;
 
 	[Header("Game State Controls")]
-	public State state = State.Boot;
-
-	public bool launchTutorial;
-	public Button launchTutButton;
-
+	public State state = State.Boot; // not used yet
 	public bool playGame;
-	public Button playButton;
-
 	public bool pause;
+
+	public bool enableTutorial = true;
+	public bool enableCore = true;
+	public bool enableEnding = true;
+
+	[Header("Menu Buttons")]
+	public Button launchTutButton;
+	public Button playButton;
 	public Button pauseButton;
 
-    [Header("Ship")]
+	// Ships rooms with information
+    [Header("Layout")]
     [SerializeField]
     bool findRooms = false;
     static string ROOM_TAG = "Room";
     public RoomInformation currentRoom;
-    public List<RoomInformation> rooms = new List<RoomInformation>();
+    public List<RoomInformation> rooms;
 
+	// Teleporation tweaking
     [Header("Teleportation")]
     public float fadeSpeed = 1f;
     public float fadeLength = 0.5f;
@@ -69,16 +73,27 @@ public class GameManager : MonoBehaviour {
     [Range(0, 1)]
     public float headRotationCompensation = 0.5f;
 
-	[Header("Tutorial Flow")]
-	public Sequence tutorialSequence;
-
+	// Gameplay and core game loop
 	[Header("Gameplay Flow")]
-	public Sequence startSequence;
+	public Sequence tutorialSequence;
 	public List<Sequence> gameplaySequences;
 	public Sequence endSequence;
 
+	public int startAmountOfShenanigans = 0;
+	public int shenanigansStepIncrease = 1;
+	int amountOfShenanigans;
+
 	Sequence activeSequence;
 
+	// Controllers
+	[HideInInspector]
+	public InteractionController interactionControl;
+	[HideInInspector]
+	public DoorController doorControl;
+	[HideInInspector]
+	public ThrowController throwControl;
+
+	// VR Pointer
 	[HideInInspector]
     public bool pointerIsRemote;
     public Transform Pointer
@@ -102,10 +117,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void Awake()
+	#region Boot
+	void Awake()
     {
         CheckSingeltonInstance();
-
         Initialize();
     }
 
@@ -117,7 +132,7 @@ public class GameManager : MonoBehaviour {
         }
 		if (launchTutButton != null)
 		{
-			launchTutButton.onClick.AddListener(StartTutorial);
+			launchTutButton.onClick.AddListener(PlayTutorial);
 		}
 		if (pauseButton != null)
         {
@@ -161,7 +176,32 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        CreateRoomListing();
+		if (interactionControl == null)
+		{
+			interactionControl = GetComponent<InteractionController>();
+			if (interactionControl == null)
+			{
+				interactionControl = gameObject.AddComponent<InteractionController>();
+			}
+		}
+		if (doorControl == null)
+		{
+			doorControl = GetComponent<DoorController>();
+			if (doorControl == null)
+			{
+				doorControl = gameObject.AddComponent<DoorController>();
+			}
+		}
+		if (throwControl == null)
+		{
+			throwControl = GetComponent<ThrowController>();
+			if (throwControl == null)
+			{
+				throwControl = gameObject.AddComponent<ThrowController>();
+			}
+		}
+
+		CreateRoomListing();
         InitializeRandom();
 
 		EnergyManager.Instance.Initialize();
@@ -185,6 +225,31 @@ public class GameManager : MonoBehaviour {
 		instance = this;
 	}
 
+	public void CreateRoomListing()
+	{
+		if (findRooms)
+		{
+			rooms = new List<RoomInformation>();
+
+			GameObject[] foundRooms = GameObject.FindGameObjectsWithTag(ROOM_TAG);
+
+			for (int i = 0; i < foundRooms.Length; i++)
+			{
+				RoomInformation ri = foundRooms[i].GetComponent<RoomInformation>();
+				if (ri != null)
+				{
+					rooms.Add(ri);
+				}
+			}
+		}
+	}
+
+	private void GenerateRandomSeed()
+	{
+		seed = System.DateTime.Now.Ticks.ToString();
+	}
+	#endregion
+
 	// Update is called once per frame
 	void Update () {
         // If a new seed is requested during a playsession, regenerate a new seed and reinitialize random
@@ -201,12 +266,6 @@ public class GameManager : MonoBehaviour {
 			playGame = false;
 		}
 
-		if (launchTutorial)
-		{
-			StartTutorial();
-			launchTutorial = false;
-		}
-
 		if (pause)
 		{
 			Pause();
@@ -214,77 +273,108 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-    private void GenerateRandomSeed()
-    {
-        seed = System.DateTime.Now.Ticks.ToString();
-    }
-
 	private void StartMenu()
 	{
-
+		// Fade in main menu
 	}
 
 	private void ReturnToMenu()
 	{
-		// Save Progress if necessary
-		if (activeSequence == tutorialSequence)
-		{
-			activeSequence = null;
-			return;
-		}
+		// Save sequence & progress if necessary
 		Pause();
 		StartMenu();
 	}
 
-	private void StartTutorial()
+	private void PlayTutorial()
 	{
-		if (tutorialSequence == null)
-		{
-			throw new Exception("No tutorial sequence has been setup");
-		}
-		activeSequence = tutorialSequence;
-		tutorialSequence.LaunchSequence();
+		enableTutorial = true;
+		PlayGame();
 	}
 
+	private IEnumerator GameplayLoop()
+	{
+		// Tutorial Sequence
+		if (enableTutorial)
+		{
+			if (tutorialSequence == null)
+			{
+				throw new Exception("No tutorial sequence has been set up!");
+			}
+			activeSequence = tutorialSequence;
+			activeSequence.LaunchSequence();
+
+			while (!activeSequence.isSequenceFinished) yield return null;
+		}
+
+		// Core Game Loop - Gameplay sequences in random order with increasing challenge
+		if (enableCore)
+		{
+			if (gameplaySequences == null)
+			{
+				throw new Exception("No gameplay sequences have been set up!");
+			}
+			if (gameplaySequences.Count > 0)
+			{
+				amountOfShenanigans = startAmountOfShenanigans;
+				List<Sequence> availableSequences = new List<Sequence>(gameplaySequences);
+				while (availableSequences.Count > 0)
+				{
+					// Pick and remove random sequence from available
+					int sequenceIndex = Random.Range(0, availableSequences.Count);
+					activeSequence = availableSequences[sequenceIndex];
+					availableSequences.Remove(activeSequence);
+
+					// Setup additional ai behaviour
+					ShipAI.Instance.StartShenanigans(amountOfShenanigans);
+					amountOfShenanigans += shenanigansStepIncrease;
+
+					// Start sequence
+					activeSequence.LaunchSequence();
+					while (!activeSequence.isSequenceFinished) yield return null;
+				}
+			}
+		}
+
+		// Outro Sequence
+		if (enableEnding)
+		{
+			if (endSequence == null)
+			{
+				throw new Exception("No end sequence has been set up!");
+			}
+			activeSequence = endSequence;
+			activeSequence.LaunchSequence();
+
+			while (!activeSequence.isSequenceFinished) yield return null;
+		}
+
+		yield return null;
+	}
 
 	private void PlayGame()
 	{
 		// Start Game - Load if necessary
 		EnergyManager.Instance.startEnergyRoutine = true;
-		ShipAI.Instance.startAIRoutine = true;
+		StartCoroutine(GameplayLoop());
 	}
 
 	private void Pause()
 	{
 		// Pause
 		EnergyManager.Instance.stopEnergyRoutine = true;
-		ShipAI.Instance.stopAIRoutine = true;
+		StopCoroutine(GameplayLoop());
 	}
 
-    public void CreateRoomListing()
-    {
-        if (findRooms)
-        {
-            rooms = new List<RoomInformation>();
+	private void ResetGame()
+	{
+		
+	}
 
-            GameObject[] foundRooms = GameObject.FindGameObjectsWithTag(ROOM_TAG);
-
-            for (int i = 0; i < foundRooms.Length; i++)
-            { 
-                RoomInformation ri = foundRooms[i].GetComponent<RoomInformation>();
-                if (ri != null)
-                {
-                    rooms.Add(ri);
-                }
-            }
-        }
-    }
-
-    public void SwitchCurrentRoom(RoomInformation newActiveRoom)
+	#region Movement/Teleportation 
+	public void SwitchCurrentRoom(RoomInformation newActiveRoom)
     {
         currentRoom = newActiveRoom;
     }
-
     public void TeleportToOtherRoom(RoomInformation roomA, RoomInformation roomB)
     {
         if (teleporting) return;
@@ -306,7 +396,6 @@ public class GameManager : MonoBehaviour {
         Transform destTransform = currentRoom.playerTeleportTransform;
         StartCoroutine(TeleportCoroutine(destTransform));
     }
-
     IEnumerator TeleportCoroutine(Transform destTransform)
     {
         Vector3 destPosition = destTransform.position;
@@ -346,6 +435,7 @@ public class GameManager : MonoBehaviour {
 
         yield return null;
     }
+	#endregion
 
 	public void RequestPointerEmphasis(bool badEmphasis = false, bool hide = false)
     {

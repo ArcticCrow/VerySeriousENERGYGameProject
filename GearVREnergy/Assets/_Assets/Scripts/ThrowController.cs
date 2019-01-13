@@ -5,6 +5,7 @@ using UnityEngine;
 public class ThrowController : MonoBehaviour {
 
 	public bool disableThrowing = false;
+
 	public float throwForce = 800f;
 	public Vector3 handOffset;
 
@@ -25,7 +26,7 @@ public class ThrowController : MonoBehaviour {
 	{
 		RaycastHit hit;
 		// If we are holding something already, let the player thro it
-		if (isHolding == true && (OVRInput.GetDown(OVRInput.Button.One) || Input.GetMouseButtonDown(0)))
+		if (isHolding == true && (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || Input.GetMouseButtonDown(0)))
 		{
 			ThrowObject();
 		}
@@ -83,6 +84,7 @@ public class ThrowController : MonoBehaviour {
 		// Enable physics add force an let the rest work out on it's own
 		itemRB.isKinematic = false;
 
+		// Apply throw force if allowed
 		if (!disableThrowing)
 			itemRB.AddForce(GameManager.instance.Pointer.forward * throwForce, ForceMode.Impulse);
 	}

@@ -38,28 +38,21 @@ public class Sequence : MonoBehaviour{
 	[HideInInspector]
 	public bool isSequenceFinished = false;
 
-	public bool IsSequenceComplete()
-	{
-		for (int i = 0; i < steps.Count; i++)
-		{
-			if (!steps[i].StepIsFinished())
-			{
-				return false;
-			}
-		}
-
-		return true;
-	}
-
 	public void LaunchSequence()
 	{
-		StartCoroutine(PlaySequence());
+		if (!isPlaying)
+		{
+			StartCoroutine(PlaySequence());
+		}
 	}
 
 	public void StopSequence()
 	{
-		StopCoroutine(PlaySequence());
-		isPlaying = false;
+		if (isPlaying)
+		{
+			StopCoroutine(PlaySequence());
+			isPlaying = false;
+		}
 	}
 
 	IEnumerator PlaySequence()
@@ -69,28 +62,32 @@ public class Sequence : MonoBehaviour{
         while (currentStep < steps.Count)
         {
             SequenceStep step = steps[currentStep];
-			step.Launch();
-            do
-            {
-                yield return null;
-            }
-            while (!step.StepIsFinished());
 
-			step.Complete();
+			if (step != null)
+			{
+				step.Launch();
+				do
+				{
+					yield return null;
+				}
+				while (!step.StepIsFinished());
 
-            if (step.waitAfterCompletion)
-            {
-                yield return new WaitForSeconds(step.waitTime);
-            }
+				step.Complete();
 
-			while (!step.hasCompleted) yield return null;
+				if (step.waitAfterCompletion)
+				{
+					yield return new WaitForSeconds(step.waitTime);
+				}
+
+				while (!step.hasCompleted) yield return null;
+			}
 
             currentStep++;
-            Debug.Log(currentStep + ". Step completed");
+            Debug.Log("Step '" + step.gameObject.name + "' is complete!");
         }
 
-        isSequenceFinished = false;
-        Debug.Log("Sequence completed");
+        isSequenceFinished = true;
+        Debug.Log("Sequence '" + name + "' is finished!");
 		isPlaying = false;
 		yield return null;
 	}

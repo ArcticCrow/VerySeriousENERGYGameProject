@@ -53,7 +53,10 @@ public class ShipAI : MonoBehaviour {
 
     bool isInitialized = false;
 
-	// Use this for initialization
+	int targetAmountOfShenanigans = 0;
+	int shenanigansPerformed = 0;
+
+	#region Boot and initilization
 	void Start ()
     {
 		CheckSingeltonInstance();
@@ -63,12 +66,10 @@ public class ShipAI : MonoBehaviour {
         CreateObjectListing();
         isInitialized = true;
     }
-
     private void CheckSingeltonInstance()
 	{
 		instance = this;
 	}
-
 	private void CreateObjectListing()
 	{
 		interactables = new List<GameObject>();
@@ -82,6 +83,7 @@ public class ShipAI : MonoBehaviour {
 			Debug.LogWarning(gameObject.name + ": No interactables could be found in the scene!");
 		}
 	}
+	#endregion
 
 	public void IgnoreInteractableInteraction(GameObject _gameObject)
 	{
@@ -91,7 +93,6 @@ public class ShipAI : MonoBehaviour {
 		}
 		ignoredInteractables.Add(_gameObject);
 	}
-
 	public void UnignoreInteractableInteraction(GameObject _gameObject)
 	{
 		if (ignoredInteractables == null)
@@ -110,8 +111,8 @@ public class ShipAI : MonoBehaviour {
             if (!isInitialized) Initialize();
             if (!isAIRoutineRunning)
 			{
-				print(gameObject.name + ": AI Coroutine is starting ...");
 				// Start AI coroutine
+				print(gameObject.name + ": AI Coroutine is starting ...");
 				StartCoroutine(PerformShenanigans());
 			}
 			else
@@ -120,6 +121,33 @@ public class ShipAI : MonoBehaviour {
 			}
 			startAIRoutine = false;
 		}
+	}
+
+	#region AI Routine
+	public void StartShenanigans(int amount, float minTimeDif = -1f, float maxTimeDif = -1f)
+	{
+		if (isAIRoutineRunning)
+		{
+			StopCoroutine(PerformShenanigans());
+			isAIRoutineRunning = false;
+		}
+
+		shenanigansPerformed = 0;
+		targetAmountOfShenanigans = amount;
+
+		if (minTimeDif >= 0)
+		{
+			minTimeDifference = minTimeDif;
+		}
+		if (maxTimeDif >= 0 && maxTimeDif > minTimeDifference)
+		{
+			maxTimeDifference = maxTimeDif;
+		}
+		else
+		{
+			maxTimeDifference = minTimeDifference;
+		}
+		startAIRoutine = true;
 	}
 
 	private IEnumerator PerformShenanigans()
@@ -137,13 +165,19 @@ public class ShipAI : MonoBehaviour {
 				isAIRoutineRunning = false;
 				stopAIRoutine = false;
 			}
-			else
+			else if (shenanigansPerformed < targetAmountOfShenanigans)
 			{
-				print(gameObject.name + ": Carrying out shenanigns ... :)");
+				print(gameObject.name + ": Carrying out shenanigans ... :)");
 				shenanigans.Invoke();
-
+				shenanigansPerformed++;
+				
 				// Wait for end of frame
 				yield return null;
+			}
+			else
+			{
+				print(gameObject.name + ": All shenanigans have been performed! :^ )");
+				stopAIRoutine = true;
 			}
 		}
 	}
@@ -173,4 +207,5 @@ public class ShipAI : MonoBehaviour {
 			Debug.LogWarning(gameObject.name + ": All viable interactables are already in their bad power state!");
 		}
 	}
+	#endregion
 }

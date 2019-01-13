@@ -5,10 +5,39 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour {
 
-	public bool disableTeleportation = false;
+	public bool disableDoors = false;
 	public float keepOpenTime = 0.5f;
 
+	[SerializeField]
+	List<GameObject> openableDoorways;
+
 	Doorway currentDoorway;
+
+	public void EnableDoorway(GameObject doorway)
+	{
+		if (openableDoorways == null)
+		{
+			openableDoorways = new List<GameObject>();
+		}
+		openableDoorways.Add(doorway);
+	}
+
+	public void DisableDoorway(GameObject doorway)
+	{
+		if (openableDoorways == null) return;
+		openableDoorways.RemoveAll(x => x == doorway);
+	}
+
+	public void EnableAllDoorways(bool resetList = false)
+	{
+		disableDoors = false;
+		if (resetList) openableDoorways = null;
+	}
+
+	public void DisableAllDoorways()
+	{
+		disableDoors = true;
+	}
 
 	private void Update()
 	{
@@ -33,7 +62,7 @@ public class DoorController : MonoBehaviour {
 
 			OVRGazePointer.instance.SetPosition(hit.point);
 
-			if (!disableTeleportation && doorway.openable)
+			if (doorway.openable && (!disableDoors || openableDoorways.Find(x=>x == hit.transform.gameObject)))
 			{
 				doorway.OpenDoor(keepOpenTime);
 				GameManager.instance.RequestPointerEmphasis();
