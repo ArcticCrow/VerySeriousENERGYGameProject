@@ -56,7 +56,7 @@ public class LightColorControl : MonoBehaviour {
 
 		while (running)
 		{
-			if (timeLeft <= Time.deltaTime)
+			if (timeLeft >= transitionTime)
 			{
 				if (!fadeFromInitialColor)
 				{
@@ -89,12 +89,12 @@ public class LightColorControl : MonoBehaviour {
 				{
 					toColor = colors[colorIndex];
 				}
-				timeLeft = transitionTime;
+				timeLeft = 0;
 			}
 			else
 			{
-				SetColor(Color.Lerp(fromColor, toColor, Time.deltaTime / timeLeft));
-				timeLeft -= Time.deltaTime;
+				SetColor(Color.Lerp(fromColor, toColor, timeLeft / transitionTime));
+				timeLeft += Time.deltaTime;
 			}
 
 			yield return null;
@@ -105,18 +105,18 @@ public class LightColorControl : MonoBehaviour {
 			bool complete = false;
 			fromColor = lights[0].GetComponent<Light>().color;
 			toColor = startColor;
-			timeLeft = transitionTime;
+			timeLeft = 0;
 
 			while (!complete)
 			{
-				if (timeLeft <= Time.deltaTime)
+				if (timeLeft >= transitionTime)
 				{
 					complete = true;
 				}
 				else
 				{
-					SetColor(Color.Lerp(fromColor, toColor, Time.deltaTime / timeLeft));
-					timeLeft -= Time.deltaTime;
+					SetColor(Color.Lerp(fromColor, toColor, timeLeft / transitionTime));
+					timeLeft += Time.deltaTime;
 				}
 
 				yield return null;

@@ -105,7 +105,7 @@ public class SoundController : MonoBehaviour
 		}
 		else
 		{
-			Debug.LogAssertion("Clip " + clip.ToString() + " couldn't be found!");
+			//Debug.LogAssertion("Clip " + clip.ToString() + " couldn't be found!");
 		}
 	}
 
@@ -133,7 +133,7 @@ public class SoundController : MonoBehaviour
 		}
 		else
 		{
-			Debug.LogAssertion("Clip " + clip.ToString() + " couldn't be found!");
+			//Debug.LogAssertion("Clip " + clip.ToString() + " couldn't be found!");
 			return 0;
 		}
 	}

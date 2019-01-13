@@ -398,7 +398,7 @@ public class GameManager : MonoBehaviour {
 			RoomInformation room = rooms[i];
 			for (int j = 0; j < room.interactables.Count; j++)
 			{
-				Interactable interactable = room.interactables[i];
+				Interactable interactable = room.interactables[j];
 				interactable.SetPowerState(false);
 			}
 		}
@@ -415,7 +415,7 @@ public class GameManager : MonoBehaviour {
 			RoomInformation room = rooms[i];
 			for (int j = 0; j < room.interactables.Count; j++)
 			{
-				Interactable interactable = room.interactables[i];
+				Interactable interactable = room.interactables[j];
 				interactable.SetPowerState(true);
 			}
 		}
@@ -487,6 +487,15 @@ public class GameManager : MonoBehaviour {
 
         yield return null;
     }
+
+	public void FadeScreenIn()
+	{
+		StartCoroutine(FadeIn());
+	}
+	public void FadeScreenOut()
+	{
+		StartCoroutine(FadeOut());
+	}
 
 	IEnumerator FadeOut()
 	{
