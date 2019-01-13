@@ -20,6 +20,11 @@ public class SequenceObjective : SequenceStep {
     // Things The player has to do before the objective is 'completed'
     public List<Condition> conditions = new List<Condition>();
 
+	public void OnValidate()
+	{
+		type = Type.Objective;
+	}
+
 	public override bool StepIsFinished()
 	{
 		return IsObjectiveCleared();

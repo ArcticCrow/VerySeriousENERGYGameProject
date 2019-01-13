@@ -10,12 +10,11 @@ public abstract class SequenceStep : MonoBehaviour
 	{
 		Objective,
 		Voice,
-		Cinematic,
-		Setup
+		Action
 	}
 	public Type type;
 
-    public bool waitAfterCompletion = false;
+	public bool waitAfterCompletion = false;
     public float waitTime = 0;
 
 	[HideInInspector]

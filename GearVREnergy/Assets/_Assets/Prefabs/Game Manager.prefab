@@ -172,17 +172,15 @@ MonoBehaviour:
   generateRandomSeed: 0
   seed: 58008
   interactionKey: 32
-  interactionButton: 8192
-  maxInteractionRange: 20
-  interactionMask:
-    serializedVersion: 2
-    m_Bits: 262144
+  interactionButton: 32
   state: 0
-  launchTutorial: 0
-  launchTutButton: {fileID: 0}
   playGame: 0
-  playButton: {fileID: 0}
   pause: 0
+  enableTutorial: 1
+  enableCore: 0
+  enableEnding: 0
+  launchTutButton: {fileID: 0}
+  playButton: {fileID: 0}
   pauseButton: {fileID: 0}
   findRooms: 1
   currentRoom: {fileID: 0}
@@ -191,9 +189,18 @@ MonoBehaviour:
   fadeLength: 0.5
   headRotationCompensation: 0.1
   tutorialSequence: {fileID: 0}
-  startSequence: {fileID: 0}
-  gameplaySequences: []
+  gameplaySequences:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   endSequence: {fileID: 0}
+  startAmountOfShenanigans: 0
+  shenanigansStepIncrease: 1
+  interactionControl: {fileID: 0}
+  doorControl: {fileID: 0}
+  throwControl: {fileID: 0}
   pointerIsRemote: 0
 --- !u!114 &114051001153449178
 MonoBehaviour:
@@ -207,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableDoors: 0
-  keepOpenTime: 0.5
+  keepOpenTime: 1
   openableDoorways: []
 --- !u!114 &114065140905949478
 MonoBehaviour:

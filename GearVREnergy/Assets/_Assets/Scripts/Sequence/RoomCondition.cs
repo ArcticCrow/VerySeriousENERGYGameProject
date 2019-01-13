@@ -15,8 +15,8 @@ public class RoomCondition : Condition
     public RoomInformation room;
     public RoomEnergyLabel energyLabel;
     public bool targetValue;
-    
-    public override bool IsConditionMet()
+
+	public override bool IsConditionMet()
     {
 		if (!isInitialized) return false;
         if (room == null)

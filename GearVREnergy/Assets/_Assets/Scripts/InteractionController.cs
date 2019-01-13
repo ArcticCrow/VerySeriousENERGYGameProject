@@ -34,6 +34,38 @@ public class InteractionController : MonoBehaviour {
 		disableInteraction = true;
 	}
 
+	public void EnableInteractionForRoom(RoomInformation room)
+	{
+		if (allowedInteractions == null)
+		{
+			allowedInteractions = new List<GameObject>();
+		}
+		for (int i = 0; i < room.interactables.Count; i++)
+		{
+			allowedInteractions.Add(room.interactables[i].gameObject);
+		}
+	}
+
+	public void DisableInteractionForRoom(RoomInformation room)
+	{
+		if (allowedInteractions == null) return;
+		for (int i = 0; i < room.interactables.Count; i++)
+		{
+			allowedInteractions.RemoveAll(x => x == room.interactables[i].gameObject);
+		}
+	}
+
+	public bool IsInteractionAllowedWith(GameObject _gameObject)
+	{
+		/*string temp = "IsInteractionAllowedWith " + _gameObject.name + ": " + (allowedInteractions.Find(x => x == _gameObject) != null);
+		for (int i = 0; i < allowedInteractions.Count; i++)
+		{
+			temp += "\nAllowed: " + allowedInteractions[i].name;
+		}
+		print(temp);*/
+		return !disableInteraction || allowedInteractions.Find(x => x == _gameObject) != null;
+	}
+
 	private void Update()
 	{
 		RaycastHit hit; 
@@ -47,7 +79,7 @@ public class InteractionController : MonoBehaviour {
 
 			OVRGazePointer.instance.SetPosition(hit.point);
 
-			if (!interactable.disableInteraction && (!disableInteraction || allowedInteractions.Find(x => x == hit.transform.gameObject) != null))
+			if (!interactable.disableInteraction && IsInteractionAllowedWith(hit.transform.gameObject))
 			{
 				GameManager.instance.RequestPointerEmphasis();
 				if (OVRInput.GetUp(GameManager.instance.interactionButton) || Input.GetKeyUp(GameManager.instance.interactionKey))

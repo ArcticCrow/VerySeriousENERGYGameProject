@@ -22,6 +22,8 @@ public class InteractableCondition : Condition
 	public bool startValue;
 
 
+	bool disabledInteractionState;
+
 	public override bool IsConditionMet()
 	{
 		if (!isInitialized)
@@ -54,12 +56,18 @@ public class InteractableCondition : Condition
 		}
 		if (disableOtherInteractables)
 		{
-			GameManager.instance.interactionControl.DisableAllInteractions();
+			disabledInteractionState = GameManager.instance.interactionControl.disableInteraction;
+			if (!disabledInteractionState)
+			{
+				GameManager.instance.interactionControl.DisableAllInteractions();
+			}
 			GameManager.instance.interactionControl.EnableInteractionWith(interactable.gameObject);
 		}
 		if (overrideStartValue) {
-			interactable.isPowered = false;
+			interactable.SetPowerState(startValue);
 		}
+
+		interactable.EnableInteraction(true);
 		isInitialized = true;
 	}
 
@@ -71,7 +79,10 @@ public class InteractableCondition : Condition
 		}
 		if (disableOtherInteractables)
 		{
-			GameManager.instance.interactionControl.EnableAllInteractions();
+			if (!disabledInteractionState)
+			{
+				GameManager.instance.interactionControl.EnableAllInteractions(true);
+			}
 			GameManager.instance.interactionControl.DisableInteractionWith(interactable.gameObject);
 		}
 	}

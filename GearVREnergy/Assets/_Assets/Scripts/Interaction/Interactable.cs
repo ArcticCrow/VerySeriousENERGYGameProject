@@ -77,7 +77,7 @@ public class Interactable : MonoBehaviour {
 	{
 		if (collision.gameObject.CompareTag("Throwable"))
 		{
-			if (!disableInteraction)
+			if (!disableInteraction && GameManager.instance.interactionControl.IsInteractionAllowedWith(gameObject))
 			{
 				TogglePower();
 			}

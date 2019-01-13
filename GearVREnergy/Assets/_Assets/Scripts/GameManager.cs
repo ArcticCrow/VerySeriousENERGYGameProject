@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour {
     [Range(0, 1)]
     public float headRotationCompensation = 0.5f;
 
+	float fadeLevel = 0;
+
 	// Gameplay and core game loop
 	[Header("Gameplay Flow")]
 	public Sequence tutorialSequence;
@@ -201,6 +203,12 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
+		if (playGame && enableTutorial)
+		{
+			interactionControl.DisableAllInteractions();
+			doorControl.DisableAllDoorways();
+		}
+
 		CreateRoomListing();
         InitializeRandom();
 
@@ -235,10 +243,10 @@ public class GameManager : MonoBehaviour {
 
 			for (int i = 0; i < foundRooms.Length; i++)
 			{
-				RoomInformation ri = foundRooms[i].GetComponent<RoomInformation>();
-				if (ri != null)
+				RoomInformation room = foundRooms[i].GetComponent<RoomInformation>();
+				if (room != null)
 				{
-					rooms.Add(ri);
+					rooms.Add(room);
 				}
 			}
 		}
@@ -331,6 +339,9 @@ public class GameManager : MonoBehaviour {
 					// Start sequence
 					activeSequence.LaunchSequence();
 					while (!activeSequence.isSequenceFinished) yield return null;
+
+					// Stop AI routine after finishing sequence
+					ShipAI.Instance.StopAllCoroutines();
 				}
 			}
 		}
@@ -351,10 +362,15 @@ public class GameManager : MonoBehaviour {
 		yield return null;
 	}
 
+	public void ActivateInsaneAIMode()
+	{
+		ShipAI.Instance.StopAllCoroutines();
+		ShipAI.Instance.StartShenanigans(99, 0.5f, 2f);
+	}
+
 	private void PlayGame()
 	{
 		// Start Game - Load if necessary
-		EnergyManager.Instance.startEnergyRoutine = true;
 		StartCoroutine(GameplayLoop());
 	}
 
@@ -362,6 +378,7 @@ public class GameManager : MonoBehaviour {
 	{
 		// Pause
 		EnergyManager.Instance.stopEnergyRoutine = true;
+		ShipAI.Instance.stopAIRoutine = true;
 		StopCoroutine(GameplayLoop());
 	}
 
@@ -370,11 +387,58 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
+	public void ShutdownAllInteractables(bool disableInteraction)
+	{
+		if (disableInteraction)
+		{
+			interactionControl.DisableAllInteractions();
+		}
+		for (int i = 0; i < rooms.Count; i++)
+		{
+			RoomInformation room = rooms[i];
+			for (int j = 0; j < room.interactables.Count; j++)
+			{
+				Interactable interactable = room.interactables[i];
+				interactable.SetPowerState(false);
+			}
+		}
+	}
+
+	public void ActivateAllInteractables(bool enableInteraction)
+	{
+		if (enableInteraction)
+		{
+			interactionControl.DisableAllInteractions();
+		}
+		for (int i = 0; i < rooms.Count; i++)
+		{
+			RoomInformation room = rooms[i];
+			for (int j = 0; j < room.interactables.Count; j++)
+			{
+				Interactable interactable = room.interactables[i];
+				interactable.SetPowerState(true);
+			}
+		}
+	}
+
 	#region Movement/Teleportation 
+
+
 	public void SwitchCurrentRoom(RoomInformation newActiveRoom)
     {
         currentRoom = newActiveRoom;
     }
+	public void TeleportToRoom(RoomInformation room)
+	{
+		if (teleporting) return;
+		teleporting = true;
+
+		SwitchCurrentRoom(room);
+
+		Transform destTransform = currentRoom.playerTeleportTransform;
+		StartCoroutine(TeleportCoroutine(destTransform));
+	}
+
     public void TeleportToOtherRoom(RoomInformation roomA, RoomInformation roomB)
     {
         if (teleporting) return;
@@ -396,20 +460,13 @@ public class GameManager : MonoBehaviour {
         Transform destTransform = currentRoom.playerTeleportTransform;
         StartCoroutine(TeleportCoroutine(destTransform));
     }
-    IEnumerator TeleportCoroutine(Transform destTransform)
+    IEnumerator TeleportCoroutine(Transform destTransform, bool ignoreFade = false)
     {
         Vector3 destPosition = destTransform.position;
         Quaternion destRotation = destTransform.rotation;
 
-        float fadeLevel = 0;
-
-        while (fadeLevel < 1)
-        {
-            yield return null;
-            fadeLevel += fadeSpeed * Time.deltaTime;
-            fadeLevel = Mathf.Clamp01(fadeLevel);
-            OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
-        }
+		if (!ignoreFade)
+		yield return FadeOut();
 
         SoundController.PlaySound(SFXClip.Teleportation);
         player.transform.position = destPosition;
@@ -421,20 +478,37 @@ public class GameManager : MonoBehaviour {
         headRotation = Quaternion.Euler(euler);
         player.transform.rotation = Quaternion.Slerp(Quaternion.identity, Quaternion.Inverse(headRotation), headRotationCompensation) * destRotation;
 		    
-    yield return new WaitForSeconds(fadeLength);
+		yield return new WaitForSeconds(fadeLength);
 
         teleporting = false;
 
-        while (fadeLevel > 0)
-        {
-            yield return null;
-            fadeLevel -= fadeSpeed * Time.deltaTime;
-            fadeLevel = Mathf.Clamp01(fadeLevel);
-            OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
-        }
+		if (!ignoreFade)
+		yield return FadeIn();
 
         yield return null;
     }
+
+	IEnumerator FadeOut()
+	{
+		while (fadeLevel < 1)
+		{
+			yield return null;
+			fadeLevel += fadeSpeed * Time.deltaTime;
+			fadeLevel = Mathf.Clamp01(fadeLevel);
+			OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
+		}
+	}
+
+	IEnumerator FadeIn()
+	{
+		while (fadeLevel > 0)
+		{
+			yield return null;
+			fadeLevel -= fadeSpeed * Time.deltaTime;
+			fadeLevel = Mathf.Clamp01(fadeLevel);
+			OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
+		}
+	}
 	#endregion
 
 	public void RequestPointerEmphasis(bool badEmphasis = false, bool hide = false)
