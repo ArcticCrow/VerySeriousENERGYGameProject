@@ -113,7 +113,7 @@ MonoBehaviour:
   isPowered: 1
   badPowerState: 1
   needsStateUpdate: 0
-  classLabel: 1
+  classLabel: 0
   overrideInfluence: 0
   overriddenInfluence: 0
   powerOnEvents:

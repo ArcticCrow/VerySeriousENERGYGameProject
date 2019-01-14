@@ -34,9 +34,10 @@ public class DoorController : MonoBehaviour {
 		if (resetList) openableDoorways = null;
 	}
 
-	public void DisableAllDoorways()
+	public void DisableAllDoorways(bool resetList = false)
 	{
 		disableDoors = true;
+		if (resetList) openableDoorways = null;
 	}
 
 	private void Update()
@@ -57,12 +58,11 @@ public class DoorController : MonoBehaviour {
 					currentDoorway.CloseDoor(true);
 				}
 				currentDoorway = doorway;
-
 			}
 
 			OVRGazePointer.instance.SetPosition(hit.point);
 
-			if (doorway.openable && (!disableDoors || openableDoorways.Find(x=>x == hit.transform.gameObject)))
+			if (doorway.openable && (!disableDoors || (openableDoorways != null && openableDoorways.Find(x=>x == hit.transform.gameObject))))
 			{
 				doorway.OpenDoor(keepOpenTime);
 				GameManager.instance.RequestPointerEmphasis();

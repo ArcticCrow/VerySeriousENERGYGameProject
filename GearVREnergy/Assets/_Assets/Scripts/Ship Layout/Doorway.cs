@@ -73,7 +73,7 @@ public class Doorway : MonoBehaviour {
 			open = true;
 			if (door != null)
 			{
-				SoundController.PlaySound(SFXClip.Door);
+				SFXController.PlaySound(SFXController.instance.soundEffects.door, 0.5f);
 				door.GetComponent<Animator>().SetBool("LookAt", true);
 			}
 		}

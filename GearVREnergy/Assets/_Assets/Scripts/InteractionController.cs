@@ -29,9 +29,10 @@ public class InteractionController : MonoBehaviour {
 		if (resetList) allowedInteractions = null;
 	}
 
-	public void DisableAllInteractions()
+	public void DisableAllInteractions(bool resetList = false)
 	{
 		disableInteraction = true;
+		if (resetList) allowedInteractions = null;
 	}
 
 	public void EnableInteractionForRoom(RoomInformation room)
@@ -63,7 +64,8 @@ public class InteractionController : MonoBehaviour {
 			temp += "\nAllowed: " + allowedInteractions[i].name;
 		}
 		print(temp);*/
-		return !disableInteraction || allowedInteractions.Find(x => x == _gameObject) != null;
+
+		return !disableInteraction || (allowedInteractions != null && allowedInteractions.Find(x => x == _gameObject) != null);
 	}
 
 	private void Update()
