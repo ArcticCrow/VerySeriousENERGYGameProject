@@ -26,6 +26,11 @@ public class BGMController : MonoBehaviour
 		musicAudioSource = GetComponent<AudioSource>();
 	}
 
+	public void ResetToDefaults()
+	{
+		SetPitch(1);
+	}
+
 	public void PlayTutorialBGM()
 	{
 		PlayBGM(musicClips.tutorial);
@@ -68,7 +73,7 @@ public class BGMController : MonoBehaviour
 		return musicAudioSource.clip.length;
 	}
 
-	public void ChangePitch(float pitch)
+	public void SetPitch(float pitch)
 	{
 		musicAudioSource.pitch = Mathf.Clamp(pitch, -3, 3);
 	}
@@ -84,11 +89,16 @@ public class BGMController : MonoBehaviour
 
 		while (timeElapsed < pitchSmoothingTime)
 		{
-			ChangePitch(Mathf.Lerp(musicAudioSource.pitch, targetPitch, timeElapsed / pitchSmoothingTime));
+			SetPitch(Mathf.Lerp(musicAudioSource.pitch, targetPitch, timeElapsed / pitchSmoothingTime));
 			yield return new WaitForEndOfFrame();
 			timeElapsed += Time.deltaTime;
 		}
 		print("Completed BGM pitch change.");
 		yield return null;
+	}
+
+	public void StopBGM()
+	{
+		musicAudioSource.Stop();
 	}
 }

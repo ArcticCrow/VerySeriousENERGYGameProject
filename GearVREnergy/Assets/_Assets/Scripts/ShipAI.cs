@@ -132,6 +132,11 @@ public class ShipAI : MonoBehaviour {
 			isAIRoutineRunning = false;
 		}
 
+		if (amount <= 0)
+		{
+			return;
+		}
+
 		shenanigansPerformed = 0;
 		targetAmountOfShenanigans = amount;
 
@@ -143,7 +148,7 @@ public class ShipAI : MonoBehaviour {
 		{
 			maxTimeDifference = maxTimeDif;
 		}
-		else
+		else if (maxTimeDif < minTimeDif)
 		{
 			maxTimeDifference = minTimeDifference;
 		}
@@ -169,6 +174,7 @@ public class ShipAI : MonoBehaviour {
 			{
 				print(gameObject.name + ": Carrying out shenanigans ... :)");
 				shenanigans.Invoke();
+				SFXController.PlaySound(SFXController.instance.soundEffects.shenanigans);
 				shenanigansPerformed++;
 				
 				// Wait for end of frame

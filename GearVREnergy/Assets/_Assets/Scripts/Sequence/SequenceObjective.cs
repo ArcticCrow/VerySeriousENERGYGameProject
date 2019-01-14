@@ -34,7 +34,7 @@ public class SequenceObjective : SequenceStep {
 	{
 		if (!hasLaunched)
 		{
-			print("not launched");
+			//print("not launched");
 			return false;
 		}
 		if (conditions.Count == 0)

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4101256411815252}
   - component: {fileID: 114539487867561022}
   m_Layer: 0
-  m_Name: Hint (AI Voice)
+  m_Name: Do the thing (AI Voice)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4897778427012886}
   - component: {fileID: 114728815276300904}
   m_Layer: 0
-  m_Name: Activate Recycler
+  m_Name: Turn off Oxygen Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4692514800369276}
   - component: {fileID: 114413763702694714}
   m_Layer: 0
-  m_Name: Speed up ship in the Maintenance Room (Objective)
+  m_Name: Full Speed ahead (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4498096841999662}
   - component: {fileID: 114707692953781050}
   m_Layer: 0
-  m_Name: Activate Engine
+  m_Name: Turn off Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,8 +196,21 @@ MonoBehaviour:
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 21
-  useVoiceClipLength: 1
+  audioClip: {fileID: 0}
+  useAudioClipLength: 1
+  useReminders: 1
+  playRemindersOnce: 1
+  waitOneInterval: 0
+  reminderInterval: 10
+  reminderStoppingStep: {fileID: 114413763702694714}
+  reminderClips:
+  - {fileID: 8300000, guid: eb3ec241effe0fb4491b677be5924d70, type: 3}
+  - {fileID: 8300000, guid: 5673edec573e0ed429f7b0c851faf316, type: 3}
+  - {fileID: 8300000, guid: 29c8cb01fd4137f42a2fe7badd6c8fb9, type: 3}
+  - {fileID: 8300000, guid: 7d4528a1cfd1e0b43b98f17cacaf2cc2, type: 3}
+  - {fileID: 8300000, guid: 482bd67b2c47d0b44b3137dd94d5216b, type: 3}
+  - {fileID: 8300000, guid: 2553cd8c540fa134d9ed8f46be4d254c, type: 3}
+  - {fileID: 8300000, guid: b019a7b3b88cfa14594dc0efd92253df, type: 3}
 --- !u!114 &114707692953781050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,11 +225,11 @@ MonoBehaviour:
   isInitialized: 0
   interactable: {fileID: 0}
   check: 0
-  targetValue: 1
+  targetValue: 0
   disableAIInteraction: 1
   disableOtherInteractables: 0
   overrideStartValue: 1
-  startValue: 0
+  startValue: 1
 --- !u!114 &114728815276300904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,11 +244,11 @@ MonoBehaviour:
   isInitialized: 0
   interactable: {fileID: 0}
   check: 0
-  targetValue: 1
+  targetValue: 0
   disableAIInteraction: 1
   disableOtherInteractables: 0
   overrideStartValue: 1
-  startValue: 0
+  startValue: 1
 --- !u!114 &114929708775505454
 MonoBehaviour:
   m_ObjectHideFlags: 1

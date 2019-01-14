@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4985807485182060}
   - component: {fileID: 114525917487465016}
   m_Layer: 0
-  m_Name: Stop the Kitchen Chaos (Objective)
+  m_Name: Kitchen Chaos (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4266076268167370}
   - component: {fileID: 114827206044878214}
   m_Layer: 0
-  m_Name: Hint (AI Voice)
+  m_Name: Do the thing (AI Voice)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86653ba6eee5f35438709902dd3b5cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steps: []
+  steps:
+  - {fileID: 114827206044878214}
+  - {fileID: 114525917487465016}
   isSequenceFinished: 0
 --- !u!114 &114413034831071928
 MonoBehaviour:
@@ -309,8 +311,39 @@ MonoBehaviour:
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 21
-  useVoiceClipLength: 1
+  audioClip: {fileID: 0}
+  useAudioClipLength: 1
+  useReminders: 1
+  playRemindersOnce: 1
+  waitOneInterval: 0
+  reminderInterval: 10
+  reminderStoppingStep: {fileID: 114525917487465016}
+  reminderClips:
+  - {fileID: 8300000, guid: 6784abcffcd352f489324c25eb4f9e93, type: 3}
+  - {fileID: 8300000, guid: 372bc96439d3bf3468bb3537ac77c921, type: 3}
+  - {fileID: 8300000, guid: 58ac26a328686ac4e888a05716fd18a1, type: 3}
+  - {fileID: 8300000, guid: 1b1a3a81c2ee9784cba0a8e59727d350, type: 3}
+  - {fileID: 8300000, guid: 5cbc0ca0cfb0aae43b117517050a715b, type: 3}
+  - {fileID: 8300000, guid: 7f48c37c65fe7d74da140c6785199110, type: 3}
+  - {fileID: 8300000, guid: 5125d8a6598630348ba8aaed72a9a618, type: 3}
+  - {fileID: 8300000, guid: 594a3acdd1a550341a5fb31d7300ab28, type: 3}
+  - {fileID: 8300000, guid: da2d30768d245a74c88441fb46cbd2fc, type: 3}
+  - {fileID: 8300000, guid: aca69e9b6dd1e8f459e2891dc504f771, type: 3}
+  - {fileID: 8300000, guid: e0c5bafdfa71883449f9a4067d1566f1, type: 3}
+  - {fileID: 8300000, guid: dca6a14a754156a4b914e486abe6c3d0, type: 3}
+  - {fileID: 8300000, guid: 7c163ceaf2cf1664b81a1d496d26f38f, type: 3}
+  - {fileID: 8300000, guid: 4790a80239438ae4899199c0702bf0b5, type: 3}
+  - {fileID: 8300000, guid: 1ec7efd51082c4b499ae0134d9c9c957, type: 3}
+  - {fileID: 8300000, guid: b71c25dd23ae1ad4bb99d996d6c8683d, type: 3}
+  - {fileID: 8300000, guid: daa3196ba09b2104fa2059aabcd3577c, type: 3}
+  - {fileID: 8300000, guid: 28f22a9eac4b75949ad214cc92b553da, type: 3}
+  - {fileID: 8300000, guid: 1f03db197883e8842a38075f2e6a5266, type: 3}
+  - {fileID: 8300000, guid: 43eaef92ab8226047b8f09b8657264e6, type: 3}
+  - {fileID: 8300000, guid: 175678a2089004640a2aa063fd82b3a6, type: 3}
+  - {fileID: 8300000, guid: f5205f0931071f049ad6c343a131a7d6, type: 3}
+  - {fileID: 8300000, guid: b44b976b203aea14e88864e948a44308, type: 3}
+  - {fileID: 8300000, guid: 5272566d08546114fa5bed59af8af62c, type: 3}
+  - {fileID: 8300000, guid: ee59c7c8186cf054cbb1a3ea63029f87, type: 3}
 --- !u!114 &114960215717553724
 MonoBehaviour:
   m_ObjectHideFlags: 1

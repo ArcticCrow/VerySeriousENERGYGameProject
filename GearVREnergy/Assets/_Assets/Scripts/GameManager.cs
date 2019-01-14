@@ -308,6 +308,11 @@ public class GameManager : MonoBehaviour {
 			{
 				throw new Exception("No tutorial sequence has been set up!");
 			}
+
+			BGMController.instance.StopBGM();
+			BGMController.instance.ResetToDefaults();
+			BGMController.instance.PlayTutorialBGM();
+
 			activeSequence = tutorialSequence;
 			activeSequence.LaunchSequence();
 
@@ -321,6 +326,13 @@ public class GameManager : MonoBehaviour {
 			{
 				throw new Exception("No gameplay sequences have been set up!");
 			}
+
+			BGMController.instance.StopBGM();
+			BGMController.instance.SetPitch(0);
+			BGMController.instance.FadeToPitch(1);
+
+			BGMController.instance.PlayCoreBGM();
+
 			if (gameplaySequences.Count > 0)
 			{
 				amountOfShenanigans = startAmountOfShenanigans;
@@ -330,14 +342,18 @@ public class GameManager : MonoBehaviour {
 					// Pick and remove random sequence from available
 					int sequenceIndex = Random.Range(0, availableSequences.Count);
 					activeSequence = availableSequences[sequenceIndex];
+
 					availableSequences.Remove(activeSequence);
+
+					// Start sequence
+					Debug.Log("Playing sequence " + activeSequence.name);
+					activeSequence.LaunchSequence();
 
 					// Setup additional ai behaviour
 					ShipAI.Instance.StartShenanigans(amountOfShenanigans);
 					amountOfShenanigans += shenanigansStepIncrease;
 
-					// Start sequence
-					activeSequence.LaunchSequence();
+					// Wait for sequence to finish
 					while (!activeSequence.isSequenceFinished) yield return null;
 
 					// Stop AI routine after finishing sequence
@@ -353,6 +369,10 @@ public class GameManager : MonoBehaviour {
 			{
 				throw new Exception("No end sequence has been set up!");
 			}
+
+			BGMController.instance.StopBGM();
+			BGMController.instance.PlayInsaneBGM();
+
 			activeSequence = endSequence;
 			activeSequence.LaunchSequence();
 

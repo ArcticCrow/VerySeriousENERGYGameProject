@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4104095897510838}
   - component: {fileID: 114336002418523674}
   m_Layer: 0
-  m_Name: Turn on TV
+  m_Name: Turn off TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4001274286863792}
   - component: {fileID: 114791136853202228}
   m_Layer: 0
-  m_Name: Hint (AI Voice)
+  m_Name: Do the thing (AI Voice)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4747093797217826}
   - component: {fileID: 114934490468214490}
   m_Layer: 0
-  m_Name: Turn on the Hologram (Objective)
+  m_Name: Relax a little (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4562386250700578}
   - component: {fileID: 114308947915155758}
   m_Layer: 0
-  m_Name: Turn on Music
+  m_Name: Turn off Stereo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86653ba6eee5f35438709902dd3b5cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steps: []
+  steps:
+  - {fileID: 114791136853202228}
+  - {fileID: 114934490468214490}
   isSequenceFinished: 0
 --- !u!114 &114308947915155758
 MonoBehaviour:
@@ -188,10 +190,10 @@ MonoBehaviour:
   interactable: {fileID: 0}
   check: 0
   targetValue: 0
-  disableAIInteraction: 0
+  disableAIInteraction: 1
   disableOtherInteractables: 0
-  overrideStartValue: 0
-  startValue: 0
+  overrideStartValue: 1
+  startValue: 1
 --- !u!114 &114336002418523674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,10 +209,10 @@ MonoBehaviour:
   interactable: {fileID: 0}
   check: 0
   targetValue: 0
-  disableAIInteraction: 0
+  disableAIInteraction: 1
   disableOtherInteractables: 0
-  overrideStartValue: 0
-  startValue: 0
+  overrideStartValue: 1
+  startValue: 1
 --- !u!114 &114791136853202228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,8 +229,25 @@ MonoBehaviour:
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 21
-  useVoiceClipLength: 1
+  audioClip: {fileID: 0}
+  useAudioClipLength: 1
+  useReminders: 1
+  playRemindersOnce: 1
+  waitOneInterval: 0
+  reminderInterval: 10
+  reminderStoppingStep: {fileID: 114934490468214490}
+  reminderClips:
+  - {fileID: 8300000, guid: 3bd1dce241257d44d9758eb2eb1f38f4, type: 3}
+  - {fileID: 8300000, guid: 007c74230b1381842b531b8f1bf60416, type: 3}
+  - {fileID: 8300000, guid: b560d5e2aeea3a7488c682156bfa50a3, type: 3}
+  - {fileID: 8300000, guid: 9ace905494e40f943a01be7da9cc160f, type: 3}
+  - {fileID: 8300000, guid: 8fa5fde4545940c41bf320ba583cdec9, type: 3}
+  - {fileID: 8300000, guid: 56b7c0c27d6ea1c428e32459a477f42d, type: 3}
+  - {fileID: 8300000, guid: 9e929c6ee971da64083258334a5c0fb4, type: 3}
+  - {fileID: 8300000, guid: 093acec0e5ef2ed46857313d629f9b2a, type: 3}
+  - {fileID: 8300000, guid: ec24a76eca2a3b443a40fc3334c64362, type: 3}
+  - {fileID: 8300000, guid: 8571266b4485e9444841154af7e334bc, type: 3}
+  - {fileID: 8300000, guid: e5ec7423b22c04d4db7208ec18ba51d1, type: 3}
 --- !u!114 &114934490468214490
 MonoBehaviour:
   m_ObjectHideFlags: 1

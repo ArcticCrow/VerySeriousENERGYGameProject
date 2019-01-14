@@ -12,6 +12,7 @@ public class SFXController : MonoBehaviour {
 	{
 		public AudioClip door;
 		public AudioClip teleportation;
+		public AudioClip shenanigans;
 	}
 	public SFXAudioClip soundEffects;
 
@@ -27,9 +28,14 @@ public class SFXController : MonoBehaviour {
 	{
 		if (clip == null)
 		{
-			Debug.LogAssertion("AI Audio Clip can't be null!");
+			Debug.LogAssertion("SFX Clip can't be null!");
 			return;
 		}
 		audioSource.PlayOneShot(clip, volume);
+	}
+
+	public static void StopSounds()
+	{
+		audioSource.Stop();
 	}
 }

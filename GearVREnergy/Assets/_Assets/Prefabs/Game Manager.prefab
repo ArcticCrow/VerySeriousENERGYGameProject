@@ -169,15 +169,15 @@ MonoBehaviour:
   rightHandAnchor: {fileID: 0}
   centerEyeAnchor: {fileID: 0}
   player: {fileID: 0}
-  generateRandomSeed: 0
+  generateRandomSeed: 1
   seed: 58008
   interactionKey: 32
   interactionButton: 32
   state: 0
-  playGame: 0
+  playGame: 1
   pause: 0
-  enableTutorial: 1
-  enableCore: 0
+  enableTutorial: 0
+  enableCore: 1
   enableEnding: 0
   launchTutButton: {fileID: 0}
   playButton: {fileID: 0}
@@ -190,7 +190,6 @@ MonoBehaviour:
   headRotationCompensation: 0.1
   tutorialSequence: {fileID: 0}
   gameplaySequences:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -575,8 +574,8 @@ MonoBehaviour:
   interactableObjectTags:
   - Interactable
   interactables: []
-  minTimeDifference: 5
-  maxTimeDifference: 10
+  minTimeDifference: 8
+  maxTimeDifference: 15
   shenanigans:
     m_PersistentCalls:
       m_Calls:

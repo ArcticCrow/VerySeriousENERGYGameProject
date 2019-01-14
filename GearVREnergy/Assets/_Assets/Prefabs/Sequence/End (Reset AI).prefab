@@ -11,21 +11,6 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1407122343907944}
   m_IsPrefabAsset: 1
---- !u!1 &1002553381147312
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4596746734875380}
-  m_Layer: 0
-  m_Name: other
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1210902756225836
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,22 +173,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1622255027961708
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4178585734360542}
-  - component: {fileID: 114205557859005120}
-  m_Layer: 0
-  m_Name: Rave Mode Light Control
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1673933085175252
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,22 +239,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!1 &1958337191065332
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4878327276236756}
-  - component: {fileID: 114733784843881326}
-  m_Layer: 0
-  m_Name: Insane Mode Light Control
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &4068090902400172
 Transform:
   m_ObjectHideFlags: 1
@@ -297,7 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4079363135977846
 Transform:
@@ -310,20 +263,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4178585734360542
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622255027961708}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4596746734875380}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4269881925490168
 Transform:
@@ -336,7 +276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4347366390346676
 Transform:
@@ -348,7 +288,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4596746734875380}
   - {fileID: 4802429747063608}
   - {fileID: 4660389575159230}
   - {fileID: 4689731489618304}
@@ -376,22 +315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4596746734875380
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002553381147312}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4878327276236756}
-  - {fileID: 4178585734360542}
-  m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4613673652240342
 Transform:
@@ -404,7 +328,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4647280139965036
 Transform:
@@ -417,7 +341,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4660389575159230
 Transform:
@@ -430,7 +354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4689731489618304
 Transform:
@@ -443,7 +367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4709996127657610
 Transform:
@@ -456,7 +380,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4750058825882266
 Transform:
@@ -469,7 +393,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4802429747063608
 Transform:
@@ -482,7 +406,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4829905301259014
 Transform:
@@ -495,20 +419,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4878327276236756
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1958337191065332}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4596746734875380}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4983215156839634
 Transform:
@@ -521,7 +432,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114043876469691890
 MonoBehaviour:
@@ -560,7 +471,18 @@ MonoBehaviour:
   hasCompleted: 0
   actions:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: Show
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   actionsUponCompletion:
@@ -609,7 +531,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 114205557859005120}
+      - m_Target: {fileID: 0}
         m_MethodName: StartColorChange
         m_Mode: 1
         m_Arguments:
@@ -705,24 +627,6 @@ MonoBehaviour:
   - {fileID: 114808861076693928}
   - {fileID: 114050259596296576}
   isSequenceFinished: 0
---- !u!114 &114205557859005120
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622255027961708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca752ad92aa27bc4ebd30ff6fe0dc184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionTime: 1
-  useRandomColors: 1
-  colors: []
-  fadeFromInitialColor: 0
-  fadeToInitialColor: 1
-  findAllLights: 1
-  lights: []
 --- !u!114 &114235589151779266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -739,8 +643,11 @@ MonoBehaviour:
   waitTime: 5
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 1
-  useVoiceClipLength: 0
+  audioClip: {fileID: 0}
+  useAudioClipLength: 0
+  useReminders: 0
+  reminderClips: []
+  reminderInterval: 10
 --- !u!114 &114241556098540508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -798,7 +705,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114733784843881326}
+      - m_Target: {fileID: 0}
         m_MethodName: StartColorChange
         m_Mode: 1
         m_Arguments:
@@ -823,8 +730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  waitAfterCompletion: 0
-  waitTime: 0
+  waitAfterCompletion: 1
+  waitTime: 3
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
@@ -865,8 +772,11 @@ MonoBehaviour:
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 1
-  useVoiceClipLength: 1
+  audioClip: {fileID: 0}
+  useAudioClipLength: 0
+  useReminders: 0
+  reminderClips: []
+  reminderInterval: 10
 --- !u!114 &114495382984094486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -921,26 +831,6 @@ MonoBehaviour:
   disableOtherInteractables: 0
   overrideStartValue: 1
   startValue: 1
---- !u!114 &114733784843881326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1958337191065332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca752ad92aa27bc4ebd30ff6fe0dc184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionTime: 1
-  useRandomColors: 0
-  colors:
-  - {r: 1, g: 0.41037738, b: 0.41037738, a: 1}
-  - {r: 1, g: 0, b: 0, a: 0}
-  fadeFromInitialColor: 1
-  fadeToInitialColor: 1
-  findAllLights: 1
-  lights: []
 --- !u!114 &114808861076693928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -957,8 +847,11 @@ MonoBehaviour:
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 1
-  useVoiceClipLength: 1
+  audioClip: {fileID: 0}
+  useAudioClipLength: 0
+  useReminders: 0
+  reminderClips: []
+  reminderInterval: 10
 --- !u!114 &114841149930775200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -979,11 +872,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: 
+        m_MethodName: FadeScreenOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1027,12 +920,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  waitAfterCompletion: 1
+  waitAfterCompletion: 0
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 21
-  useVoiceClipLength: 1
+  audioClip: {fileID: 0}
+  useAudioClipLength: 0
+  useReminders: 0
+  reminderClips: []
+  reminderInterval: 10
 --- !u!114 &114997015694163828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1063,7 +959,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 114733784843881326}
+      - m_Target: {fileID: 0}
         m_MethodName: StopColorChange
         m_Mode: 1
         m_Arguments:

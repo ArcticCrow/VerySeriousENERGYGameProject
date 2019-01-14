@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4345023079620950}
   - component: {fileID: 114103340125008620}
   m_Layer: 0
-  m_Name: Turn off Bathroom Appliances (Objective)
+  m_Name: Get Clean (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,22 +43,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!1 &1527164898142548
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4564776238638298}
-  - component: {fileID: 114432470323101990}
-  m_Layer: 0
-  m_Name: Hint (AI Voice)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
 --- !u!1 &1546831269596410
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +54,22 @@ GameObject:
   - component: {fileID: 114413958557803068}
   m_Layer: 0
   m_Name: Bath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!1 &1684807667282374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4382154047456554}
+  - component: {fileID: 114432470323101990}
+  m_Layer: 0
+  m_Name: Do the thing (AI Voice)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,9 +159,22 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4564776238638298}
+  - {fileID: 4382154047456554}
   - {fileID: 4345023079620950}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4382154047456554
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1684807667282374}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4371926756223046}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4544563507097204
@@ -176,19 +189,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4345023079620950}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4564776238638298
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1527164898142548}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4371926756223046}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114103340125008620
 MonoBehaviour:
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1527164898142548}
+  m_GameObject: {fileID: 1684807667282374}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e08c2511e8a757442aa0e03405c0a038, type: 3}
@@ -280,8 +280,36 @@ MonoBehaviour:
   waitTime: 0
   hasLaunched: 0
   hasCompleted: 0
-  voiceClip: 21
-  useVoiceClipLength: 1
+  audioClip: {fileID: 0}
+  useAudioClipLength: 1
+  useReminders: 1
+  playRemindersOnce: 1
+  waitOneInterval: 0
+  reminderInterval: 10
+  reminderStoppingStep: {fileID: 114103340125008620}
+  reminderClips:
+  - {fileID: 8300000, guid: 81688149734a7494a9c0e2124fa720f6, type: 3}
+  - {fileID: 8300000, guid: db804570e05d73144b3ffda487680625, type: 3}
+  - {fileID: 8300000, guid: 9936662d74c2cd540b0b6b32d88f295a, type: 3}
+  - {fileID: 8300000, guid: c3b0bb2d7e22972428c3ae5bc71ac11c, type: 3}
+  - {fileID: 8300000, guid: 68d213967ff63354884bb31d445373ff, type: 3}
+  - {fileID: 8300000, guid: 5dd957b3bcf59d34c88bed13ff584b31, type: 3}
+  - {fileID: 8300000, guid: 82f2f3b1bb02de4419883a46d7e8a2e1, type: 3}
+  - {fileID: 8300000, guid: 2ed896658730f9c4d93de12f6208b7e0, type: 3}
+  - {fileID: 8300000, guid: 916cb63b851a5bd4cb9996ff73b56861, type: 3}
+  - {fileID: 8300000, guid: 99f2247372c25254992fe53814caa957, type: 3}
+  - {fileID: 8300000, guid: eb36c425c8c28e4468999f945fc1ef28, type: 3}
+  - {fileID: 8300000, guid: 027a8408cd4c05648b2ad0308b678f94, type: 3}
+  - {fileID: 8300000, guid: c83f57fce62d6db4ca5524a306c83832, type: 3}
+  - {fileID: 8300000, guid: 2d8ee8e1ca3ff384b876914930e05391, type: 3}
+  - {fileID: 8300000, guid: 9acd7877e227d3e4a9eb0ea536aeb333, type: 3}
+  - {fileID: 8300000, guid: 29abde02ce01a5b47a928358baab612c, type: 3}
+  - {fileID: 8300000, guid: bed0a48b7f25adf4882f9ad1ca82d1a6, type: 3}
+  - {fileID: 8300000, guid: 3850eefa6c6da9f4c88cfd92228af86d, type: 3}
+  - {fileID: 8300000, guid: ab9ac70bf3d12b4429174c88b9baa5fc, type: 3}
+  - {fileID: 8300000, guid: a80d8739dcf19894f803dc4d1634ebf2, type: 3}
+  - {fileID: 8300000, guid: f151c26c38c223f42980650c3aa04ad2, type: 3}
+  - {fileID: 8300000, guid: 86c05a56978188e428f4321f53e36eaa, type: 3}
 --- !u!114 &114550506927173228
 MonoBehaviour:
   m_ObjectHideFlags: 1
