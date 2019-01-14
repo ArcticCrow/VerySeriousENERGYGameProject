@@ -20,7 +20,7 @@ public class LightColorControl : MonoBehaviour {
 
 	bool running = false;
 
-	private void Start()
+	private void Awake()
 	{
 		if (findAllLights)
 		{
