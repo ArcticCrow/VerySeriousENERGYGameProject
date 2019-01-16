@@ -25,6 +25,7 @@ public abstract class SequenceStep : MonoBehaviour
 	public abstract void Launch();
 	public abstract bool StepIsFinished();
 	public abstract void Complete();
+	public abstract void Stop();
 }
 
 [Serializable]
@@ -51,6 +52,10 @@ public class Sequence : MonoBehaviour{
 		{
 			StopCoroutine(PlaySequence());
 			isPlaying = false;
+		}
+		for (int i = 0; i < steps.Count; i++)
+		{
+			steps[i].Stop();
 		}
 	}
 
@@ -87,7 +92,9 @@ public class Sequence : MonoBehaviour{
 
         isSequenceFinished = true;
         Debug.Log("Sequence '" + name + "' is finished!");
-		isPlaying = false;
+
+		StopSequence();
+
 		yield return null;
 	}
 }

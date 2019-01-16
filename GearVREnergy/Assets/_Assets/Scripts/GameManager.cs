@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -36,8 +37,25 @@ public class GameManager : MonoBehaviour {
     public bool generateRandomSeed = false;
     [Tooltip("The seed for the random number generator. (Mainly used for the ship AI)")]
     public string seed = "58008";
-    
-    [Header("Interaction")]
+
+	[Header("Game Settings")]
+	public int runsToReachPlanet = 3;
+	public int numberOfCurrentRun = 1;
+
+	[Serializable]
+	public struct JourneyThreshhold
+	{
+		public float energyAmount;
+		public Color colorCode;
+	}
+
+	public float maxAmountOfEnergyPerRun;
+	public List<JourneyThreshhold> journeyThreshholds = new List<JourneyThreshhold>();
+
+	public UnityEvent runStartEvents;
+	public UnityEvent runCompletionEvents;
+
+	[Header("Interaction")]
     public KeyCode interactionKey = KeyCode.E;
     public OVRInput.Button interactionButton = OVRInput.Button.DpadDown;
     //public float maxInteractionRange = 20f;
@@ -85,7 +103,8 @@ public class GameManager : MonoBehaviour {
 	public int shenanigansStepIncrease = 1;
 	int amountOfShenanigans;
 
-	Sequence activeSequence;
+	[HideInInspector]
+	public Sequence activeSequence;
 
 	// Controllers
 	[HideInInspector]
@@ -212,6 +231,13 @@ public class GameManager : MonoBehaviour {
 		CreateRoomListing();
         InitializeRandom();
 
+		if (journeyThreshholds.Count > 0)
+		{
+			journeyThreshholds.Sort(delegate (JourneyThreshhold a, JourneyThreshhold b) {
+				return (a.energyAmount).CompareTo(b.energyAmount);
+			});
+		}
+
 		EnergyManager.Instance.Initialize();
 		ShipAI.Instance.Initialize();
 	}
@@ -260,7 +286,13 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        // If a new seed is requested during a playsession, regenerate a new seed and reinitialize random
+        if (state == State.Boot)
+		{
+			OVRInspector.instance.fader.SetFadeLevel(1);
+			state = State.Menu;
+		}
+		
+		// If a new seed is requested during a playsession, regenerate a new seed and reinitialize random
         if (generateRandomSeed)
         {
             GenerateRandomSeed();
@@ -301,6 +333,11 @@ public class GameManager : MonoBehaviour {
 
 	private IEnumerator GameplayLoop()
 	{
+		if (numberOfCurrentRun <= 0)
+		{
+			numberOfCurrentRun = 1;
+		}
+		if (runStartEvents != null) runStartEvents.Invoke();
 		// Tutorial Sequence
 		if (enableTutorial)
 		{
@@ -309,14 +346,24 @@ public class GameManager : MonoBehaviour {
 				throw new Exception("No tutorial sequence has been set up!");
 			}
 
-			BGMController.instance.StopBGM();
-			BGMController.instance.ResetToDefaults();
+			BGMController.instance.SetPitch(0);
 			BGMController.instance.PlayTutorialBGM();
+			BGMController.instance.PitchIn(1f);
+
+			ShipAI.Instance.ResetIgnoredInteractables();
+			EnergyManager.Instance.startEnergyRoutine = true;
 
 			activeSequence = tutorialSequence;
 			activeSequence.LaunchSequence();
 
 			while (!activeSequence.isSequenceFinished) yield return null;
+
+			EnergyManager.Instance.stopEnergyRoutine = true;
+
+			BGMController.instance.PitchOut(1f);
+			yield return new WaitForSeconds(1f);
+
+			EnergyManager.Instance.ResetEnergyUsedThisRun();
 		}
 
 		// Core Game Loop - Gameplay sequences in random order with increasing challenge
@@ -326,19 +373,23 @@ public class GameManager : MonoBehaviour {
 			{
 				throw new Exception("No gameplay sequences have been set up!");
 			}
-
-			BGMController.instance.StopBGM();
 			BGMController.instance.SetPitch(0);
-			BGMController.instance.FadeToPitch(1);
-
 			BGMController.instance.PlayCoreBGM();
+			BGMController.instance.PitchIn(1f);
 
 			if (gameplaySequences.Count > 0)
 			{
+				ShutdownAllInteractables(false);
+
+				EnergyManager.Instance.startEnergyRoutine = true;
+
 				amountOfShenanigans = startAmountOfShenanigans;
 				List<Sequence> availableSequences = new List<Sequence>(gameplaySequences);
 				while (availableSequences.Count > 0)
 				{
+					// Let AI Interact with everything
+					ShipAI.Instance.ResetIgnoredInteractables();
+
 					// Pick and remove random sequence from available
 					int sequenceIndex = Random.Range(0, availableSequences.Count);
 					activeSequence = availableSequences[sequenceIndex];
@@ -360,6 +411,9 @@ public class GameManager : MonoBehaviour {
 					ShipAI.Instance.StopAllCoroutines();
 				}
 			}
+
+			BGMController.instance.PitchOut(1f);
+			yield return new WaitForSeconds(1f);
 		}
 
 		// Outro Sequence
@@ -370,8 +424,11 @@ public class GameManager : MonoBehaviour {
 				throw new Exception("No end sequence has been set up!");
 			}
 
-			BGMController.instance.StopBGM();
+			// Let AI Interact with everything
+			ShipAI.Instance.ResetIgnoredInteractables();
+			BGMController.instance.SetPitch(0);
 			BGMController.instance.PlayInsaneBGM();
+			BGMController.instance.PitchIn(5f);
 
 			activeSequence = endSequence;
 			activeSequence.LaunchSequence();
@@ -379,13 +436,23 @@ public class GameManager : MonoBehaviour {
 			while (!activeSequence.isSequenceFinished) yield return null;
 		}
 
+		if (numberOfCurrentRun >= runsToReachPlanet)
+		{
+			Debug.Log("All runs completed. Show final result to player(s)!");
+			numberOfCurrentRun = 1;
+		}
+		else
+		{
+			numberOfCurrentRun++;
+		}
+		if (runCompletionEvents != null) runCompletionEvents.Invoke();
 		yield return null;
 	}
 
 	public void ActivateInsaneAIMode()
 	{
 		ShipAI.Instance.StopAllCoroutines();
-		ShipAI.Instance.StartShenanigans(99, 0.5f, 2f);
+		ShipAI.Instance.StartShenanigans(99, 1f, 3f);
 	}
 
 	private void PlayGame()
@@ -419,7 +486,8 @@ public class GameManager : MonoBehaviour {
 			for (int j = 0; j < room.interactables.Count; j++)
 			{
 				Interactable interactable = room.interactables[j];
-				interactable.SetPowerState(false);
+				if (!interactable.disableInteraction)
+					interactable.SetPowerState(false);
 			}
 		}
 	}
@@ -436,7 +504,8 @@ public class GameManager : MonoBehaviour {
 			for (int j = 0; j < room.interactables.Count; j++)
 			{
 				Interactable interactable = room.interactables[j];
-				interactable.SetPowerState(true);
+				if (!interactable.disableInteraction)
+					interactable.SetPowerState(true);
 			}
 		}
 	}

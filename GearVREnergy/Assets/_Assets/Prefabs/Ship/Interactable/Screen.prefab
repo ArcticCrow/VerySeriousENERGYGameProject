@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableInteraction: 0
-  isPowered: 1
-  badPowerState: 1
+  isPowered: 0
+  badPowerState: 0
   needsStateUpdate: 0
   classLabel: 0
   overrideInfluence: 0

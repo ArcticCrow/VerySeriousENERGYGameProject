@@ -86,4 +86,9 @@ public class SequenceObjective : SequenceStep {
 		}
 		hasCompleted = true;
 	}
+
+	public override void Stop()
+	{
+
+	}
 }

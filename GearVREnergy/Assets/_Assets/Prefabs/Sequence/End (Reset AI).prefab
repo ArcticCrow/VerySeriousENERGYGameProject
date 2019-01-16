@@ -60,6 +60,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &1275952176763564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4398795118266886}
+  - component: {fileID: 114655578015839386}
+  m_Layer: 0
+  m_Name: Reboot Noise (SFX)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!1 &1335842801913680
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +156,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &1494366855445628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4362693179816654}
+  - component: {fileID: 114582618238094780}
+  m_Layer: 0
+  m_Name: To the Control Room (AI Voice)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!1 &1525458234935736
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +199,7 @@ GameObject:
   - component: {fileID: 4416612220275690}
   - component: {fileID: 114144246687247406}
   m_Layer: 0
-  m_Name: Power Up Ship (Action)
+  m_Name: Start the Rave (Action)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,6 +254,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &1771837319211378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4652788609085868}
+  - component: {fileID: 114682774255516862}
+  m_Layer: 0
+  m_Name: Power Up Ship (Action)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!1 &1877844687022408
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +280,7 @@ GameObject:
   - component: {fileID: 4829905301259014}
   - component: {fileID: 114433063705639142}
   m_Layer: 0
-  m_Name: To the Control Room (AI Voice)
+  m_Name: Crash Sound (SFX)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,7 +314,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4079363135977846
 Transform:
@@ -279,7 +327,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4269881925490168
 Transform:
@@ -292,7 +340,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4347366390346676
 Transform:
@@ -308,11 +356,14 @@ Transform:
   - {fileID: 4802429747063608}
   - {fileID: 4594714387773768}
   - {fileID: 4689731489618304}
+  - {fileID: 4829905301259014}
   - {fileID: 4079363135977846}
   - {fileID: 4647280139965036}
   - {fileID: 4068090902400172}
+  - {fileID: 4398795118266886}
+  - {fileID: 4652788609085868}
+  - {fileID: 4362693179816654}
   - {fileID: 4416612220275690}
-  - {fileID: 4829905301259014}
   - {fileID: 4709996127657610}
   - {fileID: 4269881925490168}
   - {fileID: 4613673652240342}
@@ -320,6 +371,32 @@ Transform:
   - {fileID: 4983215156839634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4362693179816654
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494366855445628}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4347366390346676}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4398795118266886
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275952176763564}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4347366390346676}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4416612220275690
 Transform:
@@ -332,7 +409,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 7
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4594714387773768
 Transform:
@@ -358,7 +435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 11
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4647280139965036
 Transform:
@@ -371,7 +448,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 5
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4652788609085868
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771837319211378}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4347366390346676}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4660389575159230
 Transform:
@@ -410,7 +500,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4750058825882266
 Transform:
@@ -423,7 +513,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4802429747063608
 Transform:
@@ -449,7 +539,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4983215156839634
 Transform:
@@ -462,7 +552,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4347366390346676}
-  m_RootOrder: 13
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114043876469691890
 MonoBehaviour:
@@ -475,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86858151e9501db4cb997690603d2850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInitialized: 0
+  isInitialized: 1
   interactable: {fileID: 0}
   check: 0
   targetValue: 0
@@ -495,8 +585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  waitAfterCompletion: 0
-  waitTime: 0
+  waitAfterCompletion: 1
+  waitTime: 10
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -532,10 +622,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  waitAfterCompletion: 0
-  waitTime: 0
-  hasLaunched: 0
-  hasCompleted: 0
+  waitAfterCompletion: 1
+  waitTime: 5
+  hasLaunched: 1
+  hasCompleted: 1
   actions:
     m_PersistentCalls:
       m_Calls:
@@ -572,44 +662,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: PlayCelebrationBGM
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: FadeToPitch
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   actionsUponCompletion:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetPowerState
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: EnableAllDoorways
         m_Mode: 6
@@ -645,7 +702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86858151e9501db4cb997690603d2850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInitialized: 0
+  isInitialized: 1
   interactable: {fileID: 0}
   check: 0
   targetValue: 1
@@ -669,11 +726,14 @@ MonoBehaviour:
   - {fileID: 114952420679677474}
   - {fileID: 114263260570626984}
   - {fileID: 114392595047597548}
+  - {fileID: 114433063705639142}
   - {fileID: 114997015694163828}
   - {fileID: 114235589151779266}
   - {fileID: 114844222516457610}
+  - {fileID: 114655578015839386}
+  - {fileID: 114682774255516862}
+  - {fileID: 114582618238094780}
   - {fileID: 114144246687247406}
-  - {fileID: 114433063705639142}
   - {fileID: 114332066680427456}
   - {fileID: 114495382984094486}
   - {fileID: 114841149930775200}
@@ -693,11 +753,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   waitAfterCompletion: 1
-  waitTime: 0
-  hasLaunched: 0
-  hasCompleted: 0
+  waitTime: 5
+  hasLaunched: 1
+  hasCompleted: 1
   audioClip: {fileID: 8300000, guid: 197b6f9ffe1223343aa4672db3771875, type: 3}
-  useAudioClipLength: 1
+  useAudioClipLength: 0
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -717,9 +777,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   waitAfterCompletion: 1
-  waitTime: 1
-  hasLaunched: 0
-  hasCompleted: 0
+  waitTime: 0
+  hasLaunched: 1
+  hasCompleted: 1
   actions:
     m_PersistentCalls:
       m_Calls:
@@ -766,8 +826,8 @@ MonoBehaviour:
   type: 2
   waitAfterCompletion: 0
   waitTime: 0
-  hasLaunched: 0
-  hasCompleted: 0
+  hasLaunched: 1
+  hasCompleted: 1
   actions:
     m_PersistentCalls:
       m_Calls:
@@ -809,6 +869,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: FadeToPitch
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114332066680427456
@@ -824,8 +895,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   waitAfterCompletion: 1
-  waitTime: 3
-  hasLaunched: 0
+  waitTime: 5
+  hasLaunched: 1
   hasCompleted: 0
   comparisonOperator: 0
   conditions:
@@ -844,8 +915,8 @@ MonoBehaviour:
   type: 0
   waitAfterCompletion: 0
   waitTime: 0
-  hasLaunched: 0
-  hasCompleted: 0
+  hasLaunched: 1
+  hasCompleted: 1
   comparisonOperator: 0
   conditions:
   - {fileID: 114043876469691890}
@@ -861,11 +932,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  waitAfterCompletion: 1
-  waitTime: 0
-  hasLaunched: 0
-  hasCompleted: 0
-  audioClip: {fileID: 8300000, guid: 354c37cd61ec24bbcbbc7921d0a71bc1, type: 3}
+  waitAfterCompletion: 0
+  waitTime: 3.9981859
+  hasLaunched: 1
+  hasCompleted: 1
+  audioClip: {fileID: 8300000, guid: 485ac48a563e2bf44bb4de7ead5a1f68, type: 3}
   useAudioClipLength: 1
   useReminders: 0
   playRemindersOnce: 0
@@ -903,7 +974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25e1e93aef17d047aee3f25ceff4ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInitialized: 0
+  isInitialized: 1
   check: 0
   room: {fileID: 0}
   energyLabel: 0
@@ -927,6 +998,113 @@ MonoBehaviour:
   disableOtherInteractables: 0
   overrideStartValue: 1
   startValue: 1
+--- !u!114 &114582618238094780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494366855445628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08c2511e8a757442aa0e03405c0a038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  waitAfterCompletion: 1
+  waitTime: 3.9981859
+  hasLaunched: 1
+  hasCompleted: 1
+  audioClip: {fileID: 8300000, guid: 485ac48a563e2bf44bb4de7ead5a1f68, type: 3}
+  useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 10
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
+--- !u!114 &114655578015839386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275952176763564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08c2511e8a757442aa0e03405c0a038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  waitAfterCompletion: 0
+  waitTime: 3.9981859
+  hasLaunched: 1
+  hasCompleted: 1
+  audioClip: {fileID: 8300000, guid: 354c37cd61ec24bbcbbc7921d0a71bc1, type: 3}
+  useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 10
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
+--- !u!114 &114682774255516862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771837319211378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486abad2bbc8b524a89661bbf0a33f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  waitAfterCompletion: 1
+  waitTime: 5
+  hasLaunched: 1
+  hasCompleted: 1
+  actions:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: PlayCelebrationBGM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: PitchIn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  actionsUponCompletion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SetPowerState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114808861076693928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1002,8 +1180,8 @@ MonoBehaviour:
   type: 0
   waitAfterCompletion: 0
   waitTime: 0
-  hasLaunched: 0
-  hasCompleted: 0
+  hasLaunched: 1
+  hasCompleted: 1
   comparisonOperator: 0
   conditions:
   - {fileID: 114147189846013460}
@@ -1020,9 +1198,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   waitAfterCompletion: 1
-  waitTime: 0
-  hasLaunched: 0
-  hasCompleted: 0
+  waitTime: 25.49551
+  hasLaunched: 1
+  hasCompleted: 1
   audioClip: {fileID: 8300000, guid: 2749c9eac7bad8445b00b8f974512da4, type: 3}
   useAudioClipLength: 1
   useReminders: 0
@@ -1043,10 +1221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  waitAfterCompletion: 0
-  waitTime: 0
-  hasLaunched: 0
-  hasCompleted: 0
+  waitAfterCompletion: 1
+  waitTime: 10
+  hasLaunched: 1
+  hasCompleted: 1
   actions:
     m_PersistentCalls:
       m_Calls:
@@ -1095,13 +1273,13 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_MethodName: FadeToPitch
+        m_MethodName: PitchOut
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 10
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2

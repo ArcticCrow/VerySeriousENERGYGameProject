@@ -102,6 +102,12 @@ public class ShipAI : MonoBehaviour {
 		ignoredInteractables.RemoveAll(x => x == _gameObject);
 	}
 
+	public void ResetIgnoredInteractables()
+	{
+		ignoredInteractables = null;
+		ignoredInteractables = new List<GameObject>();
+	}
+
 	// Update is called once per frame
 	void Update () {
 

@@ -39,4 +39,9 @@ public class SequenceAction : SequenceStep
     {
         return hasLaunched;
     }
+
+	public override void Stop()
+	{
+
+	}
 }

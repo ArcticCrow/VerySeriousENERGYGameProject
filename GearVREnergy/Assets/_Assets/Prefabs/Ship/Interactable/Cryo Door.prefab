@@ -381,7 +381,7 @@ MonoBehaviour:
   target: {fileID: 0}
   maxScale: {x: 1, y: 1, z: 1}
   minScale: {x: 0, y: 1, z: 1}
-  duration: 1
+  duration: 3
 --- !u!114 &114264836254566098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1835,7 +1835,7 @@ MonoBehaviour:
   target: {fileID: 0}
   maxScale: {x: 1, y: 1, z: 1}
   minScale: {x: 0, y: 1, z: 1}
-  duration: 1
+  duration: 3
 --- !u!114 &114540543534704820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1859,9 +1859,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116e95bd1ef40844a8de57adc62955e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableInteraction: 0
+  disableInteraction: 1
   isPowered: 0
-  badPowerState: 1
+  badPowerState: 0
   needsStateUpdate: 0
   classLabel: 0
   overrideInfluence: 0

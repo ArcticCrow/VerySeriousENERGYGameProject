@@ -1135,6 +1135,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 037cfdbb871f42446b7123782ef2a99d, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114319083013207886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1173,28 +1179,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: PlayTutorialBGM
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: ChangePitch
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
@@ -1242,6 +1226,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 191220231cf638c4bb469000f183cea4, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114442346162821026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1413,6 +1403,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 4e686e7e3c9faf04391219e4287babb3, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114496010135147268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1497,29 +1493,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   actionsUponCompletion:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: PlayCoreBGM
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: FadeToPitch
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114660012060264464
@@ -1629,6 +1603,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 2494307526c5d444999bb2603deb36aa, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114771518190851650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1642,7 +1622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   waitAfterCompletion: 0
-  waitTime: 0
+  waitTime: 5
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1671,13 +1651,13 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_MethodName: FadeToPitch
+        m_MethodName: PitchOut
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 5
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
@@ -1706,6 +1686,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 07b90fdcb2df1d54b932457322a3d170, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114786121346491824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1724,6 +1710,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 99313a8da72a8cb498e462110c87dae8, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114789922439682938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1742,6 +1734,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 2f4772612202e004daf4cce5a259c27e, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114856409960376336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1836,6 +1834,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 73e8e3ef827e22447995e603a15ca610, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114910190376280854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1854,6 +1858,12 @@ MonoBehaviour:
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 1fd8c1687f7f605408c2ff0ca2cf2f56, type: 3}
   useAudioClipLength: 1
+  useReminders: 0
+  playRemindersOnce: 0
+  waitOneInterval: 1
+  reminderInterval: 15
+  reminderStoppingStep: {fileID: 0}
+  reminderClips: []
 --- !u!114 &114913244263269688
 MonoBehaviour:
   m_ObjectHideFlags: 1

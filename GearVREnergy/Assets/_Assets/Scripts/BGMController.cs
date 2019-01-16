@@ -80,18 +80,33 @@ public class BGMController : MonoBehaviour
 
 	public void FadeToPitch(float targetPitch)
 	{
-		StartCoroutine(PitchFade(targetPitch));
+		StopAllCoroutines();
+		StartCoroutine(PitchFade(targetPitch, pitchSmoothingTime));
 	}
 
-	private IEnumerator PitchFade(float targetPitch)
+	public void PitchIn(float duration)
+	{
+		StopAllCoroutines();
+		StartCoroutine(PitchFade(1, duration));
+	}
+
+	public void PitchOut(float duration)
+	{
+		StopAllCoroutines();
+		StartCoroutine(PitchFade(0, duration));
+	}
+
+	private IEnumerator PitchFade(float targetPitch, float smoothingTime = 1f)
 	{
 		float timeElapsed = 0;
+		float startingPitch = musicAudioSource.pitch;
 
-		while (timeElapsed < pitchSmoothingTime)
+		while (timeElapsed < smoothingTime)
 		{
-			SetPitch(Mathf.Lerp(musicAudioSource.pitch, targetPitch, timeElapsed / pitchSmoothingTime));
-			yield return new WaitForEndOfFrame();
+			SetPitch(Mathf.Lerp(startingPitch, targetPitch, timeElapsed / smoothingTime));
 			timeElapsed += Time.deltaTime;
+			// Debug.Log("Smoothing music to " + targetPitch + ". Time elapsed: " + timeElapsed + " / Smoothing Time: " + smoothingTime);
+			yield return new WaitForEndOfFrame();
 		}
 		print("Completed BGM pitch change.");
 		yield return null;

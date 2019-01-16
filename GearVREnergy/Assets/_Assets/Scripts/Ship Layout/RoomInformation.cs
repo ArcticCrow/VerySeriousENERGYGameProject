@@ -28,6 +28,7 @@ public class RoomInformation : MonoBehaviour {
     [Header("Connections")]
 	public List<Doorway> doorways = new List<Doorway>();
 
+	public PowerConsumptionDisplay display;
 
 	private void OnValidate()
 	{
@@ -43,6 +44,9 @@ public class RoomInformation : MonoBehaviour {
 		}
 
 		UpdateEnergyLevel();
+
+		display = gameObject.GetComponentInChildren<PowerConsumptionDisplay>();
+		if (display != null) display.UpdateColor(energyLevel.warningColor);
     }
 
 	public void UpdateEnergyLevel()

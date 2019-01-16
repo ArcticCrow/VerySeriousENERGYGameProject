@@ -105,4 +105,10 @@ public class SequenceAudio : SequenceStep {
 	{
 		return reminderStoppingStep == null || (reminderStoppingStep != null && reminderStoppingStep.StepIsFinished());
 	}
+
+	public override void Stop()
+	{
+		StopAllCoroutines();
+		AIVoiceController.StopSounds();
+	}
 }

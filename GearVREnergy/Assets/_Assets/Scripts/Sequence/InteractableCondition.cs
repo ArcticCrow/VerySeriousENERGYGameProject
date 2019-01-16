@@ -75,7 +75,7 @@ public class InteractableCondition : Condition
 	{
 		if (disableAIInteraction)
 		{
-			ShipAI.Instance.IgnoreInteractableInteraction(interactable.gameObject);
+			ShipAI.Instance.UnignoreInteractableInteraction(interactable.gameObject);
 		}
 		if (disableOtherInteractables)
 		{

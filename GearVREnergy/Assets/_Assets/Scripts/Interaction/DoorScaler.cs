@@ -38,7 +38,7 @@ public class DoorScaler : MonoBehaviour {
         {
             target.localScale = Vector3.Lerp(target.localScale, scale, time / duration);
             time += Time.deltaTime;
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
         yield return null;
     }

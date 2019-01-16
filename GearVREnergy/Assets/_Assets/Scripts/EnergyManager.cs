@@ -93,9 +93,12 @@ public class EnergyManager : MonoBehaviour {
 
 	[Header("General")]
 	public float energyUsedThisRun = 0;
+	public List<float> energyConsumedDuringJourney = new List<float>();
+
 	public float totalEnergyUsedThisFlight = 0;
 
-    public UnityEvent energyDependances;
+    public UnityEvent energyDependantEvents;
+    public UnityEvent newRunEvents;
 
 	[Header("Energy Influences")]
 	[Tooltip("The base amount of energy change that happens over each interval.")]
@@ -166,8 +169,8 @@ public class EnergyManager : MonoBehaviour {
 
     private void InvokeEnergyDependances()
     {
-		if (energyDependances != null)
-			energyDependances.Invoke();
+		if (energyDependantEvents != null)
+			energyDependantEvents.Invoke();
     }
 
     private void CheckSingeltonInstance()
@@ -193,9 +196,39 @@ public class EnergyManager : MonoBehaviour {
 			else
 			{
 				CalculateEnergyFluctuation();
-				energyUsedThisRun += fluctuationPerTick;
+				ApplyCurrentFluctuation();
 			}
 		}
+	}
+
+	private void ApplyCurrentFluctuation()
+	{
+		energyUsedThisRun = Mathf.Clamp(energyUsedThisRun + fluctuationPerTick, 0, GameManager.instance.maxAmountOfEnergyPerRun);
+
+		UpdateCurrentEnergyInJourney();
+	}
+
+	private void UpdateCurrentEnergyInJourney()
+	{
+		if (energyConsumedDuringJourney == null)
+		{
+			energyConsumedDuringJourney = new List<float>();
+		}
+		if (energyConsumedDuringJourney.Count < GameManager.instance.numberOfCurrentRun)
+		{
+			energyConsumedDuringJourney.Add(energyUsedThisRun);
+			if (newRunEvents != null) newRunEvents.Invoke();
+		}
+		else
+		{
+			energyConsumedDuringJourney[GameManager.instance.numberOfCurrentRun - 1] = energyUsedThisRun;
+		}
+	}
+
+	public void ResetEnergyUsedThisRun()
+	{
+		energyUsedThisRun = 0;
+		UpdateCurrentEnergyInJourney();
 	}
 
 	private void CalculateEnergyFluctuation()
