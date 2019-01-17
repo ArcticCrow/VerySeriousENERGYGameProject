@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
 
 	[Header("Interaction")]
     public KeyCode interactionKey = KeyCode.E;
-    public OVRInput.Button interactionButton = OVRInput.Button.DpadDown;
+    public OVRInput.Button interactionButton = OVRInput.Button.One;
     //public float maxInteractionRange = 20f;
     //public LayerMask interactionMask;
 
@@ -240,7 +240,9 @@ public class GameManager : MonoBehaviour {
 
 		EnergyManager.Instance.Initialize();
 		ShipAI.Instance.Initialize();
-	}
+
+        if (pointerIsRemote) OVRInput.RecenterController();
+    }
 
 	
 	private void InitializeRandom()

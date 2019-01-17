@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: a8fcc825d74a4e34880d0d7e970577fa
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: back001
+    100002: back_003
+    100004: body
+    100006: body001
+    100008: bottom001
+    100010: Box005
+    100012: Box006
+    100014: Box007
+    100016: Box008
+    100018: door001
+    100020: drawer
+    100022: drawer001
+    100024: freezer_door
+    100026: freezer_door001
+    100028: //RootNode
+    100030: fridge
+    100032: fridge door001
+    100034: layer004
+    100036: layer005
+    100038: layer006
+    100040: layer2
+    100042: left001
+    100044: left_side001
+    100046: main
+    100048: main001
+    100050: right001
+    100052: right_side001
+    100054: top001
+    400000: back001
+    400002: back_003
+    400004: body
+    400006: body001
+    400008: bottom001
+    400010: Box005
+    400012: Box006
+    400014: Box007
+    400016: Box008
+    400018: door001
+    400020: drawer
+    400022: drawer001
+    400024: freezer_door
+    400026: freezer_door001
+    400028: fridge
+    400030: //RootNode
+    400032: fridge door001
+    400034: layer004
+    400036: layer005
+    400038: layer006
+    400040: layer2
+    400042: left001
+    400044: left_side001
+    400046: main
+    400048: main001
+    400050: right001
+    400052: right_side001
+    400054: top001
+    2100000: No Name
+    2100002: Mat
+    2100004: 'Material #27'
+    2300000: back001
+    2300002: back_003
+    2300004: bottom001
+    2300006: Box005
+    2300008: Box006
+    2300010: Box007
+    2300012: Box008
+    2300014: door001
+    2300016: layer004
+    2300018: layer005
+    2300020: layer006
+    2300022: layer2
+    2300024: left001
+    2300026: left_side001
+    2300028: right001
+    2300030: right_side001
+    2300032: top001
+    3300000: back001
+    3300002: back_003
+    3300004: bottom001
+    3300006: Box005
+    3300008: Box006
+    3300010: Box007
+    3300012: Box008
+    3300014: door001
+    3300016: layer004
+    3300018: layer005
+    3300020: layer006
+    3300022: layer2
+    3300024: left001
+    3300026: left_side001
+    3300028: right001
+    3300030: right_side001
+    3300032: top001
+    4300000: Box005
+    4300002: Box006
+    4300004: Box007
+    4300006: Box008
+    4300008: back001
+    4300010: door001
+    4300012: left001
+    4300014: right001
+    4300016: back_003
+    4300018: bottom001
+    4300020: layer004
+    4300022: layer005
+    4300024: layer006
+    4300026: left_side001
+    4300028: right_side001
+    4300030: top001
+    4300032: layer2
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

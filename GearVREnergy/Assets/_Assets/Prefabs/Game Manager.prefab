@@ -83,7 +83,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   interactionKey: 32
-  interactionButton: 32
+  interactionButton: 1
   state: 0
   playGame: 0
   pause: 0
