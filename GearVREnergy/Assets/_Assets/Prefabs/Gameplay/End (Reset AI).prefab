@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114332066680427456}
   - component: {fileID: 114502099539305134}
   m_Layer: 0
-  m_Name: Go to Control Room (Objective)
+  m_Name: Go to Bed Room (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 4362693179816654}
   - component: {fileID: 114582618238094780}
   m_Layer: 0
-  m_Name: To the Control Room (AI Voice)
+  m_Name: To the Cryo Sleep (AI Voice)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,8 +585,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 10
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -622,8 +624,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  waitAfterCompletion: 1
-  waitTime: 5
+  waitAfterLaunch: 1
+  launchWaitTime: 2
+  waitAfterCompletion: 0
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   actions:
@@ -752,12 +756,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 1
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 5
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   audioClip: {fileID: 8300000, guid: 197b6f9ffe1223343aa4672db3771875, type: 3}
-  useAudioClipLength: 0
+  useAudioClipLength: 1
+  useAsCompletionTime: 0
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -776,8 +783,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   actions:
@@ -824,8 +833,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 1
+  launchWaitTime: 1
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   actions:
@@ -839,6 +850,17 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: PitchIn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
@@ -869,17 +891,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: FadeToPitch
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114332066680427456
@@ -894,8 +905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 5
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 0
   comparisonOperator: 0
@@ -913,8 +926,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   comparisonOperator: 0
@@ -932,12 +947,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 1
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 3.9981859
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   audioClip: {fileID: 8300000, guid: 485ac48a563e2bf44bb4de7ead5a1f68, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 0
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -956,8 +974,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
@@ -1010,12 +1030,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 3.9981859
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   audioClip: {fileID: 8300000, guid: 485ac48a563e2bf44bb4de7ead5a1f68, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1034,12 +1057,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 1
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 3.9981859
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   audioClip: {fileID: 8300000, guid: 354c37cd61ec24bbcbbc7921d0a71bc1, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1058,8 +1084,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 5
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   actions:
@@ -1091,18 +1119,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   actionsUponCompletion:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetPowerState
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114808861076693928
@@ -1117,12 +1134,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 494bd1721199a40c5a79fa3011793556, type: 3}
   useAudioClipLength: 0
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1141,8 +1161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 3
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1178,8 +1200,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   comparisonOperator: 0
@@ -1197,12 +1221,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 25.49551
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   audioClip: {fileID: 8300000, guid: 2749c9eac7bad8445b00b8f974512da4, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1221,8 +1248,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 1
+  launchWaitTime: 10
   waitAfterCompletion: 1
-  waitTime: 10
+  completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
   actions:
@@ -1230,17 +1259,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_MethodName: StopAllCoroutines
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: StopColorChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1291,6 +1309,17 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_MethodName: ShutdownAllInteractables
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: StopColorChange
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

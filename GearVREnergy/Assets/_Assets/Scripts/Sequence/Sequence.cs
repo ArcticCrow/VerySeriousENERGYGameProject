@@ -14,8 +14,11 @@ public abstract class SequenceStep : MonoBehaviour
 	}
 	public Type type;
 
+	public bool waitAfterLaunch = false;
+	public float launchWaitTime = 0;
+
 	public bool waitAfterCompletion = false;
-    public float waitTime = 0;
+    public float completionWaitTime = 0;
 
 	[HideInInspector]
 	public bool hasLaunched = false;
@@ -76,11 +79,16 @@ public class Sequence : MonoBehaviour{
 				}
 				while (!step.StepIsFinished());
 
+				if (step.waitAfterLaunch)
+				{
+					yield return new WaitForSeconds(step.launchWaitTime);
+				}
+
 				step.Complete();
 
 				if (step.waitAfterCompletion)
 				{
-					yield return new WaitForSeconds(step.waitTime);
+					yield return new WaitForSeconds(step.completionWaitTime);
 				}
 
 				while (!step.hasCompleted) yield return null;

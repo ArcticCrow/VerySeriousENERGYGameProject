@@ -99,6 +99,8 @@ public class EnergyManager : MonoBehaviour {
 
     public UnityEvent energyDependantEvents;
     public UnityEvent newRunEvents;
+	[Range(0.01f, 2f)]
+	public float multiplier = 1f;
 
 	[Header("Energy Influences")]
 	[Tooltip("The base amount of energy change that happens over each interval.")]
@@ -203,7 +205,7 @@ public class EnergyManager : MonoBehaviour {
 
 	private void ApplyCurrentFluctuation()
 	{
-		energyUsedThisRun = Mathf.Clamp(energyUsedThisRun + fluctuationPerTick, 0, GameManager.instance.maxAmountOfEnergyPerRun);
+		energyUsedThisRun = Mathf.Clamp(energyUsedThisRun + fluctuationPerTick * multiplier, 0, GameManager.instance.maxAmountOfEnergyPerRun);
 
 		UpdateCurrentEnergyInJourney();
 	}
@@ -223,6 +225,11 @@ public class EnergyManager : MonoBehaviour {
 		{
 			energyConsumedDuringJourney[GameManager.instance.numberOfCurrentRun - 1] = energyUsedThisRun;
 		}
+	}
+
+	public void SetMultiplier(float val)
+	{
+		multiplier = val;
 	}
 
 	public void ResetEnergyUsedThisRun()

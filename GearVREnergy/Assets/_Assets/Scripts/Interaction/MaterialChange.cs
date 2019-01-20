@@ -15,7 +15,7 @@ public class MaterialChange : MonoBehaviour {
 
     public void Start()
     {
-        aSource.clip = aClip;
+		if (aSource != null) aSource.clip = aClip;
     }
     void CheckRenderer () {
 		if (meshRenderers == null || meshRenderers.Count == 0)
@@ -34,7 +34,7 @@ public class MaterialChange : MonoBehaviour {
 		{
 			if (meshRenderers[i] != null)
 				meshRenderers[i].material.color = on;
-                aSource.Play();
+				if (aSource != null) aSource.Play();
 		}
 	}
 

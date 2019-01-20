@@ -335,6 +335,7 @@ public class GameManager : MonoBehaviour {
 
 	private IEnumerator GameplayLoop()
 	{
+		EnergyManager.Instance.SetMultiplier(1f);
 		if (numberOfCurrentRun <= 0)
 		{
 			numberOfCurrentRun = 1;
@@ -454,7 +455,8 @@ public class GameManager : MonoBehaviour {
 	public void ActivateInsaneAIMode()
 	{
 		ShipAI.Instance.StopAllCoroutines();
-		ShipAI.Instance.StartShenanigans(99, 1f, 3f);
+		ShipAI.Instance.StartShenanigans(99, 1f, 1.5f);
+		EnergyManager.Instance.SetMultiplier(0.3f);
 	}
 
 	private void PlayGame()

@@ -7,6 +7,7 @@ public class SequenceAudio : SequenceStep {
 	[Header("Main Audio")]
 	public AudioClip audioClip;
 	public bool useAudioClipLength = false;
+	public bool useAsCompletionTime = true;
 
 	[Header("Reminders")]
 	public bool useReminders = false;
@@ -42,7 +43,15 @@ public class SequenceAudio : SequenceStep {
 			AIVoiceController.Play(audioClip);
 			if (useAudioClipLength)
 			{
-				waitTime = audioClip.length;
+				if (useAsCompletionTime)
+				{
+					completionWaitTime = audioClip.length;
+				}
+				else
+				{
+					launchWaitTime = audioClip.length;
+
+				}
 			}
 		}
 		hasLaunched = true;
@@ -58,7 +67,7 @@ public class SequenceAudio : SequenceStep {
 		if (reminderClips != null)
 		{
 			//print("reminder waiting wait time");
-			yield return new WaitForSeconds(waitTime);
+			yield return new WaitForSeconds(completionWaitTime);
 
 			if (waitOneInterval)
 			{

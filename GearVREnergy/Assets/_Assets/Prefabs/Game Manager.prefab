@@ -61,7 +61,7 @@ MonoBehaviour:
   centerEyeAnchor: {fileID: 0}
   player: {fileID: 0}
   generateRandomSeed: 1
-  seed: 58008
+  seed: 636836213452457538
   runsToReachPlanet: 3
   numberOfCurrentRun: 1
   maxAmountOfEnergyPerRun: 10000
@@ -85,7 +85,7 @@ MonoBehaviour:
   interactionKey: 32
   interactionButton: 1
   state: 0
-  playGame: 0
+  playGame: 1
   pause: 0
   enableTutorial: 1
   enableCore: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   rooms: []
   fadeSpeed: 1
   fadeLength: 0.5
-  headRotationCompensation: 0
+  headRotationCompensation: 1
   tutorialSequence: {fileID: 0}
   gameplaySequences:
   - {fileID: 0}
@@ -109,9 +109,9 @@ MonoBehaviour:
   startAmountOfShenanigans: 0
   shenanigansStepIncrease: 2
   activeSequence: {fileID: 0}
-  interactionControl: {fileID: 0}
-  doorControl: {fileID: 0}
-  throwControl: {fileID: 0}
+  interactionControl: {fileID: 114104880557550748}
+  doorControl: {fileID: 114051001153449178}
+  throwControl: {fileID: 114110605692541774}
   pointerIsRemote: 0
 --- !u!114 &114051001153449178
 MonoBehaviour:
@@ -201,6 +201,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  multiplier: 1
   baseEnergyFluctuationPerSecond: 0
   ticksPerSecond: 10
   energyClasses:
@@ -236,8 +237,8 @@ MonoBehaviour:
     minConsumption: 36
     maxConsumption: -1
   negativeInfluencePerTick: 0
-  positiveInfluencePerTick: 0
-  fluctuationPerTick: 0
+  positiveInfluencePerTick: 1
+  fluctuationPerTick: 1
   positiveInfluencePerSecond: 0
   negativeInfluencePerSecond: 0
   fluctuationPerSecond: 0
@@ -258,7 +259,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableObjectTags:
   - Interactable
-  interactables: []
+  interactables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   minTimeDifference: 5
   maxTimeDifference: 10
   shenanigans:

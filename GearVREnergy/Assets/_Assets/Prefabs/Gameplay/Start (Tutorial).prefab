@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4256383448824420}
   - component: {fileID: 114445391234581116}
   m_Layer: 0
-  m_Name: Enable LK Doorway & Enable Interactions in L (Action)
+  m_Name: Enable CK Doorway & Enable Interactions in C & B (Action)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 114863342863363380}
   - component: {fileID: 114720145662432452}
   m_Layer: 0
-  m_Name: Goto 'Living Room' (Objective)
+  m_Name: Goto 'Control Room' (Objective)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 4623930853438648}
   - component: {fileID: 114448487910683130}
   m_Layer: 0
-  m_Name: Enable LC Doorway & Enable Interactions in C (Action)
+  m_Name: Enable Bed Control Doorway (Action)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 4997229248907882}
   - component: {fileID: 114225182549644164}
   m_Layer: 0
-  m_Name: Teleport to Control (Action)
+  m_Name: Teleport to Bedroom (Action)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,7 +509,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4753926911028844}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4033765023417484
 Transform:
@@ -535,7 +535,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4753926911028844}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4167393295196400
 Transform:
@@ -654,7 +654,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4753926911028844}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4447949243808846
 Transform:
@@ -760,7 +760,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4753926911028844}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4743093439541884
 Transform:
@@ -787,11 +787,11 @@ Transform:
   m_Children:
   - {fileID: 4557291295390260}
   - {fileID: 4997229248907882}
-  - {fileID: 4007693444314470}
-  - {fileID: 4431416274856150}
   - {fileID: 4044424402742992}
   - {fileID: 4623930853438648}
   - {fileID: 4911593999636024}
+  - {fileID: 4007693444314470}
+  - {fileID: 4431416274856150}
   - {fileID: 4399350714364364}
   - {fileID: 4447949243808846}
   - {fileID: 4256383448824420}
@@ -876,7 +876,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4753926911028844}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4927018961139276
 Transform:
@@ -929,8 +929,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1042,8 +1044,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  waitAfterCompletion: 1
-  waitTime: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
+  waitAfterCompletion: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1090,8 +1094,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 3
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 1
@@ -1110,8 +1116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 1
@@ -1129,12 +1137,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 037cfdbb871f42446b7123782ef2a99d, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1153,8 +1164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1201,8 +1214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
@@ -1220,12 +1235,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 191220231cf638c4bb469000f183cea4, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1263,8 +1281,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1311,8 +1331,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1333,18 +1355,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   actionsUponCompletion:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EnableInteractionForRoom
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: RoomInformation, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114456380710087360
@@ -1361,11 +1372,11 @@ MonoBehaviour:
   steps:
   - {fileID: 114319083013207886}
   - {fileID: 114225182549644164}
-  - {fileID: 114255167113940750}
-  - {fileID: 114739596841129782}
   - {fileID: 114468688204808712}
   - {fileID: 114448487910683130}
   - {fileID: 114863342863363380}
+  - {fileID: 114255167113940750}
+  - {fileID: 114739596841129782}
   - {fileID: 114768633778561400}
   - {fileID: 114253524980727732}
   - {fileID: 114445391234581116}
@@ -1397,12 +1408,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 4e686e7e3c9faf04391219e4287babb3, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1421,8 +1435,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
@@ -1460,8 +1476,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1524,8 +1542,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
@@ -1578,8 +1598,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 1
@@ -1597,12 +1619,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 2494307526c5d444999bb2603deb36aa, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1621,8 +1646,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 5
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   actions:
@@ -1680,12 +1707,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 07b90fdcb2df1d54b932457322a3d170, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1704,12 +1734,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 99313a8da72a8cb498e462110c87dae8, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1728,12 +1761,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 2f4772612202e004daf4cce5a259c27e, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1752,8 +1788,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
@@ -1790,8 +1828,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
@@ -1809,8 +1849,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
@@ -1828,12 +1870,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 73e8e3ef827e22447995e603a15ca610, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
@@ -1852,12 +1897,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 1
-  waitTime: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 8300000, guid: 1fd8c1687f7f605408c2ff0ca2cf2f56, type: 3}
   useAudioClipLength: 1
+  useAsCompletionTime: 1
   useReminders: 0
   playRemindersOnce: 0
   waitOneInterval: 1
