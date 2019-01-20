@@ -7,14 +7,14 @@ public class MaterialChange : MonoBehaviour {
 	public Color on;
 	public Color off;
 	//public bool isPowered;
-	MeshRenderer meshRenderer;
+	public List<MeshRenderer> meshRenderers;
 	// Use this for initialization
 	void CheckRenderer () {
-        if (meshRenderer == null)
-        {
-            meshRenderer = GetComponent<MeshRenderer>();
-            //meshRenderer.material = new Material(meshRenderer.material);
-        }
+		if (meshRenderers == null || meshRenderers.Count == 0)
+		{
+			meshRenderers = new List<MeshRenderer>(GetComponentsInChildren<MeshRenderer>());
+			meshRenderers.Add(GetComponent<MeshRenderer>());
+		}
 	}
 	
 	// Update is called once per frame
@@ -22,13 +22,21 @@ public class MaterialChange : MonoBehaviour {
     {
 		//print(gameObject.name + ": MaterialChange: Powering on");
 		CheckRenderer();
-		meshRenderer.material.color = on;
+		for (int i = 0; i < meshRenderers.Count; i++)
+		{
+			if (meshRenderers[i] != null)
+				meshRenderers[i].material.color = on;
+		}
 	}
 
 	public void PowerOff()
 	{
 		//print(gameObject.name + ": MaterialChange: Powering off");
         CheckRenderer();
-        meshRenderer.material.color = off;
+		for (int i = 0; i < meshRenderers.Count; i++)
+		{
+			if (meshRenderers[i] != null)
+				meshRenderers[i].material.color = off;
+		}
 	}
 }

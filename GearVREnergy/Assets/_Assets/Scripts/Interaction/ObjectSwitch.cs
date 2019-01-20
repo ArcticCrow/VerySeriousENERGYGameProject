@@ -17,7 +17,7 @@ public class ObjectSwitch : MonoBehaviour {
     {
         if (CheckTarget())
         {
-            target.SetActive(false);
+			target.SetActive(false);
         }
     }
 

@@ -98,7 +98,7 @@ MonoBehaviour:
   rooms: []
   fadeSpeed: 1
   fadeLength: 0.5
-  headRotationCompensation: 1
+  headRotationCompensation: 0
   tutorialSequence: {fileID: 0}
   gameplaySequences:
   - {fileID: 0}

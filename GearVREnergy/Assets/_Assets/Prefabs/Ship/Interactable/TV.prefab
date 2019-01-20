@@ -19,8 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4844389511253366}
-  - component: {fileID: 33426815089513698}
-  - component: {fileID: 23812444517529960}
   - component: {fileID: 114598299826511432}
   - component: {fileID: 65467983879119356}
   m_Layer: 9
@@ -374,41 +372,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23812444517529960
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1004761813120696}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!33 &33393043182710646
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -416,13 +379,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1829685373883906}
   m_Mesh: {fileID: 4300002, guid: 5b23db58017421f44b90133f5fcb976a, type: 3}
---- !u!33 &33426815089513698
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1004761813120696}
-  m_Mesh: {fileID: 0}
 --- !u!33 &33547622534972950
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -476,6 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   on: {r: 0.058823533, g: 0.72021663, b: 0.98039216, a: 0}
   off: {r: 0, g: 0, b: 0, a: 0}
+  meshRenderers: []
 --- !u!114 &114598299826511432
 MonoBehaviour:
   m_ObjectHideFlags: 1
