@@ -20,10 +20,13 @@ public class Interactable : MonoBehaviour {
 	[SerializeField] private UnityEvent powerOffEvents;
 
 	public RoomInformation roomLocation;
+    public AudioClip AudioClip;
+    public AudioSource AudioSource;
 
 	void Start ()
 	{
 	    CallPowerEvents();
+        AudioSource.clip = AudioClip;
 	}	
 
 	private void CallPowerEvents()
@@ -31,10 +34,12 @@ public class Interactable : MonoBehaviour {
 		if(isPowered)
 		{
 			powerOnEvents.Invoke();
+            AudioSource.Play();
 		}
 		else
 		{
 			powerOffEvents.Invoke();
+            AudioSource.Stop();
 		}
 	}
 
