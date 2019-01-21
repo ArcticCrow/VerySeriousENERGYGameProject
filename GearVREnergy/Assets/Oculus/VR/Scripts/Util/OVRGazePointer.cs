@@ -210,7 +210,9 @@ public class OVRGazePointer : MonoBehaviour {
     /// <param name="pos"></param>
     public void SetPosition(Vector3 pos)
     {
-        SetPosition(pos, rayTransform.forward);
+		if (rayTransform == null && Camera.main != null)
+			rayTransform = Camera.main.transform;
+		SetPosition(pos, rayTransform.forward);
     }
 
     public float GetCurrentRadius()

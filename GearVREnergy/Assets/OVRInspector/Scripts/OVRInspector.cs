@@ -1073,7 +1073,7 @@ public class OVRInspector : MonoBehaviour
         docText = text;
 
         UpdateDocsVisibility();
-        docsScroller.GotoTop();
+        //docsScroller.GotoTop();
 
     }
     
@@ -1099,7 +1099,7 @@ public class OVRInspector : MonoBehaviour
     /// </summary>
     public void SetDocsScrollEnabled(bool enabled)
     {
-        docsScroller.SetEnabled(enabled);
+        //docsScroller.SetEnabled(enabled);
     }
     
     /// <summary>
@@ -1130,11 +1130,11 @@ public class OVRInspector : MonoBehaviour
         if (docsPanel != null)
         {
             bool active = docText.Length > 0;
-            docsPanel.SetActive(active);
-            docsScroller.MarkContentChanged();
+            //docsPanel.SetActive(active);
+            //docsScroller.MarkContentChanged();
             if (active)
             {
-                docsPanelText.text = docText;
+                //docsPanelText.text = docText;
             }
 
         }

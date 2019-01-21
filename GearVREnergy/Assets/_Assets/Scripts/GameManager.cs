@@ -346,12 +346,17 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine(GameplayLoop());
 	}
 
-	private void Pause()
+	public void Pause()
 	{
 		if (state != State.Pause)
 		{
+			FadeScreenOut();
 			resumeState = state;
 			state = State.Pause;
+
+			interactionControl.DisableAllInteractions();
+			doorControl.DisableAllDoorways();
+			throwControl.disableThrowing = true;
 
 			// Pause
 			EnergyManager.Instance.pauseEnergyRoutine = true;
@@ -363,15 +368,16 @@ public class GameManager : MonoBehaviour {
 	{
 		if (state == State.Pause)
 		{
+			FadeScreenIn();
 			state = resumeState;
 
-			switch (state)
-			{
+			interactionControl.EnableAllInteractions();
+			doorControl.EnableAllDoorways();
+			throwControl.disableThrowing = false;
 
-
-				default:
-					break;
-			}
+			// Pause
+			EnergyManager.Instance.pauseEnergyRoutine = false;
+			ShipAI.Instance.pauseAIRoutine = false;
 		}
 	}
 
@@ -459,18 +465,18 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator FinishTutorial()
 	{
 		EnergyManager.Instance.stopEnergyRoutine = true;
+		EnergyManager.Instance.ResetEnergyUsedThisRun();
 
 		BGMController.instance.PitchOut(1f);
 		yield return new WaitForSeconds(1f);
-
-		EnergyManager.Instance.ResetEnergyUsedThisRun();
-		yield return null;
 	}
 	public IEnumerator FinishCore()
 	{
 		// Stop AI routine after finishing sequence
 		ShipAI.Instance.StopAllCoroutines();
-		yield return null;
+
+		BGMController.instance.PitchOut(1f);
+		yield return new WaitForSeconds(1f);
 	}
 	public IEnumerator FinishEnding()
 	{
@@ -593,163 +599,6 @@ public class GameManager : MonoBehaviour {
 		if (runCompletionEvents != null) runCompletionEvents.Invoke();
 
 		yield return null;
-		/*// Tutorial Sequence
-
-			// Core Game Loop - Gameplay sequences in random order with increasing challenge
-			if (enableCore)
-			{
-				
-
-				while (availableSequences.Count > 0)
-				{
-					
-
-					
-
-					// Start sequence
-					activeSequence.LaunchSequence();
-
-					
-
-					// Wait for sequence to finish
-					while (!activeSequence.isSequenceFinished) yield return null;
-
-					
-				}
-
-				BGMController.instance.PitchOut(1f);
-				yield return new WaitForSeconds(1f);
-			}
-
-			// Outro Sequence
-			if (enableEnding)
-			{
-				
-				activeSequence.LaunchSequence();
-
-				while (!activeSequence.isSequenceFinished) yield return null;
-			}
-
-			
-			yield return null;
-			*/
-		/*// Tutorial Sequence
-		if (enableTutorial)
-		{
-			if (tutorialSequence == null)
-			{
-				throw new Exception("No tutorial sequence has been set up!");
-			}
-
-			state = State.Tutorial;
-
-			BGMController.instance.SetPitch(0);
-			BGMController.instance.PlayTutorialBGM();
-			BGMController.instance.PitchIn(1f);
-
-			ShipAI.Instance.ResetIgnoredInteractables();
-			EnergyManager.Instance.startEnergyRoutine = true;
-
-			activeSequence = tutorialSequence;
-			activeSequence.LaunchSequence();
-
-			while (!activeSequence.isSequenceFinished) yield return null;
-
-			EnergyManager.Instance.stopEnergyRoutine = true;
-
-			BGMController.instance.PitchOut(1f);
-			yield return new WaitForSeconds(1f);
-
-			EnergyManager.Instance.ResetEnergyUsedThisRun();
-		}
-
-		// Core Game Loop - Gameplay sequences in random order with increasing challenge
-		if (enableCore)
-		{
-			if (gameplaySequences == null)
-			{
-				throw new Exception("No gameplay sequences have been set up!");
-			}
-
-			state = State.MainGame;
-
-			BGMController.instance.SetPitch(0);
-			BGMController.instance.PlayCoreBGM();
-			BGMController.instance.PitchIn(1f);
-
-			if (gameplaySequences.Count > 0)
-			{
-				ShutdownAllInteractables(false);
-
-				EnergyManager.Instance.startEnergyRoutine = true;
-
-				amountOfShenanigans = startAmountOfShenanigans;
-				List<Sequence> availableSequences = new List<Sequence>(gameplaySequences);
-				while (availableSequences.Count > 0)
-				{
-					// Let AI Interact with everything
-					ShipAI.Instance.ResetIgnoredInteractables();
-
-					// Pick and remove random sequence from available
-					int sequenceIndex = Random.Range(0, availableSequences.Count);
-					activeSequence = availableSequences[sequenceIndex];
-
-					availableSequences.Remove(activeSequence);
-
-					// Start sequence
-					Debug.Log("Playing sequence " + activeSequence.name);
-					activeSequence.LaunchSequence();
-
-					// Setup additional ai behaviour
-					ShipAI.Instance.StartShenanigans(amountOfShenanigans);
-					amountOfShenanigans += shenanigansStepIncrease;
-
-					// Wait for sequence to finish
-					while (!activeSequence.isSequenceFinished) yield return null;
-
-					// Stop AI routine after finishing sequence
-					ShipAI.Instance.StopAllCoroutines();
-				}
-			}
-
-			BGMController.instance.PitchOut(1f);
-			yield return new WaitForSeconds(1f);
-		}
-
-		// Outro Sequence
-		if (enableEnding)
-		{
-			if (endSequence == null)
-			{
-				throw new Exception("No end sequence has been set up!");
-			}
-
-			state = State.Finish;
-
-			// Let AI Interact with everything
-			ShipAI.Instance.ResetIgnoredInteractables();
-			BGMController.instance.SetPitch(0);
-			BGMController.instance.PlayInsaneBGM();
-			BGMController.instance.PitchIn(5f);
-
-			activeSequence = endSequence;
-			activeSequence.LaunchSequence();
-
-			while (!activeSequence.isSequenceFinished) yield return null;
-		}
-
-		if (numberOfCurrentRun >= runsToReachPlanet)
-		{
-			Debug.Log("All runs completed. Show final result to player(s)!");
-			numberOfCurrentRun = 1;
-		}
-		else
-		{
-			numberOfCurrentRun++;
-		}
-		if (runCompletionEvents != null) runCompletionEvents.Invoke();
-		yield return null;
-		*/
 	}
 
 	public void ActivateInsaneAIMode()
@@ -758,8 +607,6 @@ public class GameManager : MonoBehaviour {
 		ShipAI.Instance.StartShenanigans(99, 1f, 1.5f);
 		EnergyManager.Instance.SetMultiplier(0.3f);
 	}
-
-	
 
 	public void ShutdownAllInteractables(bool disableInteraction)
 	{
@@ -875,6 +722,7 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator FadeOut()
 	{
+		StopCoroutine(FadeIn());
 		while (fadeLevel < 1)
 		{
 			yield return null;
@@ -886,6 +734,7 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator FadeIn()
 	{
+		StopCoroutine(FadeOut());
 		while (fadeLevel > 0)
 		{
 			yield return null;
