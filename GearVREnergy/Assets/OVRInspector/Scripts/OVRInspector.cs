@@ -309,20 +309,20 @@ public class OVRInspector : MonoBehaviour
         canvas = transform.Find("Canvas").gameObject;
 
         leftPanel = new OVRInspectorPanelBuilder(canvas.transform.Find("LeftPanel").gameObject);
-        rightPanel = new OVRInspectorPanelBuilder(canvas.transform.Find("RightPanel").gameObject);
+        //rightPanel = new OVRInspectorPanelBuilder(canvas.transform.Find("RightPanel").gameObject);
         centerPanel = new OVRInspectorPanelBuilder(canvas.transform.Find("CenterPanel").gameObject);
 
-        docsPanel = rightPanel.panel.transform.Find("DocsPanel").gameObject;
+        //docsPanel = rightPanel.panel.transform.Find("DocsPanel").gameObject;
         controlsPanel = centerPanel;
-        docsPanelText = docsPanel.GetComponentInChildren<Text>();
-		docsPanelText.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
-        docsScroller = docsPanel.GetComponentInChildren<OVRGazeScroller>();
+        //docsPanelText = docsPanel.GetComponentInChildren<Text>();
+		//docsPanelText.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+        //docsScroller = docsPanel.GetComponentInChildren<OVRGazeScroller>();
 
         // Setup links between panels for continous mouse movement
         leftPanel.rightPanel = centerPanel;
-        rightPanel.leftPanel = centerPanel;
+        //rightPanel.leftPanel = centerPanel;
         centerPanel.leftPanel = leftPanel;
-        centerPanel.rightPanel = rightPanel;
+        //centerPanel.rightPanel = rightPanel;
 
         discomfortWarning = GetComponent<OVRDiscomfortWarning>();
         //discomfortWarning = null;
@@ -460,7 +460,7 @@ public class OVRInspector : MonoBehaviour
     {
         menuActive = true;
         leftPanel.SetActive(true);
-        rightPanel.SetActive(true);
+        //rightPanel.SetActive(true);
         centerPanel.SetActive(true);
 
         // We don't want the mouse to control yaw while the mouse navigates the menu
@@ -536,7 +536,7 @@ public class OVRInspector : MonoBehaviour
         List<Vector3> testPoints = new List<Vector3>();
 
         leftPanel.AddPanelPointsToList(5, testPoints);
-        rightPanel.AddPanelPointsToList(5, testPoints);
+        //rightPanel.AddPanelPointsToList(5, testPoints);
         centerPanel.AddPanelPointsToList(5, testPoints);
 
         float currentInspectorScale = transform.lossyScale.x;
@@ -635,7 +635,7 @@ public class OVRInspector : MonoBehaviour
     {
         menuActive = false;
         leftPanel.SetActive(false);
-        rightPanel.SetActive(false);
+        //rightPanel.SetActive(false);
         centerPanel.SetActive(false);
 
         if (allowWarning && discomfortWarning)

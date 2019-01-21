@@ -85,7 +85,7 @@ MonoBehaviour:
   interactionKey: 32
   interactionButton: 1
   state: 0
-  playGame: 1
+  playGame: 0
   pause: 0
   enableTutorial: 1
   enableCore: 1
@@ -243,6 +243,7 @@ MonoBehaviour:
   negativeInfluencePerSecond: 0
   fluctuationPerSecond: 0
   startEnergyRoutine: 0
+  pauseEnergyRoutine: 0
   stopEnergyRoutine: 0
   isEnergyRoutineRunning: 0
   needsUpdate: 0
@@ -304,5 +305,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   startAIRoutine: 0
+  pauseAIRoutine: 0
   stopAIRoutine: 0
   isAIRoutineRunning: 0

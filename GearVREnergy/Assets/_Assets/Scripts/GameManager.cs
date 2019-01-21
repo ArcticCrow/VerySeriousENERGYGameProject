@@ -62,7 +62,10 @@ public class GameManager : MonoBehaviour {
     //public LayerMask interactionMask;
 
 	[Header("Game State Controls")]
-	public State state = State.Boot; // not used yet
+	public State state = State.Boot;
+	State resumeState;
+	bool isPlaying = false;
+
 	public bool playGame;
 	public bool pause;
 
@@ -106,6 +109,8 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector]
 	public Sequence activeSequence;
 
+	List<Sequence> availableSequences;
+
 	// Controllers
 	[HideInInspector]
 	public InteractionController interactionControl;
@@ -143,6 +148,7 @@ public class GameManager : MonoBehaviour {
     {
         CheckSingeltonInstance();
         Initialize();
+		DontDestroyOnLoad(gameObject);
     }
 
     private void Initialize()
@@ -318,6 +324,7 @@ public class GameManager : MonoBehaviour {
 	private void StartMenu()
 	{
 		// Fade in main menu
+		state = State.Menu;
 	}
 
 	private void ReturnToMenu()
@@ -333,21 +340,308 @@ public class GameManager : MonoBehaviour {
 		PlayGame();
 	}
 
-	private IEnumerator GameplayLoop()
+	private void PlayGame()
+	{
+		// Start Game - Load if necessary
+		StartCoroutine(GameplayLoop());
+	}
+
+	private void Pause()
+	{
+		if (state != State.Pause)
+		{
+			resumeState = state;
+			state = State.Pause;
+
+			// Pause
+			EnergyManager.Instance.pauseEnergyRoutine = true;
+			ShipAI.Instance.pauseAIRoutine = true;
+		}
+	}
+
+	public void Resume()
+	{
+		if (state == State.Pause)
+		{
+			state = resumeState;
+
+			switch (state)
+			{
+
+
+				default:
+					break;
+			}
+		}
+	}
+
+	private void ResetGame()
 	{
 		EnergyManager.Instance.SetMultiplier(1f);
 		if (numberOfCurrentRun <= 0)
 		{
 			numberOfCurrentRun = 1;
 		}
+	}
+
+	public void ShowEndScreen()
+	{
+
+	}
+
+	private IEnumerator SetupTutorial()
+	{
+		if (tutorialSequence == null)
+		{
+			throw new Exception("No tutorial sequence has been set up!");
+		}
+
+		state = State.Tutorial;
+
+		BGMController.instance.SetPitch(0);
+		BGMController.instance.PlayTutorialBGM();
+		BGMController.instance.PitchIn(1f);
+
+		ShipAI.Instance.ResetIgnoredInteractables();
+		EnergyManager.Instance.startEnergyRoutine = true;
+
+		availableSequences = new List<Sequence>();
+		availableSequences.Add(tutorialSequence);
+		yield return null;
+	}
+
+	private IEnumerator SetupCore()
+	{
+		if (gameplaySequences == null)
+		{
+			throw new Exception("No gameplay sequences have been set up!");
+		}
+
+		if (gameplaySequences.Count > 0)
+		{
+			state = State.MainGame;
+
+			BGMController.instance.SetPitch(0);
+			BGMController.instance.PlayCoreBGM();
+			BGMController.instance.PitchIn(1f);
+
+			ShutdownAllInteractables(false);
+
+			EnergyManager.Instance.startEnergyRoutine = true;
+
+			amountOfShenanigans = startAmountOfShenanigans;
+
+			availableSequences = new List<Sequence>(gameplaySequences);
+			yield return null;
+		}
+	}
+
+	private IEnumerator SetupEnding()
+	{
+		if (endSequence == null)
+		{
+			throw new Exception("No end sequence has been set up!");
+		}
+
+		state = State.Finish;
+
+		// Let AI Interact with everything
+		ShipAI.Instance.ResetIgnoredInteractables();
+		BGMController.instance.SetPitch(0);
+		BGMController.instance.PlayInsaneBGM();
+		BGMController.instance.PitchIn(5f);
+
+		availableSequences = new List<Sequence>();
+		availableSequences.Add(tutorialSequence);
+		yield return null;
+	}
+
+	public IEnumerator FinishTutorial()
+	{
+		EnergyManager.Instance.stopEnergyRoutine = true;
+
+		BGMController.instance.PitchOut(1f);
+		yield return new WaitForSeconds(1f);
+
+		EnergyManager.Instance.ResetEnergyUsedThisRun();
+		yield return null;
+	}
+	public IEnumerator FinishCore()
+	{
+		// Stop AI routine after finishing sequence
+		ShipAI.Instance.StopAllCoroutines();
+		yield return null;
+	}
+	public IEnumerator FinishEnding()
+	{
+		isPlaying = false;
+		yield return null;
+	}
+
+	private IEnumerator GameplayLoop()
+	{
+		isPlaying = true;
+		ResetGame();
 		if (runStartEvents != null) runStartEvents.Invoke();
-		// Tutorial Sequence
+
+		bool finishedCurrentSequence = false;
+		bool setupCurrentSequence = false;
+
+		bool playTut = enableTutorial,
+			playCore = enableCore,
+			playEnd = enableEnding;
+
+		while (isPlaying)
+		{
+			if (state == State.Pause)
+			{
+				yield return new WaitForEndOfFrame();
+				continue;
+			}
+
+			if (!setupCurrentSequence)
+			{
+				if (playTut)
+				{
+					yield return SetupTutorial();
+					playTut = false;
+				}
+				else if (playCore)
+				{
+					yield return SetupCore();
+					playCore = false;
+				}
+				else if (playEnd)
+				{
+					yield return SetupEnding();
+					playEnd = false;
+				}
+				setupCurrentSequence = true;
+				finishedCurrentSequence = false;
+			}
+
+			if (availableSequences.Count > 0 && (activeSequence == null || activeSequence.isSequenceFinished))
+			{
+				// Pick and remove random sequence from available
+				int sequenceIndex = Random.Range(0, availableSequences.Count);
+				activeSequence = availableSequences[sequenceIndex];
+
+				availableSequences.Remove(activeSequence);
+
+				switch (state)
+				{
+					case State.Tutorial:
+						break;
+
+					case State.MainGame:
+						// Stop AI routine after finishing sequence
+						ShipAI.Instance.StopAllCoroutines();
+
+						// Let AI Interact with everything
+						ShipAI.Instance.ResetIgnoredInteractables();
+
+						// Setup additional ai behaviour
+						ShipAI.Instance.StartShenanigans(amountOfShenanigans);
+						amountOfShenanigans += shenanigansStepIncrease;
+						break;
+
+					case State.Finish:
+						break;
+					default:
+						break;
+				}
+
+				Debug.Log("Playing sequence " + activeSequence.name);
+				activeSequence.LaunchSequence();
+			}
+
+			finishedCurrentSequence = activeSequence.isSequenceFinished;
+			yield return new WaitForEndOfFrame();
+
+			if (finishedCurrentSequence)
+			{
+				if (availableSequences == null || availableSequences.Count == 0)
+				{
+					switch (state)
+					{
+						case State.Tutorial:
+							yield return FinishTutorial();
+							break;
+						case State.MainGame:
+							yield return FinishCore();
+							break;
+						case State.Finish:
+							yield return FinishEnding();
+							break;
+						default:
+							break;
+					}
+					setupCurrentSequence = false;
+				}
+			}
+		}
+
+		if (numberOfCurrentRun >= runsToReachPlanet)
+		{
+			Debug.Log("All runs completed. Show final result to player(s)!");
+			numberOfCurrentRun = 1;
+		}
+		else
+		{
+			numberOfCurrentRun++;
+		}
+		if (runCompletionEvents != null) runCompletionEvents.Invoke();
+
+		yield return null;
+		/*// Tutorial Sequence
+
+			// Core Game Loop - Gameplay sequences in random order with increasing challenge
+			if (enableCore)
+			{
+				
+
+				while (availableSequences.Count > 0)
+				{
+					
+
+					
+
+					// Start sequence
+					activeSequence.LaunchSequence();
+
+					
+
+					// Wait for sequence to finish
+					while (!activeSequence.isSequenceFinished) yield return null;
+
+					
+				}
+
+				BGMController.instance.PitchOut(1f);
+				yield return new WaitForSeconds(1f);
+			}
+
+			// Outro Sequence
+			if (enableEnding)
+			{
+				
+				activeSequence.LaunchSequence();
+
+				while (!activeSequence.isSequenceFinished) yield return null;
+			}
+
+			
+			yield return null;
+			*/
+		/*// Tutorial Sequence
 		if (enableTutorial)
 		{
 			if (tutorialSequence == null)
 			{
 				throw new Exception("No tutorial sequence has been set up!");
 			}
+
+			state = State.Tutorial;
 
 			BGMController.instance.SetPitch(0);
 			BGMController.instance.PlayTutorialBGM();
@@ -376,6 +670,9 @@ public class GameManager : MonoBehaviour {
 			{
 				throw new Exception("No gameplay sequences have been set up!");
 			}
+
+			state = State.MainGame;
+
 			BGMController.instance.SetPitch(0);
 			BGMController.instance.PlayCoreBGM();
 			BGMController.instance.PitchIn(1f);
@@ -427,6 +724,8 @@ public class GameManager : MonoBehaviour {
 				throw new Exception("No end sequence has been set up!");
 			}
 
+			state = State.Finish;
+
 			// Let AI Interact with everything
 			ShipAI.Instance.ResetIgnoredInteractables();
 			BGMController.instance.SetPitch(0);
@@ -450,6 +749,7 @@ public class GameManager : MonoBehaviour {
 		}
 		if (runCompletionEvents != null) runCompletionEvents.Invoke();
 		yield return null;
+		*/
 	}
 
 	public void ActivateInsaneAIMode()
@@ -459,24 +759,7 @@ public class GameManager : MonoBehaviour {
 		EnergyManager.Instance.SetMultiplier(0.3f);
 	}
 
-	private void PlayGame()
-	{
-		// Start Game - Load if necessary
-		StartCoroutine(GameplayLoop());
-	}
-
-	private void Pause()
-	{
-		// Pause
-		EnergyManager.Instance.stopEnergyRoutine = true;
-		ShipAI.Instance.stopAIRoutine = true;
-		StopCoroutine(GameplayLoop());
-	}
-
-	private void ResetGame()
-	{
-		
-	}
+	
 
 	public void ShutdownAllInteractables(bool disableInteraction)
 	{

@@ -148,6 +148,7 @@ public class EnergyManager : MonoBehaviour {
 
 	[Header("Routine Control")]
 	public bool startEnergyRoutine = true;
+	public bool pauseEnergyRoutine = false;
 	public bool stopEnergyRoutine = false;
 	[SerializeField]
 	bool isEnergyRoutineRunning = false;
@@ -194,6 +195,10 @@ public class EnergyManager : MonoBehaviour {
 				print("Energy Coroutine is stopping ...");
 				isEnergyRoutineRunning = false;
 				stopEnergyRoutine = false;
+			}
+			else if (pauseEnergyRoutine)
+			{
+				yield return null;
 			}
 			else
 			{

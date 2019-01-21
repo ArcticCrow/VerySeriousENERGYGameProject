@@ -47,6 +47,7 @@ public class ShipAI : MonoBehaviour {
 
 	[Header("Routine Control")]
 	public bool startAIRoutine = true;
+	public bool pauseAIRoutine = false;
 	public bool stopAIRoutine = false;
 	[SerializeField]
 	bool isAIRoutineRunning = false;
@@ -175,6 +176,10 @@ public class ShipAI : MonoBehaviour {
 				print(gameObject.name + ": AI Coroutine is stopping ...");
 				isAIRoutineRunning = false;
 				stopAIRoutine = false;
+			}
+			else if (pauseAIRoutine)
+			{
+				yield return null;
 			}
 			else if (shenanigansPerformed < targetAmountOfShenanigans)
 			{
