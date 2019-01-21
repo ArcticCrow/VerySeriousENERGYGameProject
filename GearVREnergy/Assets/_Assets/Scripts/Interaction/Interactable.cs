@@ -25,8 +25,9 @@ public class Interactable : MonoBehaviour {
 
 	void Start ()
 	{
-	    CallPowerEvents();
-		if (AudioSource != null)  AudioSource.clip = AudioClip;
+        if (AudioSource != null) AudioSource.clip = AudioClip;
+        CallPowerEvents();
+		
 	}	
 
 	private void CallPowerEvents()
