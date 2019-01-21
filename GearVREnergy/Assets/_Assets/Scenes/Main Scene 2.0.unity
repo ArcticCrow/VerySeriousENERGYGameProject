@@ -21393,6 +21393,11 @@ Prefab:
       propertyPath: m_TagString
       value: Light
       objectReference: {fileID: 0}
+    - target: {fileID: 108664177429224996, guid: 11558b4e06c56dd42a68e696f1ab83d9,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
   m_IsPrefabAsset: 0
@@ -21872,6 +21877,11 @@ Prefab:
     - target: {fileID: 4740782816909586, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108664177429224996, guid: 11558b4e06c56dd42a68e696f1ab83d9,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
@@ -25343,6 +25353,11 @@ Prefab:
       propertyPath: m_TagString
       value: Light
       objectReference: {fileID: 0}
+    - target: {fileID: 108664177429224996, guid: 11558b4e06c56dd42a68e696f1ab83d9,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
   m_IsPrefabAsset: 0
@@ -26279,6 +26294,11 @@ Prefab:
     - target: {fileID: 1292773031332020, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
       propertyPath: m_TagString
       value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 108664177429224996, guid: 11558b4e06c56dd42a68e696f1ab83d9,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
@@ -32504,6 +32524,11 @@ Prefab:
     - target: {fileID: 1292773031332020, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
       propertyPath: m_TagString
       value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 108664177429224996, guid: 11558b4e06c56dd42a68e696f1ab83d9,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
@@ -43191,6 +43216,11 @@ Prefab:
     - target: {fileID: 1292773031332020, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
       propertyPath: m_TagString
       value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 108664177429224996, guid: 11558b4e06c56dd42a68e696f1ab83d9,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11558b4e06c56dd42a68e696f1ab83d9, type: 2}
