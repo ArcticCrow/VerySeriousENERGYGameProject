@@ -1846,14 +1846,14 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -2240,21 +2240,31 @@ Prefab:
     - target: {fileID: 82254679144979286, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82535859459962606, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82254679144979286, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
         type: 2}
       propertyPath: rolloffMode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 82535859459962606, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
         type: 2}
       propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82254679144979286, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
+        type: 2}
+      propertyPath: Spatialize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82535859459962606, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
+        type: 2}
+      propertyPath: Spatialize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3331,7 +3341,7 @@ Prefab:
     - target: {fileID: 82536254432545094, guid: 18d9986b5ec293f48b5fccdff0b7dbf6,
         type: 2}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 82536254432545094, guid: 18d9986b5ec293f48b5fccdff0b7dbf6,
         type: 2}
@@ -3521,11 +3531,16 @@ Prefab:
     - target: {fileID: 82536254432545094, guid: 18d9986b5ec293f48b5fccdff0b7dbf6,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82536254432545094, guid: 18d9986b5ec293f48b5fccdff0b7dbf6,
         type: 2}
       propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82536254432545094, guid: 18d9986b5ec293f48b5fccdff0b7dbf6,
+        type: 2}
+      propertyPath: Spatialize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12036,14 +12051,14 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -12188,11 +12203,16 @@ Prefab:
     - target: {fileID: 82197074900500620, guid: 51c1b20bee53b9a4b98d6e6308545b27,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82197074900500620, guid: 51c1b20bee53b9a4b98d6e6308545b27,
         type: 2}
       propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82197074900500620, guid: 51c1b20bee53b9a4b98d6e6308545b27,
+        type: 2}
+      propertyPath: Spatialize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12941,14 +12961,14 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -13720,14 +13740,14 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -21001,11 +21021,16 @@ Prefab:
     - target: {fileID: 82605114092509744, guid: 40a15a6df6fd68d4a8b84204c8183311,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82605114092509744, guid: 40a15a6df6fd68d4a8b84204c8183311,
         type: 2}
       propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82605114092509744, guid: 40a15a6df6fd68d4a8b84204c8183311,
+        type: 2}
+      propertyPath: Spatialize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -21569,21 +21594,31 @@ Prefab:
     - target: {fileID: 82535859459962606, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82254679144979286, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82535859459962606, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
         type: 2}
       propertyPath: rolloffMode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 82254679144979286, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
         type: 2}
       propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82535859459962606, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
+        type: 2}
+      propertyPath: Spatialize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82254679144979286, guid: e14c2d8944ad4ca4f9762d2a7d3cda91,
+        type: 2}
+      propertyPath: Spatialize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -28863,14 +28898,14 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -30983,11 +31018,16 @@ Prefab:
     - target: {fileID: 82170772679370744, guid: 3760a243e36c82949aed4d26cdac1f05,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82170772679370744, guid: 3760a243e36c82949aed4d26cdac1f05,
         type: 2}
       propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82170772679370744, guid: 3760a243e36c82949aed4d26cdac1f05,
+        type: 2}
+      propertyPath: Spatialize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -33310,14 +33350,14 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -37604,11 +37644,16 @@ Prefab:
     - target: {fileID: 82942530406057392, guid: 2097b13b62f1e9745833ca221b385b55,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82942530406057392, guid: 2097b13b62f1e9745833ca221b385b55,
         type: 2}
       propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82942530406057392, guid: 2097b13b62f1e9745833ca221b385b55,
+        type: 2}
+      propertyPath: Spatialize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -38162,14 +38207,14 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -41936,7 +41981,7 @@ Prefab:
     - target: {fileID: 82471054935747150, guid: 9c2c7a991fe34544f8cd2c0cc7fdea47,
         type: 2}
       propertyPath: MaxDistance
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 82483941854693524, guid: 9c2c7a991fe34544f8cd2c0cc7fdea47,
         type: 2}
@@ -41946,7 +41991,7 @@ Prefab:
     - target: {fileID: 82471054935747150, guid: 9c2c7a991fe34544f8cd2c0cc7fdea47,
         type: 2}
       propertyPath: rolloffMode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 82483941854693524, guid: 9c2c7a991fe34544f8cd2c0cc7fdea47,
         type: 2}
@@ -41957,6 +42002,16 @@ Prefab:
         type: 2}
       propertyPath: AudioClip
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 82471054935747150, guid: 9c2c7a991fe34544f8cd2c0cc7fdea47,
+        type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82471054935747150, guid: 9c2c7a991fe34544f8cd2c0cc7fdea47,
+        type: 2}
+      propertyPath: Spatialize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82483941854693524, guid: 9c2c7a991fe34544f8cd2c0cc7fdea47, type: 2}
