@@ -146,7 +146,7 @@ AudioSource:
   m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -241,7 +241,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 64
@@ -333,10 +333,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0652e9772d2ae83449a5f8d25215b26f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 0
@@ -447,8 +447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffects:
     door: {fileID: 8300000, guid: 7000b4d67a1320940b363f3cf891dfff, type: 3}
-    teleportation: {fileID: 8300000, guid: a05d082cd207b4b12a47c089be8b7a62, type: 3}
-    shenanigans: {fileID: 8300000, guid: 494bd1721199a40c5a79fa3011793556, type: 3}
+    teleportation: {fileID: 8300000, guid: 05ba0a5d06277d7429435365c2c288d1, type: 3}
+    shenanigans: {fileID: 8300000, guid: a926276b9913f2b4c85028940945aa74, type: 3}
 --- !u!114 &114555652382441164
 MonoBehaviour:
   m_ObjectHideFlags: 1

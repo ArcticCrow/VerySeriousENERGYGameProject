@@ -25,8 +25,9 @@ public class Interactable : MonoBehaviour {
 
 	void Start ()
 	{
-	    CallPowerEvents();
-		if (AudioSource != null)  AudioSource.clip = AudioClip;
+        if (AudioSource != null) AudioSource.clip = AudioClip;
+        CallPowerEvents();
+		
 	}	
 
 	private void CallPowerEvents()
@@ -50,8 +51,11 @@ public class Interactable : MonoBehaviour {
 
 	public void SetPowerState(bool activate)
 	{
-		isPowered = activate;
-		needsStateUpdate = true;
+        if (isPowered != activate)
+        {
+            isPowered = activate;
+            needsStateUpdate = true;
+        }
 	}
 	public void EnableInteraction(bool enableInteraction)
 	{

@@ -58,8 +58,6 @@ public class GameManager : MonoBehaviour {
 	[Header("Interaction")]
     public KeyCode interactionKey = KeyCode.E;
     public OVRInput.Button interactionButton = OVRInput.Button.One;
-    //public float maxInteractionRange = 20f;
-    //public LayerMask interactionMask;
 
 	[Header("Game State Controls")]
 	public State state = State.Boot;
@@ -72,11 +70,6 @@ public class GameManager : MonoBehaviour {
 	public bool enableTutorial = true;
 	public bool enableCore = true;
 	public bool enableEnding = true;
-
-	[Header("Menu Buttons")]
-	public Button launchTutButton;
-	public Button playButton;
-	public Button pauseButton;
 
 	// Ships rooms with information
     [Header("Layout")]
@@ -93,6 +86,7 @@ public class GameManager : MonoBehaviour {
     bool teleporting = false;
     [Range(0, 1)]
     public float headRotationCompensation = 0.5f;
+    float teleportTimestamp = 0f;
 
 	float fadeLevel = 0;
 
@@ -153,18 +147,6 @@ public class GameManager : MonoBehaviour {
 
     private void Initialize()
     {
-        if (playButton != null)
-        {
-            playButton.onClick.AddListener(PlayGame);
-        }
-		if (launchTutButton != null)
-		{
-			launchTutButton.onClick.AddListener(PlayTutorial);
-		}
-		if (pauseButton != null)
-        {
-            pauseButton.onClick.AddListener(Pause);
-        }
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -384,11 +366,16 @@ public class GameManager : MonoBehaviour {
 	private void ResetGame()
 	{
 		EnergyManager.Instance.SetMultiplier(1f);
-		if (numberOfCurrentRun <= 0)
-		{
-			numberOfCurrentRun = 1;
-		}
-	}
+        if (numberOfCurrentRun >= runsToReachPlanet || numberOfCurrentRun <= 0)
+        {
+            Debug.Log("All runs completed. Show final result to player(s)!");
+            numberOfCurrentRun = 1;
+        }
+        else
+        {
+            numberOfCurrentRun++;
+        }
+    }
 
 	public void ShowEndScreen()
 	{
@@ -411,9 +398,11 @@ public class GameManager : MonoBehaviour {
 		ShipAI.Instance.ResetIgnoredInteractables();
 		EnergyManager.Instance.startEnergyRoutine = true;
 
-		availableSequences = new List<Sequence>();
-		availableSequences.Add(tutorialSequence);
-		yield return null;
+        availableSequences = new List<Sequence>
+        {
+            tutorialSequence
+        };
+        yield return null;
 	}
 
 	private IEnumerator SetupCore()
@@ -457,9 +446,11 @@ public class GameManager : MonoBehaviour {
 		BGMController.instance.PlayInsaneBGM();
 		BGMController.instance.PitchIn(5f);
 
-		availableSequences = new List<Sequence>();
-		availableSequences.Add(tutorialSequence);
-		yield return null;
+        availableSequences = new List<Sequence>
+        {
+            endSequence
+        };
+        yield return null;
 	}
 
 	public IEnumerator FinishTutorial()
@@ -587,15 +578,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
-		if (numberOfCurrentRun >= runsToReachPlanet)
-		{
-			Debug.Log("All runs completed. Show final result to player(s)!");
-			numberOfCurrentRun = 1;
-		}
-		else
-		{
-			numberOfCurrentRun++;
-		}
+        ResetGame();
 		if (runCompletionEvents != null) runCompletionEvents.Invoke();
 
 		yield return null;
@@ -653,19 +636,21 @@ public class GameManager : MonoBehaviour {
     }
 	public void TeleportToRoom(RoomInformation room)
 	{
-		if (teleporting) return;
-		teleporting = true;
+		if (IsTeleporting()) return;
 
-		SwitchCurrentRoom(room);
+        SwitchCurrentRoom(room);
 
 		Transform destTransform = currentRoom.playerTeleportTransform;
-		StartCoroutine(TeleportCoroutine(destTransform));
+
+        teleporting = true;
+        teleportTimestamp = Time.time;
+        StartCoroutine(TeleportCoroutine(destTransform));
 	}
 
     public void TeleportToOtherRoom(RoomInformation roomA, RoomInformation roomB)
     {
-        if (teleporting) return;
-        teleporting = true;
+        if (IsTeleporting()) return;
+        
 
         if (currentRoom == roomA)
         {
@@ -681,8 +666,17 @@ public class GameManager : MonoBehaviour {
         }
 
         Transform destTransform = currentRoom.playerTeleportTransform;
+
+        teleporting = true;
+        teleportTimestamp = Time.time;
         StartCoroutine(TeleportCoroutine(destTransform));
     }
+
+    public bool IsTeleporting()
+    {
+        return teleporting && Time.time - teleportTimestamp > fadeLength * 2;
+    }
+
     IEnumerator TeleportCoroutine(Transform destTransform, bool ignoreFade = false)
     {
         Vector3 destPosition = destTransform.position;

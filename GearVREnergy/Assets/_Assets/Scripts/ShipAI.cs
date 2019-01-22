@@ -207,7 +207,9 @@ public class ShipAI : MonoBehaviour {
 		{
 			Interactable ia = interactables[i].GetComponent<Interactable>();
 			// Interactable script is present, it's gameobject is in the scene and the bad power state is not already active
-			if (ia != null && ia.isActiveAndEnabled && ia.gameObject.activeInHierarchy && ia.isPowered != ia.badPowerState && ignoredInteractables.Find(x=>x == ia.gameObject) == null)
+			if (ia != null && ia.isActiveAndEnabled && ia.gameObject.activeInHierarchy 
+                && ia.isPowered != ia.badPowerState && ignoredInteractables.Find(x=>x == ia.gameObject) == null
+                && ia.classLabel != EnergyLabel.None)
 			{
 				viableInteractables.Add(ia);
 			}
