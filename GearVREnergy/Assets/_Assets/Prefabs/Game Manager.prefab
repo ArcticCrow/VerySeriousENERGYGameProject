@@ -64,13 +64,13 @@ MonoBehaviour:
   seed: 636836213452457538
   runsToReachPlanet: 3
   numberOfCurrentRun: 1
-  maxAmountOfEnergyPerRun: 10000
+  maxAmountOfEnergyPerRun: 18000
   journeyThreshholds:
-  - energyAmount: 8000
+  - energyAmount: 14400
     colorCode: {r: 0, g: 1, b: 0.060203552, a: 0.5882353}
-  - energyAmount: 16000
+  - energyAmount: 28800
     colorCode: {r: 1, g: 0.7070736, b: 0, a: 0.5882353}
-  - energyAmount: 24000
+  - energyAmount: 43200
     colorCode: {r: 1, g: 0, b: 0, a: 0.5882353}
   runStartEvents:
     m_PersistentCalls:
@@ -85,14 +85,11 @@ MonoBehaviour:
   interactionKey: 32
   interactionButton: 1
   state: 0
-  playGame: 0
+  playGame: 1
   pause: 0
   enableTutorial: 1
   enableCore: 1
   enableEnding: 1
-  launchTutButton: {fileID: 0}
-  playButton: {fileID: 0}
-  pauseButton: {fileID: 0}
   findRooms: 1
   currentRoom: {fileID: 0}
   rooms: []
@@ -107,7 +104,7 @@ MonoBehaviour:
   - {fileID: 0}
   endSequence: {fileID: 0}
   startAmountOfShenanigans: 0
-  shenanigansStepIncrease: 2
+  shenanigansStepIncrease: 1
   activeSequence: {fileID: 0}
   interactionControl: {fileID: 114104880557550748}
   doorControl: {fileID: 114051001153449178}

@@ -58,8 +58,6 @@ public class GameManager : MonoBehaviour {
 	[Header("Interaction")]
     public KeyCode interactionKey = KeyCode.E;
     public OVRInput.Button interactionButton = OVRInput.Button.One;
-    //public float maxInteractionRange = 20f;
-    //public LayerMask interactionMask;
 
 	[Header("Game State Controls")]
 	public State state = State.Boot;
@@ -72,11 +70,6 @@ public class GameManager : MonoBehaviour {
 	public bool enableTutorial = true;
 	public bool enableCore = true;
 	public bool enableEnding = true;
-
-	[Header("Menu Buttons")]
-	public Button launchTutButton;
-	public Button playButton;
-	public Button pauseButton;
 
 	// Ships rooms with information
     [Header("Layout")]
@@ -153,18 +146,6 @@ public class GameManager : MonoBehaviour {
 
     private void Initialize()
     {
-        if (playButton != null)
-        {
-            playButton.onClick.AddListener(PlayGame);
-        }
-		if (launchTutButton != null)
-		{
-			launchTutButton.onClick.AddListener(PlayTutorial);
-		}
-		if (pauseButton != null)
-        {
-            pauseButton.onClick.AddListener(Pause);
-        }
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -384,11 +365,16 @@ public class GameManager : MonoBehaviour {
 	private void ResetGame()
 	{
 		EnergyManager.Instance.SetMultiplier(1f);
-		if (numberOfCurrentRun <= 0)
-		{
-			numberOfCurrentRun = 1;
-		}
-	}
+        if (numberOfCurrentRun >= runsToReachPlanet || numberOfCurrentRun <= 0)
+        {
+            Debug.Log("All runs completed. Show final result to player(s)!");
+            numberOfCurrentRun = 1;
+        }
+        else
+        {
+            numberOfCurrentRun++;
+        }
+    }
 
 	public void ShowEndScreen()
 	{
@@ -411,9 +397,11 @@ public class GameManager : MonoBehaviour {
 		ShipAI.Instance.ResetIgnoredInteractables();
 		EnergyManager.Instance.startEnergyRoutine = true;
 
-		availableSequences = new List<Sequence>();
-		availableSequences.Add(tutorialSequence);
-		yield return null;
+        availableSequences = new List<Sequence>
+        {
+            tutorialSequence
+        };
+        yield return null;
 	}
 
 	private IEnumerator SetupCore()
@@ -457,9 +445,11 @@ public class GameManager : MonoBehaviour {
 		BGMController.instance.PlayInsaneBGM();
 		BGMController.instance.PitchIn(5f);
 
-		availableSequences = new List<Sequence>();
-		availableSequences.Add(tutorialSequence);
-		yield return null;
+        availableSequences = new List<Sequence>
+        {
+            tutorialSequence
+        };
+        yield return null;
 	}
 
 	public IEnumerator FinishTutorial()
@@ -587,15 +577,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
-		if (numberOfCurrentRun >= runsToReachPlanet)
-		{
-			Debug.Log("All runs completed. Show final result to player(s)!");
-			numberOfCurrentRun = 1;
-		}
-		else
-		{
-			numberOfCurrentRun++;
-		}
+        ResetGame();
 		if (runCompletionEvents != null) runCompletionEvents.Invoke();
 
 		yield return null;
