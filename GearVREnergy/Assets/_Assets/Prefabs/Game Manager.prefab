@@ -63,14 +63,14 @@ MonoBehaviour:
   generateRandomSeed: 1
   seed: 636836213452457538
   runsToReachPlanet: 3
-  numberOfCurrentRun: 1
-  maxAmountOfEnergyPerRun: 18000
+  numberOfCurrentRun: 0
+  maxAmountOfEnergyPerRun: 25000
   journeyThreshholds:
-  - energyAmount: 14400
+  - energyAmount: 20000
     colorCode: {r: 0, g: 1, b: 0.060203552, a: 0.5882353}
-  - energyAmount: 28800
+  - energyAmount: 40000
     colorCode: {r: 1, g: 0.7070736, b: 0, a: 0.5882353}
-  - energyAmount: 43200
+  - energyAmount: 60000
     colorCode: {r: 1, g: 0, b: 0, a: 0.5882353}
   runStartEvents:
     m_PersistentCalls:
@@ -104,7 +104,7 @@ MonoBehaviour:
   - {fileID: 0}
   endSequence: {fileID: 0}
   startAmountOfShenanigans: 0
-  shenanigansStepIncrease: 1
+  shenanigansStepIncrease: 2
   activeSequence: {fileID: 0}
   interactionControl: {fileID: 114104880557550748}
   doorControl: {fileID: 114051001153449178}
@@ -257,32 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableObjectTags:
   - Interactable
-  interactables:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  interactables: []
   minTimeDifference: 5
   maxTimeDifference: 10
   shenanigans:

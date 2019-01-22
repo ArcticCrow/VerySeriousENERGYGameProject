@@ -1084,9 +1084,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  waitAfterLaunch: 0
-  launchWaitTime: 0
-  waitAfterCompletion: 1
+  waitAfterLaunch: 1
+  launchWaitTime: 5
+  waitAfterCompletion: 0
   completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1

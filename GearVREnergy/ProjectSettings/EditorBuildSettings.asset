@@ -5,13 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Oculus/Avatar/Samples/Controllers/Controllers.unity
-    guid: 2a83dd010542d2744bf59af99b4bc47c
-  - enabled: 0
-    path: Assets/Oculus/VR/Scenes/GearVrControllerTest.unity
-    guid: d56af3aeb2176e7459f753c1c2e2dd97
   - enabled: 1
-    path: Assets/_Assets/Scenes/Main Scene.unity
-    guid: d8fd498df9a35444a86154704fc185b9
+    path: Assets/_Assets/Scenes/Main Scene 2.0.unity
+    guid: 99f19db2b94284745b0b0d84b1df3b9a
   m_configObjects: {}

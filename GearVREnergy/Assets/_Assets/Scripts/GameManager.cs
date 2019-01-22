@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour {
     bool teleporting = false;
     [Range(0, 1)]
     public float headRotationCompensation = 0.5f;
+    float teleportTimestamp = 0f;
 
 	float fadeLevel = 0;
 
@@ -447,7 +448,7 @@ public class GameManager : MonoBehaviour {
 
         availableSequences = new List<Sequence>
         {
-            tutorialSequence
+            endSequence
         };
         yield return null;
 	}
@@ -635,19 +636,21 @@ public class GameManager : MonoBehaviour {
     }
 	public void TeleportToRoom(RoomInformation room)
 	{
-		if (teleporting) return;
-		teleporting = true;
+		if (IsTeleporting()) return;
 
-		SwitchCurrentRoom(room);
+        SwitchCurrentRoom(room);
 
 		Transform destTransform = currentRoom.playerTeleportTransform;
-		StartCoroutine(TeleportCoroutine(destTransform));
+
+        teleporting = true;
+        teleportTimestamp = Time.time;
+        StartCoroutine(TeleportCoroutine(destTransform));
 	}
 
     public void TeleportToOtherRoom(RoomInformation roomA, RoomInformation roomB)
     {
-        if (teleporting) return;
-        teleporting = true;
+        if (IsTeleporting()) return;
+        
 
         if (currentRoom == roomA)
         {
@@ -663,8 +666,17 @@ public class GameManager : MonoBehaviour {
         }
 
         Transform destTransform = currentRoom.playerTeleportTransform;
+
+        teleporting = true;
+        teleportTimestamp = Time.time;
         StartCoroutine(TeleportCoroutine(destTransform));
     }
+
+    public bool IsTeleporting()
+    {
+        return teleporting && Time.time - teleportTimestamp > fadeLength * 2;
+    }
+
     IEnumerator TeleportCoroutine(Transform destTransform, bool ignoreFade = false)
     {
         Vector3 destPosition = destTransform.position;
