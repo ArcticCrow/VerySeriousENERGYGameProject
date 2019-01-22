@@ -156,6 +156,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.gamengenius.gearvrenergy
+    PSP2: com.oculus.UnitySample
     Standalone: unity.Oculus.Oculus Sample Framework
     Tizen: com.oculus.SampleFramework
     iOS: com.oculus.SampleFramework
@@ -402,7 +403,7 @@ PlayerSettings:
     m_Enabled: 0
     m_Devices: []
   - m_BuildTarget: PSP2
-    m_Enabled: 0
+    m_Enabled: 1
     m_Devices: []
   - m_BuildTarget: SamsungTV
     m_Enabled: 0

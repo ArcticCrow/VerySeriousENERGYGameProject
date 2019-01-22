@@ -51,8 +51,11 @@ public class Interactable : MonoBehaviour {
 
 	public void SetPowerState(bool activate)
 	{
-		isPowered = activate;
-		needsStateUpdate = true;
+        if (isPowered != activate)
+        {
+            isPowered = activate;
+            needsStateUpdate = true;
+        }
 	}
 	public void EnableInteraction(bool enableInteraction)
 	{
