@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 4613673652240342}
   - component: {fileID: 114841149930775200}
   m_Layer: 0
-  m_Name: Fade Screen (Action)
+  m_Name: Teleport to End Room (Action)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1175,18 +1175,18 @@ MonoBehaviour:
   waitAfterLaunch: 0
   launchWaitTime: 0
   waitAfterCompletion: 1
-  completionWaitTime: 0
+  completionWaitTime: 3
   hasLaunched: 0
   hasCompleted: 0
   actions:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: FadeScreenOut
-        m_Mode: 1
+        m_MethodName: TeleportToRoom
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: RoomInformation, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

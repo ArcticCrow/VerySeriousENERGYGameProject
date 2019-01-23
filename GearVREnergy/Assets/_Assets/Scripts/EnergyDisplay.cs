@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 public class EnergyDisplay : MonoBehaviour {
 
+	[Header("Journey Display")]
 	public float journeyWidth;
 
 	public Transform journeyContainer;
@@ -17,6 +18,7 @@ public class EnergyDisplay : MonoBehaviour {
 	public Transform threshholdContainer;
 	public GameObject threshholdPrefab;
 
+	[Header("Run Display")]
 	public Image playerAvatar;
 
 	public float runBarWidth;
@@ -53,7 +55,7 @@ public class EnergyDisplay : MonoBehaviour {
 	[SerializeField]
 	public List<GameObject> threshholds = new List<GameObject>();
 
-	public void Update()
+	public virtual void Update()
 	{
 		maxEnergyAmount = GameManager.instance.journeyThreshholds[GameManager.instance.journeyThreshholds.Count - 1].energyAmount;
 
@@ -62,7 +64,7 @@ public class EnergyDisplay : MonoBehaviour {
 			|| journeyRunEnergyBarPrefab == null
 			|| EnergyManager.Instance.energyConsumedDuringJourney == null)
 		{
-			enabled = false;
+			return;
 		}
 
 		if (threshholds == null || threshholds.Count == 0)

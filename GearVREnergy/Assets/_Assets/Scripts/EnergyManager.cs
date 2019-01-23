@@ -95,7 +95,7 @@ public class EnergyManager : MonoBehaviour {
 	public float energyUsedThisRun = 0;
 	public List<float> energyConsumedDuringJourney = new List<float>();
 
-	public float totalEnergyUsedThisFlight = 0;
+	public float totalEnergyUsedThisJourney = 0;
 
     public UnityEvent energyDependantEvents;
     public UnityEvent newRunEvents;
@@ -206,6 +206,16 @@ public class EnergyManager : MonoBehaviour {
 				ApplyCurrentFluctuation();
 			}
 		}
+	}
+
+	public float GetTotalEnergyUsed()
+	{
+		totalEnergyUsedThisJourney = 0;
+		for (int i = 0; i < energyConsumedDuringJourney.Count; i++)
+		{
+			totalEnergyUsedThisJourney += energyConsumedDuringJourney[i];
+		}
+		return totalEnergyUsedThisJourney;
 	}
 
 	private void ApplyCurrentFluctuation()

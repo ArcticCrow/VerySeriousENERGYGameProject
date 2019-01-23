@@ -364,7 +364,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -399,7 +399,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -434,7 +434,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -469,7 +469,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -504,7 +504,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -539,7 +539,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -562,7 +562,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -574,7 +574,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -609,7 +609,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -1614,6 +1614,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   roomLocation: {fileID: 0}
+  AudioClip: {fileID: 0}
+  AudioSource: {fileID: 0}
 --- !u!114 &114148115413794330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4286,7 +4288,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 2
@@ -4313,7 +4315,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 2
@@ -4340,7 +4342,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 2
@@ -4367,7 +4369,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 2
@@ -4394,7 +4396,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 2
@@ -4421,7 +4423,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 2
@@ -4448,7 +4450,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 4
@@ -4475,7 +4477,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 4
@@ -4502,7 +4504,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 4
@@ -4529,7 +4531,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 4
@@ -4556,7 +4558,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 4
@@ -4583,7 +4585,7 @@ MonoBehaviour:
       localPivot: {x: -0.00000011920929, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 0
     elementGroup: 0
     textureGroup: 4
@@ -4612,7 +4614,7 @@ MonoBehaviour:
       localPivot: {x: 0, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 1
     elementGroup: 0
     textureGroup: 1
@@ -4641,7 +4643,7 @@ MonoBehaviour:
       localPivot: {x: 0, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 1
     elementGroup: 0
     textureGroup: -1
@@ -4670,7 +4672,7 @@ MonoBehaviour:
       localPivot: {x: 0, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 1
     elementGroup: 0
     textureGroup: -1
@@ -4699,7 +4701,7 @@ MonoBehaviour:
       localPivot: {x: 0, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 1
     elementGroup: 0
     textureGroup: -1
@@ -4728,7 +4730,7 @@ MonoBehaviour:
       localPivot: {x: 0, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 1
     elementGroup: 0
     textureGroup: -1
@@ -4757,7 +4759,7 @@ MonoBehaviour:
       localPivot: {x: 0, y: 0}
       localSize: {x: 0, y: 0}
       anchor: 9
-    _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    _mat: {fileID: 2100000, guid: 90400f9c4cf700b44a028b534207246a, type: 2}
     manualUV: 1
     elementGroup: 0
     textureGroup: 3

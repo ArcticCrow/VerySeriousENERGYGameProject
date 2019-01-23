@@ -78,7 +78,7 @@ public class SequenceAudio : SequenceStep {
 			List<AudioClip> reminders = new List<AudioClip>(reminderClips);
 
 			//print("Reminder Count: " + reminderClips.Count + "\nStopping Step Status: " + IsStoppingStepFinished());
-			while (reminders != null && !IsStoppingStepFinished())
+			while (reminders != null && reminders.Count > 0 && !IsStoppingStepFinished())
 			{
 				//print("random reminder picking");
 				int reminderIndex = Random.Range(0, reminderClips.Count);

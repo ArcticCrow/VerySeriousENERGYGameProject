@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
 	{
 		public float energyAmount;
 		public Color colorCode;
+		public GameObject planet;
 	}
 
 	public float maxAmountOfEnergyPerRun;
@@ -54,6 +55,9 @@ public class GameManager : MonoBehaviour {
 
 	public UnityEvent runStartEvents;
 	public UnityEvent runCompletionEvents;
+
+	public float startTimestamp = 0;
+	public float endTimestamp = 0;
 
 	[Header("Interaction")]
     public KeyCode interactionKey = KeyCode.E;
@@ -488,6 +492,8 @@ public class GameManager : MonoBehaviour {
 			playCore = enableCore,
 			playEnd = enableEnding;
 
+		startTimestamp = Time.time;
+
 		while (isPlaying)
 		{
 			if (state == State.Pause)
@@ -578,7 +584,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
-        ResetGame();
+		endTimestamp = Time.time;
 		if (runCompletionEvents != null) runCompletionEvents.Invoke();
 
 		yield return null;
@@ -649,32 +655,24 @@ public class GameManager : MonoBehaviour {
 
     public void TeleportToOtherRoom(RoomInformation roomA, RoomInformation roomB)
     {
-        if (IsTeleporting()) return;
-        
-
         if (currentRoom == roomA)
         {
-            SwitchCurrentRoom(roomB);
+            TeleportToRoom(roomB);
         }
         else if (currentRoom == roomB)
         {
-            SwitchCurrentRoom(roomA);
+			TeleportToRoom(roomA);
         }
         else
         {
-            throw new Exception("Player is trying to teleport out of a room, he is not in!");
+			TeleportToRoom(roomA);
+			Debug.LogAssertion("Player is trying to teleport out of a room, he is not in!");
         }
-
-        Transform destTransform = currentRoom.playerTeleportTransform;
-
-        teleporting = true;
-        teleportTimestamp = Time.time;
-        StartCoroutine(TeleportCoroutine(destTransform));
     }
 
     public bool IsTeleporting()
     {
-        return teleporting && Time.time - teleportTimestamp > fadeLength * 2;
+        return teleporting && Time.time - teleportTimestamp < fadeLength * 2 && fadeLevel != 0;
     }
 
     IEnumerator TeleportCoroutine(Transform destTransform, bool ignoreFade = false)
@@ -704,6 +702,11 @@ public class GameManager : MonoBehaviour {
 
         yield return null;
     }
+
+	public void RecenterPose()
+	{
+		OVRManager.display.RecenterPose();
+	}
 
 	public void FadeScreenIn()
 	{
