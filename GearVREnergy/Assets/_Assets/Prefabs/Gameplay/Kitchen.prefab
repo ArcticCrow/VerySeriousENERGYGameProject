@@ -321,7 +321,7 @@ MonoBehaviour:
   useReminders: 1
   playRemindersOnce: 1
   waitOneInterval: 0
-  reminderInterval: 10
+  reminderInterval: 3
   reminderStoppingStep: {fileID: 114525917487465016}
   reminderClips:
   - {fileID: 8300000, guid: 6784abcffcd352f489324c25eb4f9e93, type: 3}

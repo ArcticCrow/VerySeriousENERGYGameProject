@@ -274,19 +274,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  waitAfterCompletion: 1
-  completionWaitTime: 0
   waitAfterLaunch: 0
   launchWaitTime: 0
+  waitAfterCompletion: 1
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   audioClip: {fileID: 0}
   useAudioClipLength: 1
-  useLengthAsCompletionTime: 0
+  useAsCompletionTime: 1
   useReminders: 1
   playRemindersOnce: 1
   waitOneInterval: 0
-  reminderInterval: 10
+  reminderInterval: 3
   reminderStoppingStep: {fileID: 114934490468214490}
   reminderClips:
   - {fileID: 8300000, guid: 3bd1dce241257d44d9758eb2eb1f38f4, type: 3}
@@ -319,10 +319,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  waitAfterCompletion: 0
-  completionWaitTime: 0
   waitAfterLaunch: 0
   launchWaitTime: 0
+  waitAfterCompletion: 0
+  completionWaitTime: 0
   hasLaunched: 0
   hasCompleted: 0
   comparisonOperator: 0
