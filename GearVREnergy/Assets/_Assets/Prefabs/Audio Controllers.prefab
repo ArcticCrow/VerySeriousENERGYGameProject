@@ -449,6 +449,8 @@ MonoBehaviour:
     door: {fileID: 8300000, guid: 7000b4d67a1320940b363f3cf891dfff, type: 3}
     teleportation: {fileID: 8300000, guid: 05ba0a5d06277d7429435365c2c288d1, type: 3}
     shenanigans: {fileID: 8300000, guid: a926276b9913f2b4c85028940945aa74, type: 3}
+    activate: {fileID: 8300000, guid: 6818f62b299e10f41a2a62e017095a44, type: 3}
+    collision: {fileID: 8300000, guid: af18fe175d7418945bb0a9433a8139c2, type: 3}
 --- !u!114 &114555652382441164
 MonoBehaviour:
   m_ObjectHideFlags: 1

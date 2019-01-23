@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4250751757228096}
   - component: {fileID: 33647752109057106}
   - component: {fileID: 23664934827431954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cable_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4866144555862318}
   - component: {fileID: 33595391394524072}
   - component: {fileID: 23795479074417204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4571258342941352}
   - component: {fileID: 33217522017995298}
   - component: {fileID: 23855785085311060}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4349918430085498}
   - component: {fileID: 108664177429224996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4740782816909586}
   - component: {fileID: 95204399786847382}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light Arrangement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4958646915725464}
   - component: {fileID: 33851141245556538}
   - component: {fileID: 23188989642717650}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4019560302410166}
   - component: {fileID: 33242165291911370}
   - component: {fileID: 23081333643042296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cable_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 4523743329612848}
   - component: {fileID: 33354820014978518}
   - component: {fileID: 23641717032655086}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4698152674139188}
   - component: {fileID: 33364024316749262}
   - component: {fileID: 23410310943784652}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lightbulb_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 4722462738248880}
   - component: {fileID: 33555164694640200}
   - component: {fileID: 23380658781372078}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lightbulb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4607906651363394}
   - component: {fileID: 33658063528720282}
   - component: {fileID: 23393366391959552}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lightbulb_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292773031332020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.677, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8099999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4740782816909586}
@@ -776,12 +776,12 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 1
+    m_Bits: 823
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0.5
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_ShadowRadius: 0
+  m_ShadowRadius: 1
   m_ShadowAngle: 0

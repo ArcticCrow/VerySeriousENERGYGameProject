@@ -45,13 +45,13 @@ public class EnergyDisplay : MonoBehaviour {
 
 	[Header("Read-only (Do not touch)")]
 	[SerializeField]
-	List<JourneyEnergyBar> journeyEnergyBars = new List<JourneyEnergyBar>();
+	public List<JourneyEnergyBar> journeyEnergyBars = new List<JourneyEnergyBar>();
 	[SerializeField]
-	Color currentColor;
+	public Color currentColor;
 	[SerializeField]
-	float maxEnergyAmount;
+	public float maxEnergyAmount;
 	[SerializeField]
-	List<GameObject> threshholds = new List<GameObject>();
+	public List<GameObject> threshholds = new List<GameObject>();
 
 	public void Update()
 	{

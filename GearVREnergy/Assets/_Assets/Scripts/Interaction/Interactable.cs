@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
 public class Interactable : MonoBehaviour {
 
     public bool disableInteraction = false;
@@ -22,6 +23,8 @@ public class Interactable : MonoBehaviour {
 	public RoomInformation roomLocation;
     public AudioClip AudioClip;
     public AudioSource AudioSource;
+
+	float lastCollisionTime = 0;
 
 	void Start ()
 	{
@@ -53,7 +56,8 @@ public class Interactable : MonoBehaviour {
 	{
         if (isPowered != activate)
         {
-            isPowered = activate;
+			SFXController.PlaySound(SFXController.instance.soundEffects.activate, 0.6f);
+			isPowered = activate;
             needsStateUpdate = true;
         }
 	}
@@ -84,11 +88,14 @@ public class Interactable : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision)
 	{
+
 		if (collision.gameObject.CompareTag("Throwable"))
 		{
-			if (!disableInteraction && GameManager.instance.interactionControl.IsInteractionAllowedWith(gameObject))
+			if (!disableInteraction && GameManager.instance.interactionControl.IsInteractionAllowedWith(gameObject)
+				&& lastCollisionTime + 0.5f <= Time.time)
 			{
 				TogglePower();
+				lastCollisionTime = Time.time;
 			}
 		}
 	}

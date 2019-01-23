@@ -13,6 +13,8 @@ public class SFXController : MonoBehaviour {
 		public AudioClip door;
 		public AudioClip teleportation;
 		public AudioClip shenanigans;
+		public AudioClip activate;
+		public AudioClip collision;
 	}
 	public SFXAudioClip soundEffects;
 
@@ -24,14 +26,21 @@ public class SFXController : MonoBehaviour {
 		audioSource = GetComponent<AudioSource>();
 	}
 
-	public static void PlaySound(AudioClip clip, float volume = 1f)
+	public static void PlaySound(AudioClip clip, float volume = -1f)
 	{
 		if (clip == null)
 		{
 			Debug.LogAssertion("SFX Clip can't be null!");
 			return;
 		}
-		audioSource.PlayOneShot(clip, volume);
+		if (volume > 0)
+		{
+			audioSource.PlayOneShot(clip, volume);
+		}
+		else
+		{
+			audioSource.PlayOneShot(clip);
+		}
 	}
 
 	public static void StopSounds()

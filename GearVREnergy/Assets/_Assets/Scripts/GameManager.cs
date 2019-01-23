@@ -685,7 +685,7 @@ public class GameManager : MonoBehaviour {
 		if (!ignoreFade)
 		yield return FadeOut();
 
-        SFXController.PlaySound(SFXController.instance.soundEffects.teleportation);
+        SFXController.PlaySound(SFXController.instance.soundEffects.teleportation, 0.4f);
         player.transform.position = destPosition;
 
         Quaternion headRotation = Quaternion.Euler(OVRManager.instance.headPoseRelativeOffsetRotation);

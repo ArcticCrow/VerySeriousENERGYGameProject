@@ -624,8 +624,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  waitAfterLaunch: 1
-  launchWaitTime: 2
+  waitAfterLaunch: 0
+  launchWaitTime: 0
   waitAfterCompletion: 0
   completionWaitTime: 0
   hasLaunched: 1
@@ -908,7 +908,7 @@ MonoBehaviour:
   waitAfterLaunch: 0
   launchWaitTime: 0
   waitAfterCompletion: 1
-  completionWaitTime: 0
+  completionWaitTime: 1
   hasLaunched: 1
   hasCompleted: 0
   comparisonOperator: 0
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
-  audioClip: {fileID: 8300000, guid: e7d0c9682a5b16846a9a9a5681bc21ca, type: 3}
+  audioClip: {fileID: 8300000, guid: 63d3f2e94af207349be3e8f9164d28a8, type: 3}
   useAudioClipLength: 1
   useAsCompletionTime: 1
   useReminders: 0
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   completionWaitTime: 0
   hasLaunched: 1
   hasCompleted: 1
-  audioClip: {fileID: 8300000, guid: 87d46c4ebf8cb4e4f807155090100d26, type: 3}
+  audioClip: {fileID: 8300000, guid: 030b8bf17c3389544aec7a71cf40b6c1, type: 3}
   useAudioClipLength: 1
   useAsCompletionTime: 1
   useReminders: 0

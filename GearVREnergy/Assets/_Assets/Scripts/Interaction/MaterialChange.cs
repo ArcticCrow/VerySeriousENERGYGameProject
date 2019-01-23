@@ -7,9 +7,7 @@ public class MaterialChange : MonoBehaviour {
 	public Color on;
 	public Color off;
 	//public bool isPowered;
-	public List<MeshRenderer> meshRenderers;
-    public AudioClip aClip;
-    
+	public List<MeshRenderer> meshRenderers;    
     // Use this for initialization
 
 
@@ -29,9 +27,7 @@ public class MaterialChange : MonoBehaviour {
 		CheckRenderer();
 		for (int i = 0; i < meshRenderers.Count; i++)
 		{
-			if (meshRenderers[i] != null)
-				meshRenderers[i].material.color = on;
-			    SFXController.PlaySound(aClip, 0.6f);
+			if (meshRenderers[i] != null) meshRenderers[i].material.color = on;
 		}
 	}
 
@@ -41,10 +37,7 @@ public class MaterialChange : MonoBehaviour {
         CheckRenderer();
 		for (int i = 0; i < meshRenderers.Count; i++)
 		{
-			if (meshRenderers[i] != null)
-				meshRenderers[i].material.color = off;
-
-            SFXController.PlaySound(aClip, 0.6f);
+			if (meshRenderers[i] != null) meshRenderers[i].material.color = off;
         }
 	}
 }

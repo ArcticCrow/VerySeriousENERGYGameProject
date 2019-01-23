@@ -12,6 +12,7 @@ public class ThrowController : MonoBehaviour {
 	public Transform itemInHand;
 
 	Rigidbody itemRB;
+	ThrowCollision collisionSound;
 	bool isHolding = false;
 
 	private void Start()
@@ -71,6 +72,13 @@ public class ThrowController : MonoBehaviour {
 
 		// We only want to move the item with the player, while it's being held
 		itemRB.isKinematic = true;
+
+		// Attach sound handle
+		collisionSound = itemInHand.GetComponent<ThrowCollision>();
+		if (collisionSound == null)
+		{
+			collisionSound = itemInHand.gameObject.AddComponent<ThrowCollision>();
+		}
 	}
 
 	void ThrowObject()
@@ -83,6 +91,12 @@ public class ThrowController : MonoBehaviour {
 
 		// Enable physics add force an let the rest work out on it's own
 		itemRB.isKinematic = false;
+
+		// Enable collision sound
+		if (collisionSound != null)
+		{
+			collisionSound.activateCollisionSound = true;
+		}
 
 		// Apply throw force if allowed
 		if (!disableThrowing)
